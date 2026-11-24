@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" width="100%" height="100%">
+  <defs>
+    <linearGradient id="jbDetailBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1B1619" />
+      <stop offset="100%" stop-color="#0D0A0C" />
+    </linearGradient>
+    <linearGradient id="jbCrimson" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FF1A63" />
+      <stop offset="100%" stop-color="#C2104A" />
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="650" fill="url(#jbDetailBg)" rx="24" />
+  <rect x="1" y="1" width="998" height="648" fill="none" stroke="#FFFFFF" stroke-opacity="0.1" rx="23" />
+  
+  <!-- Header Bar -->
+  <rect x="40" y="40" width="920" height="64" rx="16" fill="#201A1D" stroke="#FFFFFF" stroke-opacity="0.08" />
+  <text x="70" y="78" fill="#FFFFFF" font-family="'Sora', sans-serif" font-weight="700" font-size="16">JB Clinical Appointment &amp; Schedule Flow</text>
+  <rect x="780" y="54" width="150" height="36" rx="18" fill="url(#jbCrimson)" />
+  <text x="806" y="77" fill="#FFFFFF" font-family="sans-serif" font-weight="600" font-size="13">Sync Calendar</text>
+
+  <!-- Left: Doctor Directory Cards -->
+  <g transform="translate(40, 130)">
+    <rect width="440" height="140" rx="18" fill="#151214" stroke="#FFFFFF" stroke-opacity="0.08" />
+    <circle cx="60" cy="70" r="32" fill="#2B1D23" stroke="#FF1A63" stroke-width="2" />
+    <text x="52" y="76" fill="#FF1A63" font-family="'Sora', sans-serif" font-weight="700" font-size="16">DR</text>
+    <text x="110" y="55" fill="#FFFFFF" font-family="'Sora', sans-serif" font-weight="700" font-size="18">Dr. K. Ravichandran</text>
+    <text x="110" y="80" fill="#FF1A63" font-family="sans-serif" font-size="13" font-weight="600">Chief Interventional Cardiologist</text>
+    <text x="110" y="105" fill="#8E8790" font-family="sans-serif" font-size="12">MBBS, MD, DM · 18+ Yrs Experience · Available 10AM - 2PM</text>
+
+    <rect y="160" width="440" height="140" rx="18" fill="#151214" stroke="#FFFFFF" stroke-opacity="0.08" />
+    <circle cx="60" cy="230" r="32" fill="#2B1D23" stroke="#FF1A63" stroke-width="2" />
+    <text x="52" y="236" fill="#FF1A63" font-family="'Sora', sans-serif" font-weight="700" font-size="16">DR</text>
+    <text x="110" y="215" fill="#FFFFFF" font-family="'Sora', sans-serif" font-weight="700" font-size="18">Dr. Ananya Sharma</text>
+    <text x="110" y="240" fill="#FF1A63" font-family="sans-serif" font-size="13" font-weight="600">Senior Pediatric Surgeon</text>
+    <text x="110" y="265" fill="#8E8790" font-family="sans-serif" font-size="12">MBBS, MS, MCh · 14+ Yrs Experience · Available 3PM - 7PM</text>
+
+    <rect y="320" width="440" height="140" rx="18" fill="#151214" stroke="#FFFFFF" stroke-opacity="0.08" />
+    <circle cx="60" cy="390" r="32" fill="#2B1D23" stroke="#FF1A63" stroke-width="2" />
+    <text x="52" y="396" fill="#FF1A63" font-family="'Sora', sans-serif" font-weight="700" font-size="16">DR</text>
+    <text x="110" y="375" fill="#FFFFFF" font-family="'Sora', sans-serif" font-weight="700" font-size="18">Dr. S. Sundararajan</text>
+    <text x="110" y="400" fill="#FF1A63" font-family="sans-serif" font-size="13" font-weight="600">Head of Orthopaedics &amp; Trauma</text>
+    <text x="110" y="425" fill="#8E8790" font-family="sans-serif" font-size="12">MS (Ortho), DNB · 20+ Yrs Experience · 24/7 Trauma Unit</text>
+  </g>
+
+  <!-- Right: Patient Booking Widget -->
+  <g transform="translate(520, 130)">
+    <rect width="440" height="460" rx="20" fill="#151214" stroke="#FF1A63" stroke-opacity="0.3" />
+    <text x="35" y="45" fill="#FFFFFF" font-family="'Sora', sans-serif" font-weight="700" font-size="20">Instant Appointment Booking</text>
+    <text x="35" y="75" fill="#8E8790" font-family="sans-serif" font-size="13">Zero waiting time guarantee · Direct SMS notification</text>
+
+    <!-- Form Inputs Mockup -->
+    <rect x="35" y="105" width="370" height="50" rx="12" fill="#201A1D" stroke="#FFFFFF" stroke-opacity="0.12" />
+    <text x="55" y="136" fill="#8E8790" font-family="sans-serif" font-size="13">Patient Full Name</text>
+
+    <rect x="35" y="175" width="370" height="50" rx="12" fill="#201A1D" stroke="#FFFFFF" stroke-opacity="0.12" />
+    <text x="55" y="206" fill="#8E8790" font-family="sans-serif" font-size="13">Contact Phone (+91)</text>
+
+    <!-- Date selector chips -->
+    <text x="35" y="260" fill="#FFFFFF" font-family="'Sora', sans-serif" font-size="13" font-weight="600">Select Date Slot</text>
+    <rect x="35" y="280" width="80" height="48" rx="10" fill="url(#jbCrimson)" />
+    <text x="58" y="302" fill="#FFFFFF" font-family="sans-serif" font-weight="bold" font-size="14">TODAY</text>
+    <text x="58" y="318" fill="#FFE8EE" font-family="sans-serif" font-size="10">24 Nov</text>
+
+    <rect x="125" y="280" width="80" height="48" rx="10" fill="#201A1D" stroke="#FFFFFF" stroke-opacity="0.1" />
+    <text x="146" y="302" fill="#FFFFFF" font-family="sans-serif" font-weight="bold" font-size="14">TOM</text>
+    <text x="148" y="318" fill="#8E8790" font-family="sans-serif" font-size="10">25 Nov</text>
+
+    <rect x="215" y="280" width="80" height="48" rx="10" fill="#201A1D" stroke="#FFFFFF" stroke-opacity="0.1" />
+    <text x="238" y="302" fill="#FFFFFF" font-family="sans-serif" font-weight="bold" font-size="14">WED</text>
+    <text x="238" y="318" fill="#8E8790" font-family="sans-serif" font-size="10">26 Nov</text>
+
+    <rect x="305" y="280" width="100" height="48" rx="10" fill="#201A1D" stroke="#FFFFFF" stroke-opacity="0.1" />
+    <text x="328" y="302" fill="#FFFFFF" font-family="sans-serif" font-weight="bold" font-size="14">CUSTOM</text>
+    <text x="338" y="318" fill="#8E8790" font-family="sans-serif" font-size="10">Pick Date</text>
+
+    <!-- Submit CTA Button -->
+    <rect x="35" y="365" width="370" height="56" rx="28" fill="url(#jbCrimson)" />
+    <text x="145" y="400" fill="#FFFFFF" font-family="'Sora', sans-serif" font-weight="700" font-size="16">Confirm Slot</text>
+  </g>
+</svg>

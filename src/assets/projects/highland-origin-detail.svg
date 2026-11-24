@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" width="100%" height="100%">
+  <defs>
+    <linearGradient id="highlandDetailBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1F1318" />
+      <stop offset="100%" stop-color="#0E0A0C" />
+    </linearGradient>
+    <linearGradient id="hlCrimson" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FF1A63" />
+      <stop offset="100%" stop-color="#C2104A" />
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="650" fill="url(#highlandDetailBg)" rx="24" />
+  <rect x="1" y="1" width="998" height="648" fill="none" stroke="#FFFFFF" stroke-opacity="0.1" rx="23" />
+  
+  <!-- Header Bar -->
+  <rect x="40" y="40" width="920" height="64" rx="16" fill="#2A1B22" stroke="#FFFFFF" stroke-opacity="0.08" />
+  <text x="70" y="78" fill="#FFFFFF" font-family="'Sora', sans-serif" font-weight="700" font-size="16">Highland Origin · Terroir Analysis &amp; Wholesale Sample Portal</text>
+  <rect x="800" y="54" width="130" height="36" rx="18" fill="url(#hlCrimson)" />
+  <text x="822" y="77" fill="#FFFFFF" font-family="sans-serif" font-weight="600" font-size="13">Export Portal</text>
+
+  <!-- Left: Flavor Profile & Cup Notes Radar -->
+  <g transform="translate(40, 130)">
+    <rect width="440" height="460" rx="20" fill="#160E12" stroke="#FFFFFF" stroke-opacity="0.08" />
+    <text x="35" y="45" fill="#FFFFFF" font-family="'Sora', sans-serif" font-weight="700" font-size="20">Single-Origin Cup Profile</text>
+    <text x="35" y="75" fill="#C2104A" font-family="sans-serif" font-size="13" font-weight="600">Estate Lot #402 · Shevaroy Hills · 1,450m MASL</text>
+
+    <!-- Radar Chart Visual -->
+    <circle cx="220" cy="220" r="110" fill="none" stroke="#FFFFFF" stroke-opacity="0.1" stroke-dasharray="4 4" />
+    <circle cx="220" cy="220" r="75" fill="none" stroke="#FFFFFF" stroke-opacity="0.1" stroke-dasharray="4 4" />
+    <circle cx="220" cy="220" r="40" fill="none" stroke="#FFFFFF" stroke-opacity="0.1" stroke-dasharray="4 4" />
+    <!-- Radar shape -->
+    <polygon points="220,125 285,185 270,290 170,300 145,210" fill="#FF1A63" fill-opacity="0.25" stroke="#FF1A63" stroke-width="2.5" />
+    <circle cx="220" cy="125" r="4" fill="#FF1A63" />
+    <circle cx="285" cy="185" r="4" fill="#FF1A63" />
+    <circle cx="270" cy="290" r="4" fill="#FF1A63" />
+    <circle cx="170" cy="300" r="4" fill="#FF1A63" />
+    <circle cx="145" cy="210" r="4" fill="#FF1A63" />
+
+    <text x="200" y="115" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold">Acidity (9.2)</text>
+    <text x="295" y="190" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold">Sweetness (9.5)</text>
+    <text x="275" y="310" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold">Body (8.8)</text>
+    <text x="120" y="315" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold">Aroma (9.4)</text>
+    <text x="85" y="215" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold">Aftertaste (9.0)</text>
+
+    <!-- Sensory Tags -->
+    <g transform="translate(35, 370)">
+      <rect x="0" y="0" width="110" height="32" rx="16" fill="#2A1B22" stroke="#FF1A63" stroke-width="1" />
+      <text x="16" y="21" fill="#FF1A63" font-family="sans-serif" font-size="12" font-weight="bold">Dark Chocolate</text>
+      <rect x="120" y="0" width="95" height="32" rx="16" fill="#2A1B22" stroke="#FFFFFF" stroke-opacity="0.15" />
+      <text x="135" y="21" fill="#FFFFFF" font-family="sans-serif" font-size="12">Wild Berry</text>
+      <rect x="225" y="0" width="105" height="32" rx="16" fill="#2A1B22" stroke="#FFFFFF" stroke-opacity="0.15" />
+      <text x="240" y="21" fill="#FFFFFF" font-family="sans-serif" font-size="12">Jasmine Floral</text>
+    </g>
+  </g>
+
+  <!-- Right: Wholesale Exporter Specifications & Logistics -->
+  <g transform="translate(520, 130)">
+    <rect width="440" height="460" rx="20" fill="#160E12" stroke="#FFFFFF" stroke-opacity="0.08" />
+    <text x="35" y="45" fill="#FFFFFF" font-family="'Sora', sans-serif" font-weight="700" font-size="20">B2B Export Logistics &amp; Grading</text>
+    
+    <g transform="translate(35, 80)">
+      <rect width="370" height="70" rx="12" fill="#20141A" stroke="#FFFFFF" stroke-opacity="0.06" />
+      <text x="20" y="30" fill="#8E8790" font-family="sans-serif" font-size="12">SCA QUALITY SCORE</text>
+      <text x="20" y="55" fill="#FF1A63" font-family="'Sora', sans-serif" font-weight="700" font-size="20">87.5 / 100 Specialty Grade 1</text>
+    </g>
+
+    <g transform="translate(35, 165)">
+      <rect width="370" height="70" rx="12" fill="#20141A" stroke="#FFFFFF" stroke-opacity="0.06" />
+      <text x="20" y="30" fill="#8E8790" font-family="sans-serif" font-size="12">PROCESSING METHOD</text>
+      <text x="20" y="55" fill="#FFFFFF" font-family="'Sora', sans-serif" font-weight="700" font-size="20">Anaerobic Natural 72h</text>
+    </g>
+
+    <g transform="translate(35, 250)">
+      <rect width="370" height="70" rx="12" fill="#20141A" stroke="#FFFFFF" stroke-opacity="0.06" />
+      <text x="20" y="30" fill="#8E8790" font-family="sans-serif" font-size="12">CONTAINER CAPACITY &amp; PACKAGING</text>
+      <text x="20" y="55" fill="#FFFFFF" font-family="'Sora', sans-serif" font-weight="700" font-size="20">GrainPro Vacuum 60kg Jute</text>
+    </g>
+
+    <!-- Request Sample Button -->
+    <rect x="35" y="355" width="370" height="56" rx="28" fill="url(#hlCrimson)" />
+    <text x="130" y="390" fill="#FFFFFF" font-family="'Sora', sans-serif" font-weight="700" font-size="16">Request Cupping Sample</text>
+  </g>
+</svg>

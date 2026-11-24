@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" width="100%" height="100%">
+  <defs>
+    <linearGradient id="snapitDetailBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#160D12" />
+      <stop offset="100%" stop-color="#080608" />
+    </linearGradient>
+    <linearGradient id="snCrimson" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FF1A63" />
+      <stop offset="100%" stop-color="#C2104A" />
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="650" fill="url(#snapitDetailBg)" rx="24" />
+  <rect x="1" y="1" width="998" height="648" fill="none" stroke="#FFFFFF" stroke-opacity="0.1" rx="23" />
+  
+  <!-- Header Bar -->
+  <rect x="40" y="40" width="920" height="64" rx="16" fill="#24141E" stroke="#FFFFFF" stroke-opacity="0.08" />
+  <text x="70" y="78" fill="#FFFFFF" font-family="'Sora', sans-serif" font-weight="700" font-size="16">SNAPIT Studio · 4K Master Scrubber &amp; Soundwave Sync</text>
+  <rect x="800" y="54" width="130" height="36" rx="18" fill="url(#snCrimson)" />
+  <text x="826" y="77" fill="#FFFFFF" font-family="sans-serif" font-weight="600" font-size="13">Play Reel</text>
+
+  <!-- Left: Timeline Multi-track Scrubber -->
+  <g transform="translate(40, 130)">
+    <rect width="440" height="460" rx="20" fill="#120A0F" stroke="#FFFFFF" stroke-opacity="0.08" />
+    <text x="35" y="45" fill="#FFFFFF" font-family="'Sora', sans-serif" font-weight="700" font-size="20">NLE Timeline Architecture</text>
+    <text x="35" y="75" fill="#FF1A63" font-family="sans-serif" font-size="13" font-weight="600">DaVinci Resolve Studio 19 + After Effects GPU Pipeline</text>
+
+    <!-- Audio waveform bars -->
+    <g transform="translate(35, 110)">
+      <rect width="370" height="60" rx="8" fill="#1E0E18" />
+      <!-- Soundwave lines -->
+      <line x1="20" y1="30" x2="20" y2="10" stroke="#FF1A63" stroke-width="3" stroke-linecap="round" />
+      <line x1="30" y1="30" x2="30" y2="5" stroke="#FF1A63" stroke-width="3" stroke-linecap="round" />
+      <line x1="40" y1="30" x2="40" y2="18" stroke="#FF1A63" stroke-width="3" stroke-linecap="round" />
+      <line x1="50" y1="30" x2="50" y2="2" stroke="#FF1A63" stroke-width="3" stroke-linecap="round" />
+      <line x1="60" y1="30" x2="60" y2="25" stroke="#FF1A63" stroke-width="3" stroke-linecap="round" />
+      <line x1="70" y1="30" x2="70" y2="8" stroke="#FF1A63" stroke-width="3" stroke-linecap="round" />
+      <line x1="80" y1="30" x2="80" y2="2" stroke="#FF1A63" stroke-width="3" stroke-linecap="round" />
+      <line x1="90" y1="30" x2="90" y2="12" stroke="#FF1A63" stroke-width="3" stroke-linecap="round" />
+      <line x1="100" y1="30" x2="100" y2="20" stroke="#FF1A63" stroke-width="3" stroke-linecap="round" />
+      <line x1="110" y1="30" x2="110" y2="5" stroke="#FF1A63" stroke-width="3" stroke-linecap="round" />
+      <line x1="120" y1="30" x2="120" y2="2" stroke="#FF1A63" stroke-width="3" stroke-linecap="round" />
+      <line x1="130" y1="30" x2="130" y2="15" stroke="#FF1A63" stroke-width="3" stroke-linecap="round" />
+      <line x1="140" y1="30" x2="140" y2="28" stroke="#FF1A63" stroke-width="3" stroke-linecap="round" />
+      <line x1="150" y1="30" x2="150" y2="10" stroke="#FF1A63" stroke-width="3" stroke-linecap="round" />
+      <line x1="160" y1="30" x2="160" y2="2" stroke="#FF1A63" stroke-width="3" stroke-linecap="round" />
+      <line x1="170" y1="30" x2="170" y2="22" stroke="#FF1A63" stroke-width="3" stroke-linecap="round" />
+      <line x1="180" y1="30" x2="180" y2="6" stroke="#FF1A63" stroke-width="3" stroke-linecap="round" />
+      <line x1="190" y1="30" x2="190" y2="14" stroke="#FF1A63" stroke-width="3" stroke-linecap="round" />
+      <line x1="200" y1="30" x2="200" y2="2" stroke="#FF1A63" stroke-width="3" stroke-linecap="round" />
+      <line x1="210" y1="30" x2="210" y2="18" stroke="#FF1A63" stroke-width="3" stroke-linecap="round" />
+      <line x1="220" y1="30" x2="220" y2="27" stroke="#FF1A63" stroke-width="3" stroke-linecap="round" />
+      <line x1="230" y1="30" x2="230" y2="4" stroke="#FF1A63" stroke-width="3" stroke-linecap="round" />
+      <line x1="240" y1="30" x2="240" y2="11" stroke="#FF1A63" stroke-width="3" stroke-linecap="round" />
+      <line x1="250" y1="30" x2="250" y2="2" stroke="#FF1A63" stroke-width="3" stroke-linecap="round" />
+      <line x1="260" y1="30" x2="260" y2="15" stroke="#FF1A63" stroke-width="3" stroke-linecap="round" />
+      <line x1="270" y1="30" x2="270" y2="26" stroke="#FF1A63" stroke-width="3" stroke-linecap="round" />
+      <line x1="280" y1="30" x2="280" y2="8" stroke="#FF1A63" stroke-width="3" stroke-linecap="round" />
+      <line x1="290" y1="30" x2="290" y2="2" stroke="#FF1A63" stroke-width="3" stroke-linecap="round" />
+      <line x1="300" y1="30" x2="300" y2="20" stroke="#FF1A63" stroke-width="3" stroke-linecap="round" />
+      <line x1="310" y1="30" x2="310" y2="10" stroke="#FF1A63" stroke-width="3" stroke-linecap="round" />
+      <line x1="320" y1="30" x2="320" y2="2" stroke="#FF1A63" stroke-width="3" stroke-linecap="round" />
+      <line x1="330" y1="30" x2="330" y2="17" stroke="#FF1A63" stroke-width="3" stroke-linecap="round" />
+      <line x1="340" y1="30" x2="340" y2="29" stroke="#FF1A63" stroke-width="3" stroke-linecap="round" />
+      <line x1="350" y1="30" x2="350" y2="12" stroke="#FF1A63" stroke-width="3" stroke-linecap="round" />
+    </g>
+
+    <!-- Video Layers -->
+    <g transform="translate(35, 190)">
+      <rect width="370" height="40" rx="6" fill="#1C1019" stroke="#FF1A63" stroke-width="1" />
+      <text x="15" y="25" fill="#FFFFFF" font-family="monospace" font-size="12">V3: Film Grain + Lumetri Cinema Grade</text>
+    </g>
+    <g transform="translate(35, 240)">
+      <rect width="370" height="40" rx="6" fill="#1C1019" stroke="#FFFFFF" stroke-opacity="0.1" />
+      <text x="15" y="25" fill="#FFFFFF" font-family="monospace" font-size="12">V2: Kinetic Kinetic Typography &amp; SFX</text>
+    </g>
+    <g transform="translate(35, 290)">
+      <rect width="370" height="40" rx="6" fill="#1C1019" stroke="#FFFFFF" stroke-opacity="0.1" />
+      <text x="15" y="25" fill="#FFFFFF" font-family="monospace" font-size="12">V1: 4K 120fps Slow-Mo Master B-Roll</text>
+    </g>
+
+    <!-- Master Export Bar -->
+    <rect x="35" y="365" width="370" height="50" rx="25" fill="#20101B" stroke="#FF1A63" stroke-opacity="0.4" />
+    <text x="110" y="396" fill="#FFFFFF" font-family="'Sora', sans-serif" font-weight="600" font-size="14">ProRes 422 HQ · 10-Bit 4:2:2</text>
+  </g>
+
+  <!-- Right: Audience Engagement & Virality -->
+  <g transform="translate(520, 130)">
+    <rect width="440" height="460" rx="20" fill="#120A0F" stroke="#FFFFFF" stroke-opacity="0.08" />
+    <text x="35" y="45" fill="#FFFFFF" font-family="'Sora', sans-serif" font-weight="700" font-size="20">Audience Retention Curve</text>
+    
+    <!-- Retention Graph -->
+    <path d="M 50 300 C 100 160, 200 170, 280 200 C 340 220, 380 205, 400 200" fill="none" stroke="#FF1A63" stroke-width="3" />
+    <text x="50" y="150" fill="#FF1A63" font-family="'Sora', sans-serif" font-weight="800" font-size="32">84.2%</text>
+    <text x="50" y="175" fill="#8E8790" font-family="sans-serif" font-size="12">Hook Retention at 3-Second Mark</text>
+
+    <!-- Stats -->
+    <g transform="translate(35, 340)">
+      <rect width="175" height="75" rx="12" fill="#22101B" stroke="#FFFFFF" stroke-opacity="0.08" />
+      <text x="20" y="32" fill="#FFFFFF" font-family="'Sora', sans-serif" font-weight="700" font-size="22">2.5M+</text>
+      <text x="20" y="55" fill="#8E8790" font-family="sans-serif" font-size="12">Total Organic Views</text>
+    </g>
+
+    <g transform="translate(230, 340)">
+      <rect width="175" height="75" rx="12" fill="#22101B" stroke="#FFFFFF" stroke-opacity="0.08" />
+      <text x="20" y="32" fill="#FF1A63" font-family="'Sora', sans-serif" font-weight="700" font-size="22">38%</text>
+      <text x="20" y="55" fill="#8E8790" font-family="sans-serif" font-size="12">Conversion to Booking</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,178 @@
+import jbMockup from '@/assets/projects/jb-healthcare.svg';
+import highlandMockup from '@/assets/projects/highland-origin.svg';
+import fazilMockup from '@/assets/projects/fazil-garments.svg';
+import snapitMockup from '@/assets/projects/snapit-studio.svg';
+import jbDetail from '@/assets/projects/jb-healthcare-detail.svg';
+import highlandDetail from '@/assets/projects/highland-origin-detail.svg';
+import fazilDetail from '@/assets/projects/fazil-garments-detail.svg';
+import snapitDetail from '@/assets/projects/snapit-studio-detail.svg';
+export const PROJECTS = [
+    {
+        id: 'jb-healthcare',
+        slug: 'jb-healthcare',
+        title: 'JB Healthcare',
+        client: 'JB Healthcare Sivakasi',
+        category: 'Websites',
+        industry: 'Hospital & Healthcare',
+        tagline: 'Modern medical digital portal with appointment booking & doctor profiles',
+        result: '3.4x Increase in Online Inquiries',
+        description: 'A welcoming, ultra-fast clinical experience designed to build patient trust from the first millisecond.',
+        pullQuote: '"Our digital presence finally reflects the world-class medical standards our surgical and diagnostic teams uphold daily."',
+        challenge: 'The hospital required a trustworthy digital presence that made appointment scheduling intuitive for patients of all age groups while presenting emergency calling and multi-speciality departments with clinical clarity.',
+        solution: 'Engineered an accessible, high-performance responsive web application with structured department directories, immediate 1-tap emergency calling triggers, and interactive doctor scheduling.',
+        deliverables: ['Custom UI/UX Architecture', 'Responsive Web App', 'Appointment Engine', 'SEO & Speed Optimization'],
+        stats: [
+            { label: 'Page Load Speed', value: '0.8s' },
+            { label: 'Patient Inquiries', value: '+340%' },
+            { label: 'Mobile Usability', value: '100%' },
+        ],
+        technologies: ['React 18', 'Tailwind CSS', 'Vite', 'Lucide Icons', 'Responsive Architecture'],
+        architectureNotes: [
+            {
+                title: 'Zero-Latency Scheduling',
+                desc: 'Interactive slot selector client-side cache eliminates waiting friction for emergency patients.',
+            },
+            {
+                title: 'Sub-second Load Times',
+                desc: 'Lightweight static asset pipeline delivering 0.8s first contentful paint across 4G networks.',
+            },
+            {
+                title: 'WCAG AA Compliance',
+                desc: 'High contrast typographic ratios and large touch targets designed for elder and mobile accessibility.',
+            },
+        ],
+        liveUrl: 'https://www.jbhealthcaresivakasi.in/',
+        year: '2024',
+        deviceType: 'laptop',
+        mockupImage: jbMockup,
+        featuredImage: jbMockup,
+        galleryImages: [jbMockup, jbDetail, highlandMockup],
+        accentColor: '#FF1A63',
+    },
+    {
+        id: 'highland-origin',
+        slug: 'highland-origin',
+        title: 'Highland Origin',
+        client: 'Highland Origin Coffee Co.',
+        category: 'Websites',
+        industry: 'Specialty Coffee Export',
+        tagline: 'Artisanal single-origin coffee exporter showcase with rich terroir storytelling',
+        result: 'International B2B Buyers Onboarded',
+        description: 'An evocative digital journey through lush highland estates, designed for global specialty coffee importers.',
+        pullQuote: '"11 11 translated our soil, altitude, and artisanal heritage into a digital flagship that closed deals in Berlin and Tokyo."',
+        challenge: 'Highland Origin needed an international export showcase that conveyed organic provenance, elevation notes, and wholesale bean certifications to discerning European and Asian green coffee buyers.',
+        solution: 'Designed an editorial-style web experience with micro-animations, bean harvest origin terroir cards, cup scoring breakdowns, and direct wholesale sample request flows.',
+        deliverables: ['Editorial Brand Identity', 'B2B Wholesale Portal', 'Interactive Cup Radar', 'GSAP Scroll Storytelling'],
+        stats: [
+            { label: 'Export Inquiries', value: '+180%' },
+            { label: 'Avg Time on Page', value: '3m 42s' },
+            { label: 'Global Reach', value: '12 Countries' },
+        ],
+        technologies: ['React 18', 'GSAP 3', 'ScrollTrigger', 'Tailwind CSS', 'Framer Motion'],
+        architectureNotes: [
+            {
+                title: 'Scroll-Triggered Terroir Narrative',
+                desc: 'Parallax estate photography dynamically introduces elevation, rainfall, and harvest schedules.',
+            },
+            {
+                title: 'SVG Sensory Flavor Wheels',
+                desc: 'Custom vector radar visualizers illustrating cupping scores, floral notes, and roast acidity profiles.',
+            },
+            {
+                title: 'Direct WhatsApp B2B Leads',
+                desc: 'Pre-formatted wholesale lot inquiries linking prospective buyers directly to estate founders.',
+            },
+        ],
+        liveUrl: 'https://www.highlandorigin.in/',
+        year: '2024',
+        deviceType: 'laptop',
+        mockupImage: highlandMockup,
+        featuredImage: highlandMockup,
+        galleryImages: [highlandMockup, highlandDetail, jbMockup],
+        accentColor: '#C2104A',
+    },
+    {
+        id: 'fazil-garments',
+        slug: 'fazil-garments',
+        title: 'Fazil Garments',
+        client: 'Fazil Garments Exports',
+        category: 'Websites',
+        industry: 'Garments & Apparel Manufacturing',
+        tagline: 'High-volume apparel manufacturing exporter portal and factory tour',
+        result: '40% Growth in Export RFQs',
+        description: 'A precision manufacturing showcase bridging Indian textile craft with global retail brands.',
+        pullQuote: '"International fashion buyers now tour our automated facility, verify audit credentials, and submit tech packs directly."',
+        challenge: 'Transitioning from slow legacy catalog PDF distribution to an interactive, real-time product specification, compliance verification, and high-volume RFQ platform.',
+        solution: 'Created an industrial yet elegant B2B export platform featuring fabric quality breakdowns, sustainability credentials, and interactive RFQ generators.',
+        deliverables: ['B2B Manufacturing Portal', 'Interactive RFQ Engine', 'Virtual Factory Tour', 'Compliance Dashboard'],
+        stats: [
+            { label: 'RFQ Submission Rate', value: '+42%' },
+            { label: 'Factory Tour Views', value: '15,000+' },
+            { label: 'Buyer Engagement', value: '4.8/5' },
+        ],
+        technologies: ['React 18', 'TypeScript', 'Tailwind CSS', 'Vite', 'Lucide Icons'],
+        architectureNotes: [
+            {
+                title: 'Digital Tech Pack Specifier',
+                desc: 'Real-time fabric GSM, yarn count, and finishing parameter calculator for overseas sourcing teams.',
+            },
+            {
+                title: 'Audit Credential Verification',
+                desc: 'Instant SEDEX, GOTS, and OEKO-TEX certificate viewers reinforcing compliance transparency.',
+            },
+            {
+                title: 'High-Throughput Inquiries',
+                desc: 'Structured RFQ form routing purchase orders directly into management CRM pipelines.',
+            },
+        ],
+        liveUrl: 'https://www.fazilgarments.in/',
+        year: '2024',
+        deviceType: 'laptop',
+        mockupImage: fazilMockup,
+        featuredImage: fazilMockup,
+        galleryImages: [fazilMockup, fazilDetail, snapitMockup],
+        accentColor: '#7A0A2E',
+    },
+    {
+        id: 'snapit-studio',
+        slug: 'snapit-studio',
+        title: 'SNAPIT Studio',
+        client: 'SNAPIT Studio Creative',
+        category: 'Video',
+        industry: 'Video Production & Photography',
+        tagline: 'Awwwards-inspired showreel portfolio with high-frame video players',
+        result: '2.5M+ Collective Reel Views',
+        description: 'Dark, immersive studio showcase crafted for high-end commercial video productions and music videos.',
+        pullQuote: '"Every client who visits our portfolio signs on the spot because the motion design feels as cinematic as our films."',
+        challenge: 'Showcasing gigabytes of cinematic 4K video assets and color-graded reels without sacrificing page load speeds, battery life, or mobile smoothness.',
+        solution: 'Engineered custom lazy-loaded video players with audio-visualizers, smooth GSAP scrubbed transitions, and cinematic aspect ratios.',
+        deliverables: ['Cinematic Portfolio UI', '4K Video Compression Pipeline', 'Audio Visualizer Player', 'Mobile Reel Grid'],
+        stats: [
+            { label: 'Total Client Views', value: '2.5M+' },
+            { label: 'Conversion to Booking', value: '38%' },
+            { label: 'Performance Score', value: '98/100' },
+        ],
+        technologies: ['React 18', 'GSAP 3', 'Lenis Smooth Scroll', 'Tailwind CSS', 'Video Optimization'],
+        architectureNotes: [
+            {
+                title: 'Adaptive Video Loading',
+                desc: 'Intersection-observer triggered video streams saving 80% initial mobile bandwidth.',
+            },
+            {
+                title: 'Audio Visualizer Bars',
+                desc: 'Real-time CSS/SVG soundwave spectrum animating synchronously to track BPM and mood.',
+            },
+            {
+                title: 'Kinetic Reel Grid',
+                desc: '9:16 vertical video cards with hover preview playback and view count overlays.',
+            },
+        ],
+        liveUrl: 'https://snapit-studio.vercel.app/',
+        year: '2024',
+        deviceType: 'phone',
+        mockupImage: snapitMockup,
+        featuredImage: snapitMockup,
+        galleryImages: [snapitMockup, snapitDetail, jbMockup],
+        accentColor: '#FF1A63',
+    },
+];

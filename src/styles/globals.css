@@ -1,0 +1,173 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Luxury Light Palette: 3 Harmonious Mixed Backgrounds (Pure White, Soft Blush Pink, and Delicate Rose-tint) */
+  --ink: #FFFFFF;             /* 1. Pure White */
+  --blush: #FFF0F5;           /* 2. Soft Blush Pink */
+  --rose-tint: #FAF5F8;       /* 3. Delicate Rose Neutral */
+  --charcoal: #FFFFFF;        /* Surface background */
+  --graphite: #F4E8EE;        /* Surface border tint */
+  --crimson: #F8115A;         /* Signature 11 11 Crimson */
+  --magenta: #C2104A;         /* Brand mid-tone */
+  --burgundy: #7A0A2E;        /* Brand deep shade */
+  --offwhite: #FFFFFF;
+  --text-dark: #120E11;       /* Primary text: Deep crisp ink */
+  --text-dark-muted: #665D63; /* Secondary text: Elegant slate */
+  --text-light: #120E11;
+  --text-light-muted: #665D63;
+  --line-dark: rgba(18, 14, 17, 0.08); /* Subtle hairline borders */
+  --line-light: rgba(18, 14, 17, 0.06);
+  --grad: linear-gradient(135deg, #FF1A63 0%, #C2104A 55%, #7A0A2E 100%);
+  --grad-hover: linear-gradient(135deg, #FF3377 0%, #D41454 55%, #8A0C35 100%);
+  --glow: 0 10px 40px rgba(248, 17, 90, 0.22);
+  --bg-mixed: linear-gradient(180deg, #FFFFFF 0%, #FFF0F5 25%, #FAF5F8 50%, #FFF0F5 75%, #FFFFFF 100%);
+
+  /* shape */
+  --r-sm: 12px;
+  --r-md: 20px;
+  --r-lg: 28px;
+  --r-pill: 999px;
+
+  /* spacing (8px grid scale) */
+  --s-1: 8px;
+  --s-2: 16px;
+  --s-3: 24px;
+  --s-4: 32px;
+  --s-6: 48px;
+  --s-8: 64px;
+  --s-12: 96px;
+  --s-16: 128px;
+
+  /* typography fonts: Unified World-Class Modern Typography */
+  --font-display: 'Sora', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-accent: 'Sora', sans-serif;
+
+  /* fluid type scale */
+  --fs-h1: clamp(3rem, 8vw, 7rem);
+  --fs-h2: clamp(2.2rem, 5vw, 4rem);
+  --fs-h3: clamp(1.4rem, 2.4vw, 1.9rem);
+  --fs-body: 1.05rem;
+  --fs-eyebrow: 0.78rem;
+
+  /* motion */
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
+  --d-micro: 0.25s;
+  --d-base: 0.8s;
+  --d-reveal: 1.2s;
+}
+
+/* Base Body Styles */
+html {
+  font-family: var(--font-body);
+  background-color: #FFFFFF;
+  color: var(--text-dark);
+  scroll-behavior: auto !important; /* Managed by Lenis */
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  position: relative;
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFF2F6 15%, #FAF5F8 45%, #FFF0F5 75%, #FFFFFF 100%);
+  background-attachment: fixed;
+  color: var(--text-dark);
+  line-height: 1.7;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  letter-spacing: -0.035em;
+  font-weight: 700;
+  line-height: 1.02;
+  color: var(--text-dark);
+}
+
+/* Unified Accent Styling: Clean, bold modern display font without disjointed serif italics */
+.font-accent {
+  font-family: var(--font-display);
+  font-style: normal;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+
+/* Gradient text utility */
+.text-gradient-crimson, .text-gradient {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Film Grain Texture - Ultra Subtle for Light Theme */
+.film-grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9990;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--ink);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(248, 17, 90, 0.3);
+  border-radius: var(--r-pill);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--crimson);
+}
+
+/* Glass backdrop utilities */
+.glass-light {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(18, 14, 17, 0.08);
+}
+
+.glass-nav {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(18, 14, 17, 0.08);
+}
+
+/* Interactive Cursor Label Bubble */
+.cursor-bubble {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 6px 14px;
+  background: var(--crimson);
+  color: #FFFFFF;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: var(--r-pill);
+  box-shadow: 0 4px 15px rgba(248, 17, 90, 0.4);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* Smooth Focus visible states */
+:focus-visible {
+  outline: 2px solid var(--crimson);
+  outline-offset: 3px;
+}

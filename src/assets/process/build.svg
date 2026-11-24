@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
+  <rect width="600" height="400" fill="#140F12" />
+  <circle cx="300" cy="200" r="150" fill="#7A0A2E" opacity="0.25" filter="blur(60px)" />
+  <rect x="80" y="60" width="440" height="280" rx="20" fill="#1D171B" stroke="#ffffff" stroke-opacity="0.1" />
+  <text x="120" y="130" fill="#FF1A63" font-family="monospace" font-size="14" font-weight="bold">PHASE 03 // BUILD</text>
+  <text x="120" y="190" fill="#FFFFFF" font-family="'Sora', sans-serif" font-weight="bold" font-size="32">Fast, Mobile-First Code</text>
+  <text x="120" y="235" fill="#8E8790" font-family="sans-serif" font-size="16">React 18, GSAP physics, accessibility standards, and SEO architecture.</text>
+  <rect x="120" y="270" width="160" height="36" rx="18" fill="#7A0A2E" opacity="0.3" stroke="#FF1A63" stroke-width="1" />
+  <text x="145" y="293" fill="#FFFFFF" font-family="monospace" font-size="12" font-weight="bold">LIGHTHOUSE 90+</text>
+</svg>

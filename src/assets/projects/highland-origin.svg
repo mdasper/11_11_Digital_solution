@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgCoffee" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0E0C0A" />
+      <stop offset="50%" stop-color="#1A1513" />
+      <stop offset="100%" stop-color="#2D1C16" />
+    </linearGradient>
+    <linearGradient id="coffeeAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E27D60" />
+      <stop offset="100%" stop-color="#C2104A" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="750" fill="url(#bgCoffee)" />
+  <circle cx="200" cy="300" r="260" fill="#C2104A" opacity="0.15" filter="blur(70px)" />
+
+  <!-- Navbar -->
+  <rect x="80" y="40" width="1040" height="60" rx="16" fill="#151210" stroke="#ffffff" stroke-opacity="0.1" />
+  <text x="120" y="76" fill="#E27D60" font-family="'Sora', sans-serif" font-weight="800" font-size="20">HIGHLAND ORIGIN</text>
+  <text x="960" y="75" fill="#FFFFFF" font-family="monospace" font-size="13">ESTATE RESERVE 2024</text>
+
+  <!-- Title & Typography -->
+  <text x="120" y="210" fill="#E27D60" font-family="monospace" font-size="14" letter-spacing="4">|| SINGLE ORIGIN COFFEE EXPORT</text>
+  <text x="120" y="290" fill="#FFFFFF" font-family="'Sora', sans-serif" font-weight="800" font-size="64">Highland Provenance.</text>
+  <text x="120" y="365" fill="#E27D60" font-family="serif" font-style="italic" font-size="56">Crafted for Global Importers.</text>
+  <text x="120" y="420" fill="#A89F91" font-family="sans-serif" font-size="18">Elevation: 1,450m AMSL · Shade-Grown Arabica · Direct Trade Export to 12 Countries</text>
+
+  <!-- Terroir Cards -->
+  <g transform="translate(120, 480)">
+    <rect width="280" height="150" rx="16" fill="#181412" stroke="#ffffff" stroke-opacity="0.1" />
+    <text x="30" y="50" fill="#E27D60" font-family="monospace" font-size="12">ROAST PROFILE</text>
+    <text x="30" y="85" fill="#FFFFFF" font-family="'Sora', sans-serif" font-weight="700" font-size="22">Jasmine &amp; Cocoa</text>
+    <text x="30" y="120" fill="#A89F91" font-family="sans-serif" font-size="14">SCA Cupping Score: 88.5</text>
+  </g>
+
+  <g transform="translate(430, 480)">
+    <rect width="280" height="150" rx="16" fill="#181412" stroke="#ffffff" stroke-opacity="0.1" />
+    <text x="30" y="50" fill="#E27D60" font-family="monospace" font-size="12">CERTIFICATION</text>
+    <text x="30" y="85" fill="#FFFFFF" font-family="'Sora', sans-serif" font-weight="700" font-size="22">100% Organic</text>
+    <text x="30" y="120" fill="#A89F91" font-family="sans-serif" font-size="14">Rainforest Alliance Certified</text>
+  </g>
+
+  <g transform="translate(740, 480)">
+    <rect width="340" height="150" rx="16" fill="#C2104A" />
+    <text x="40" y="60" fill="#FFFFFF" font-family="'Sora', sans-serif" font-weight="800" font-size="26">Request Samples</text>
+    <text x="40" y="95" fill="#FFFFFF" opacity="0.85" font-family="sans-serif" font-size="15">Wholesale green bean catalog &amp; freight specs.</text>
+  </g>
+</svg>
