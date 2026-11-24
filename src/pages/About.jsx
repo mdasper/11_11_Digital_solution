@@ -264,21 +264,27 @@ const About = () => {
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
               <div>
                 <span className="text-xs font-mono uppercase tracking-widest text-crimson font-bold block mb-3">
-                  || Studio Trajectory
+                  || Studio Trajectory · 2026
                 </span>
-                <h2 className="text-3xl sm:text-5xl font-display font-extrabold tracking-tight text-white">
-                  Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF2D6C] to-magenta">evolution</span> over time.
-                </h2>
+                <WordStream
+                  as="h2"
+                  className="text-3xl sm:text-5xl font-display font-extrabold tracking-tight text-white"
+                >
+                  Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF2D6C] to-magenta">founding year</span> milestones.
+                </WordStream>
               </div>
-              <p className="text-white/60 text-sm max-w-sm leading-relaxed">
-                From early local web development to international export portals and multi-platform growth campaigns.
-              </p>
+              <WordStream
+                as="p"
+                className="text-white/60 text-sm max-w-sm leading-relaxed"
+              >
+                Founded in 2026. From our genesis to full-stack digital execution and brand transformation.
+              </WordStream>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
               {ABOUT_DATA.timeline.map((item, idx) => (
                 <div
-                  key={item.year}
+                  key={item.year + item.title}
                   className="p-6 rounded-2xl bg-gradient-to-br from-[#200A15] via-[#2A0D1B] to-[#15060E] border border-crimson/25 shadow-sm flex flex-col justify-between hover:border-crimson/50 hover:scale-[1.02] transition-all duration-300"
                 >
                   <div>
@@ -307,31 +313,7 @@ const About = () => {
           </StreamReveal>
         </section>
 
-        {/* 6. SPECIALIZED PRODUCTION ARSENAL (Obsidian Dark Strip) */}
-        <section className="py-14 bg-[#070507] text-white border-b border-white/[0.08] overflow-hidden select-none">
-          <div className="max-w-7xl mx-auto px-6 mb-6 text-center">
-            <span className="text-xs font-mono uppercase tracking-widest text-crimson font-bold">
-              || Specialized Production Arsenal
-            </span>
-          </div>
-
-          <div className="flex w-max animate-[marquee_30s_linear_infinite] hover:[animation-play-state:paused]">
-            {[...Array(3)].map((_, i) => (
-              <div key={i} className="flex items-center gap-10 px-4">
-                {ABOUT_DATA.tools.map((tool, idx) => (
-                  <div key={idx} className="flex items-center gap-10">
-                    <span className="text-2xl sm:text-3xl font-display font-bold text-white/40 hover:text-white transition-colors">
-                      {tool}
-                    </span>
-                    <span className="w-2 h-2 rounded-full bg-crimson" />
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* 7. STUDIO CTA (High-Impact Velvet Dark Rose Stage) */}
+        {/* 6. STUDIO CTA (High-Impact Velvet Dark Rose Stage) */}
         <section className="py-24 sm:py-32 px-6 sm:px-8 bg-gradient-to-br from-[#1C0813] via-[#280B1B] to-[#12050D] text-white relative overflow-hidden text-center border-t border-crimson/25">
           <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-crimson/20 blur-[130px] rounded-full" />
 

@@ -92,7 +92,7 @@ export const ManifestoSection = () => {
                     </span>
                   </div>
                   <span className="text-[10px] font-mono font-bold text-[#FF9BB5] uppercase">
-                    EST. 2024
+                    EST. 2026
                   </span>
                 </div>
               </div>
