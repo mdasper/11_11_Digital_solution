@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/Button'
 import { CONTACT_INFO } from '@/data/navigation'
 import founderImg from '@/assets/manifesto/strategy.svg'
 import { gsap } from '@/lib/gsap'
+import { StreamReveal } from '@/components/motion/StreamReveal'
 
 const About = () => {
   const containerRef = useRef(null)
@@ -81,7 +82,8 @@ const About = () => {
 
         {/* 2. FOUNDER & STUDIO STORY (Blush Luxury Stage + Dark Velvet Founder Card) */}
         <section className="py-24 sm:py-32 px-6 sm:px-8 bg-gradient-to-b from-[#FAF5F8] via-[#FFF0F5] to-white border-b border-black/[0.06]">
-          <div className="max-w-7xl mx-auto">
+          <StreamReveal>
+            <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
               
               {/* Left Column: Founder Card in Velvet Dark Rose */}
@@ -161,13 +163,15 @@ const About = () => {
 
             </div>
           </div>
+          </StreamReveal>
         </section>
 
         {/* 3. CORE PRINCIPLES (Obsidian Dark Stage + Velvet Luxury Tiles) */}
         <section className="py-24 sm:py-32 px-6 sm:px-8 bg-[#0D0A0C] text-white border-b border-white/[0.08] relative overflow-hidden">
           <div className="pointer-events-none absolute -top-40 right-10 w-[500px] h-[500px] rounded-full bg-crimson/15 blur-[140px]" />
 
-          <div className="max-w-7xl mx-auto relative z-10">
+          <StreamReveal>
+            <div className="max-w-7xl mx-auto relative z-10">
             <div className="text-center max-w-2xl mx-auto mb-16 sm:mb-20">
               <span className="text-xs font-mono uppercase tracking-widest text-crimson font-bold block mb-3">
                 || Core Principles
@@ -206,11 +210,13 @@ const About = () => {
               ))}
             </div>
           </div>
+          </StreamReveal>
         </section>
 
         {/* 4. THE 11:11 RITUAL (Blush Stage) */}
         <section className="py-24 px-6 sm:px-8 bg-gradient-to-b from-[#FFF0F5] to-[#FAF5F8] border-b border-crimson/15">
-          <div className="max-w-4xl mx-auto text-center">
+          <StreamReveal>
+            <div className="max-w-4xl mx-auto text-center">
             <span className="text-xs font-mono uppercase tracking-widest text-crimson font-bold block mb-4">
               || The 11:11 Ritual
             </span>
@@ -226,11 +232,13 @@ const About = () => {
               <span className="text-crimson font-bold">11:11 · ALIGNMENT</span>
             </div>
           </div>
+          </StreamReveal>
         </section>
 
         {/* 5. STUDIO TRAJECTORY / TIMELINE (Obsidian Dark Stage + Velvet Tiles) */}
         <section className="py-24 sm:py-32 px-6 sm:px-8 bg-[#0B080A] text-white border-b border-white/[0.08]">
-          <div className="max-w-7xl mx-auto">
+          <StreamReveal>
+            <div className="max-w-7xl mx-auto">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
               <div>
                 <span className="text-xs font-mono uppercase tracking-widest text-crimson font-bold block mb-3">
@@ -274,6 +282,7 @@ const About = () => {
               ))}
             </div>
           </div>
+          </StreamReveal>
         </section>
 
         {/* 6. SPECIALIZED PRODUCTION ARSENAL (Obsidian Dark Strip) */}

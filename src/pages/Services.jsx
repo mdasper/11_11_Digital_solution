@@ -7,6 +7,7 @@ import { FAQS } from '@/data/faqs';
 import { Button } from '@/components/ui/Button';
 import { Accordion } from '@/components/ui/Accordion';
 import { gsap } from '@/lib/gsap';
+import { StreamReveal } from '@/components/motion/StreamReveal';
 
 const Services = () => {
     const containerRef = useRef(null);
@@ -26,9 +27,11 @@ const Services = () => {
                 scrollTrigger: {
                     trigger: pinSectionRef.current,
                     pin: true,
-                    scrub: 1,
+                    scrub: 1.2,
                     start: 'top top',
                     end: () => `+=${totalScrollWidth}`,
+                    anticipatePin: 1,
+                    invalidateOnRefresh: true,
                     onUpdate: (self) => {
                         setScrollProgress(Math.round(self.progress * 100));
                     },
@@ -104,53 +107,65 @@ const Services = () => {
           </div>
 
           {/* Horizontal Track Container */}
-          <div ref={trackRef} className="flex flex-col lg:flex-row gap-8 px-6 sm:px-8 pb-16 lg:pb-24 w-full lg:w-max overflow-x-auto lg:overflow-visible no-scrollbar">
+          <div ref={trackRef} className="flex flex-col lg:flex-row gap-8 px-6 sm:px-8 pb-12 lg:pb-16 w-full lg:w-max overflow-x-auto lg:overflow-visible no-scrollbar">
             {SERVICES.map((srv) => (
-              <div key={srv.id} className="w-full lg:w-[680px] shrink-0 rounded-[32px] bg-gradient-to-br from-[#200A15] via-[#2A0D1B] to-[#15060E] border border-crimson/25 p-8 sm:p-12 flex flex-col justify-between shadow-[0_20px_50px_rgba(32,10,21,0.35)] relative overflow-hidden group text-white">
+              <div key={srv.id} className="w-full lg:w-[820px] xl:w-[860px] shrink-0 rounded-[28px] bg-gradient-to-br from-[#200A15] via-[#2A0D1B] to-[#15060E] border border-crimson/25 p-6 sm:p-8 shadow-[0_20px_50px_rgba(32,10,21,0.35)] relative overflow-hidden group text-white">
                 {/* Background Ambient Glow */}
                 <div className="absolute top-0 right-0 w-80 h-80 bg-crimson/15 rounded-full blur-[80px] pointer-events-none"/>
 
-                <div>
-                  {/* Top Bar */}
-                  <div className="flex items-center justify-between mb-8">
-                    <span className="font-mono text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#FF2D6C] to-[#FFA3BD]">
-                      {srv.number}
-                    </span>
-                    <span className="px-3.5 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-mono text-[#FF9BB5]">
-                      {srv.tagline}
-                    </span>
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                  {/* Left Column: Number, Tagline, Title, Description, Deliverables, CTA */}
+                  <div className="lg:col-span-7 flex flex-col justify-between">
+                    {/* Top Bar */}
+                    <div className="flex items-center justify-between mb-3.5">
+                      <span className="font-mono text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#FF2D6C] to-[#FFA3BD]">
+                        {srv.number}
+                      </span>
+                      <span className="px-3 py-0.5 rounded-full bg-white/10 border border-white/15 text-[11px] font-mono text-[#FF9BB5]">
+                        {srv.tagline}
+                      </span>
+                    </div>
+
+                    {/* Title & Description */}
+                    <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-white mb-2.5 group-hover:text-[#FFA3BD] transition-colors leading-tight">
+                      {srv.title}
+                    </h3>
+
+                    <p className="text-xs sm:text-sm text-white/75 leading-relaxed mb-4 font-normal line-clamp-3 sm:line-clamp-none">
+                      {srv.fullDescription}
+                    </p>
+
+                    {/* 3 Key Deliverables Bullets */}
+                    <div className="space-y-2 mb-6">
+                      {srv.deliverables.slice(0, 3).map((bullet, i) => (
+                        <div key={i} className="flex items-center gap-2.5 text-xs text-white/90">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-crimson shrink-0"/>
+                          <span>{bullet}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div>
+                      <Link to={srv.href} className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-crimson to-magenta text-white text-xs font-bold uppercase tracking-wider shadow-crimson-glow hover:brightness-110 transition-all">
+                        Deep Dive Into {srv.title} <ArrowUpRight className="w-3.5 h-3.5"/>
+                      </Link>
+                    </div>
                   </div>
 
-                  {/* Title & Description */}
-                  <h3 className="text-3xl sm:text-4xl font-display font-extrabold text-white mb-4 group-hover:text-[#FFA3BD] transition-colors">
-                    {srv.title}
-                  </h3>
-
-                  <p className="text-base text-white/75 leading-relaxed mb-8 font-normal">
-                    {srv.fullDescription}
-                  </p>
-
-                  {/* 3 Key Deliverables Bullets */}
-                  <div className="space-y-3 mb-8">
-                    {srv.deliverables.slice(0, 3).map((bullet, i) => (
-                      <div key={i} className="flex items-center gap-3 text-sm text-white/90">
-                        <CheckCircle2 className="w-4 h-4 text-crimson shrink-0"/>
-                        <span>{bullet}</span>
+                  {/* Right Column: Visual Mockup */}
+                  <div className="lg:col-span-5 flex flex-col justify-center">
+                    <div className="relative rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-[16/11] w-full border border-white/15 bg-black/40 shadow-inner group/img">
+                      <img src={srv.image} alt={srv.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"/>
+                      <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] font-mono text-white/80 bg-black/50 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10">
+                        <span className="flex items-center gap-1.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-crimson animate-pulse" />
+                          <span>PRODUCTION READY</span>
+                        </span>
+                        <span className="text-white/50">{srv.number} // 04</span>
                       </div>
-                    ))}
+                    </div>
                   </div>
-                </div>
-
-                {/* Bottom Visual Mockup + CTA */}
-                <div>
-                  <div className="relative rounded-2xl overflow-hidden aspect-[16/9] w-full border border-white/15 mb-6 bg-black/40 shadow-inner">
-                    <img src={srv.image} alt={srv.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"/>
-                  </div>
-
-                  <Link to={srv.href} className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-crimson to-magenta text-white text-xs font-bold uppercase tracking-wider shadow-crimson-glow hover:brightness-110 transition-all">
-                    Deep Dive Into {srv.title} <ArrowUpRight className="w-4 h-4"/>
-                  </Link>
                 </div>
               </div>
             ))}
@@ -159,7 +174,8 @@ const Services = () => {
 
         {/* 3. PRODUCTION STANDARD (Obsidian Dark Stage + Velvet Tiles) */}
         <section className="py-24 sm:py-32 px-6 sm:px-8 bg-[#0D0A0C] text-white border-b border-white/[0.08]">
-          <div className="max-w-7xl mx-auto">
+          <StreamReveal>
+            <div className="max-w-7xl mx-auto">
             <div className="text-center max-w-2xl mx-auto mb-20">
               <span className="text-xs font-mono uppercase tracking-widest text-crimson font-bold block mb-3">
                 || The Production Standard
@@ -211,11 +227,13 @@ const Services = () => {
               ))}
             </div>
           </div>
+          </StreamReveal>
         </section>
 
         {/* 4. FAQ SECTION (Blush/Rose Stage) */}
         <section className="py-24 sm:py-32 px-6 sm:px-8 bg-gradient-to-b from-[#FAF5F8] via-white to-[#FAF5F8] border-b border-black/[0.06]">
-          <div className="max-w-4xl mx-auto">
+          <StreamReveal>
+            <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
               <span className="text-xs font-mono uppercase tracking-widest text-crimson font-bold block mb-3">
                 || Common Inquiries
@@ -237,13 +255,15 @@ const Services = () => {
               </Link>
             </div>
           </div>
+          </StreamReveal>
         </section>
 
         {/* 5. BOTTOM CTA (High-Impact Velvet Dark Rose Stage) */}
         <section className="py-24 sm:py-32 px-6 sm:px-8 bg-gradient-to-br from-[#1C0813] via-[#280B1B] to-[#12050D] text-white relative overflow-hidden text-center border-t border-crimson/25">
           <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-crimson/20 blur-[130px] rounded-full" />
 
-          <div className="max-w-4xl mx-auto relative z-10">
+          <StreamReveal>
+            <div className="max-w-4xl mx-auto relative z-10">
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-display font-black tracking-tight text-white mb-6">
               Let's build something <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF2D6C] to-magenta">extraordinary</span> together.
             </h2>
@@ -259,6 +279,7 @@ const Services = () => {
               </Button>
             </div>
           </div>
+          </StreamReveal>
         </section>
 
       </div>

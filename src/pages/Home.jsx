@@ -7,6 +7,8 @@ import { StatsBand } from '@/components/motion/StatsBand';
 import { WhyUsSection } from '@/components/motion/WhyUsSection';
 import { ProcessSection } from '@/components/motion/ProcessSection';
 import { TestimonialsCarousel } from '@/components/motion/TestimonialsCarousel';
+import { StreamReveal } from '@/components/motion/StreamReveal';
+
 const Home = () => {
     return (<>
       <Helmet>
@@ -17,7 +19,7 @@ const Home = () => {
         <meta property="og:type" content="website"/>
       </Helmet>
 
-      {/* Flagship Agency Flow */}
+      {/* Flagship Agency Flow with Scroll-Triggered Content Streaming */}
       <div className="relative">
         {/* 02 Hero Section */}
         <section id="section-hero">
@@ -26,32 +28,44 @@ const Home = () => {
 
         {/* 03 Manifesto Section */}
         <section id="section-manifesto">
-          <ManifestoSection />
+          <StreamReveal>
+            <ManifestoSection />
+          </StreamReveal>
         </section>
 
         {/* 04 Services Bento */}
         <section id="section-services">
-          <ServicesBento />
+          <StreamReveal>
+            <ServicesBento />
+          </StreamReveal>
         </section>
 
         {/* 05 Stats Band */}
         <section id="section-stats">
-          <StatsBand />
+          <StreamReveal>
+            <StatsBand />
+          </StreamReveal>
         </section>
 
         {/* 06 Why 11 11 */}
         <section id="section-why">
-          <WhyUsSection />
+          <StreamReveal>
+            <WhyUsSection />
+          </StreamReveal>
         </section>
 
         {/* 07 Process */}
         <section id="section-process">
-          <ProcessSection />
+          <StreamReveal>
+            <ProcessSection />
+          </StreamReveal>
         </section>
 
         {/* 08 Testimonials Carousel */}
         <section id="section-testimonials">
-          <TestimonialsCarousel />
+          <StreamReveal>
+            <TestimonialsCarousel />
+          </StreamReveal>
         </section>
       </div>
     </>);

@@ -8,6 +8,7 @@ import { FAQS } from '@/data/faqs';
 import { Button } from '@/components/ui/Button';
 import { Accordion } from '@/components/ui/Accordion';
 import { cn } from '@/lib/utils';
+import { StreamReveal } from '@/components/motion/StreamReveal';
 
 const CATEGORY_TABS = [
     { id: 'websites', label: 'Websites & Apps' },
@@ -220,7 +221,8 @@ const Pricing = () => {
 
         {/* 3. INTERACTIVE PROJECT ESTIMATOR (Obsidian Dark Stage) */}
         <section className="py-24 sm:py-32 px-6 sm:px-8 bg-[#0D0A0C] text-white border-b border-white/[0.08]">
-          <div className="max-w-7xl mx-auto">
+          <StreamReveal>
+            <div className="max-w-7xl mx-auto">
             <div className="rounded-[36px] bg-gradient-to-br from-[#1E0B1A] via-[#150610] to-[#0D050A] border border-crimson/30 p-8 sm:p-14 lg:p-16 relative overflow-hidden shadow-[0_24px_70px_rgba(0,0,0,0.6)]">
               {/* Ambient Radial background */}
               <div className="pointer-events-none absolute top-0 right-0 w-96 h-96 bg-crimson/15 rounded-full blur-[140px]"/>
@@ -371,11 +373,13 @@ const Pricing = () => {
               </div>
             </div>
           </div>
+          </StreamReveal>
         </section>
 
         {/* 4. FAQ SECTION (Blush Stage) */}
         <section className="py-24 sm:py-32 px-6 sm:px-8 bg-gradient-to-b from-[#FAF5F8] via-white to-[#FAF5F8] border-b border-black/[0.06]">
-          <div className="max-w-4xl mx-auto">
+          <StreamReveal>
+            <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <span className="text-xs font-mono uppercase tracking-widest text-crimson font-bold block mb-3">
                 || Frequently Asked Questions
@@ -390,11 +394,13 @@ const Pricing = () => {
 
             <Accordion items={FAQS} allowMultiple={false}/>
           </div>
+          </StreamReveal>
         </section>
 
         {/* 5. BESPOKE ENTERPRISE BANNER (High-Impact Velvet Dark Rose Stage) */}
         <section className="py-20 px-6 sm:px-8 bg-gradient-to-br from-[#1C0813] via-[#280B1B] to-[#12050D] text-white border-t border-crimson/25 relative overflow-hidden">
-          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+          <StreamReveal>
+            <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="max-w-xl">
               <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#FFA3BD] block mb-2">
                 BESPOKE &amp; ENTERPRISE
@@ -421,6 +427,7 @@ const Pricing = () => {
               </Link>
             </div>
           </div>
+          </StreamReveal>
         </section>
 
       </div>

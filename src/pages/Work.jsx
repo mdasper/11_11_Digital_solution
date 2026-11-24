@@ -212,7 +212,13 @@ const Work = () => {
             </motion.div>
 
             {/* Bottom Conversion Band in Velvet Dark Rose */}
-            <div className="mt-24 sm:mt-32 rounded-[32px] p-8 sm:p-14 bg-gradient-to-br from-[#1C0813] via-[#280B1B] to-[#12050D] text-white border border-crimson/30 relative overflow-hidden shadow-[0_24px_70px_rgba(32,10,21,0.5)]">
+            <motion.div 
+              initial={{ opacity: 0, y: 35 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-24 sm:mt-32 rounded-[32px] p-8 sm:p-14 bg-gradient-to-br from-[#1C0813] via-[#280B1B] to-[#12050D] text-white border border-crimson/30 relative overflow-hidden shadow-[0_24px_70px_rgba(32,10,21,0.5)]"
+            >
               <div className="pointer-events-none absolute top-0 right-0 w-80 h-80 bg-crimson/20 rounded-full blur-[100px]"/>
 
               <div className="relative z-10 max-w-2xl">
@@ -243,7 +249,7 @@ const Work = () => {
                   </a>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
           </div>
         </section>
