@@ -4,6 +4,7 @@ import { Play, Eye, Sparkles, CheckCircle2, Clapperboard, Scissors, Share2 } fro
 import { PRICING_PACKAGES } from '@/data/packages';
 import { Button } from '@/components/ui/Button';
 import { formatINR } from '@/lib/utils';
+import { WordStream } from '@/components/motion/WordStream';
 import prodImg from '@/assets/manifesto/production.svg';
 import designImg from '@/assets/manifesto/design.svg';
 import snapitImg from '@/assets/projects/snapit-studio.svg';
@@ -56,14 +57,20 @@ const Reels = () => {
               <span className="w-1.5 h-1.5 rounded-full bg-crimson animate-pulse"/>
             </div>
 
-            <h1 className="text-4xl sm:text-6xl md:text-7xl font-display font-extrabold tracking-tight leading-[1.02] mb-6 text-[#120E11]">
+            <WordStream
+              as="h1"
+              className="text-4xl sm:text-6xl md:text-7xl font-display font-extrabold tracking-tight leading-[1.02] mb-6 text-[#120E11]"
+            >
               Short videos that{' '}
               <span className="font-accent italic text-crimson font-normal">stop the scroll</span>.
-            </h1>
+            </WordStream>
 
-            <p className="text-lg sm:text-xl text-text-dark-muted max-w-2xl leading-relaxed mb-8">
+            <WordStream
+              as="p"
+              className="text-lg sm:text-xl text-text-dark-muted max-w-2xl leading-relaxed mb-8"
+            >
               We engineer vertical reels for the Instagram, YouTube, and TikTok algorithms. Uncompromising pacing, kinetic typography, and high-retention storytelling designed to turn viewers into followers and buyers.
-            </p>
+            </WordStream>
 
             <div className="flex flex-wrap items-center gap-4">
               <Button to="/contact?service=reels" variant="primary" size="lg">

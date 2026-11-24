@@ -6,6 +6,7 @@ import { ArrowUpRight, ArrowRight, ExternalLink, Sparkles } from 'lucide-react';
 import { PROJECTS } from '@/data/projects';
 import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/utils';
+import { WordStream } from '@/components/motion/WordStream';
 
 const FILTERS = [
     { label: 'All Projects', value: 'All', count: PROJECTS.length },
@@ -43,13 +44,19 @@ const Work = () => {
                 </span>
               </div>
 
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-extrabold tracking-tight text-white mb-6 leading-[1.08]">
+              <WordStream
+                as="h1"
+                className="text-4xl sm:text-6xl lg:text-7xl font-display font-extrabold tracking-tight text-white mb-6 leading-[1.08]"
+              >
                 Engineered for <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF2D6C] via-[#FF5E8E] to-[#FF2D6C]">impact</span> &amp; scale.
-              </h1>
+              </WordStream>
 
-              <p className="text-base sm:text-lg text-white/70 leading-relaxed max-w-3xl font-normal">
+              <WordStream
+                as="p"
+                className="text-base sm:text-lg text-white/70 leading-relaxed max-w-3xl font-normal"
+              >
                 We build flagship digital products, commercial video productions, and performance campaigns that deliver tangible revenue growth and industry distinction.
-              </p>
+              </WordStream>
             </div>
           </div>
         </section>
@@ -119,14 +126,20 @@ const Work = () => {
                           </div>
 
                           {/* Project Title */}
-                          <h2 className="text-2xl sm:text-4xl font-display font-extrabold text-white mb-3 group-hover:text-[#FFA3BD] transition-colors duration-300">
+                          <WordStream
+                            as="h2"
+                            className="text-2xl sm:text-4xl font-display font-extrabold text-white mb-3 group-hover:text-[#FFA3BD] transition-colors duration-300"
+                          >
                             {project.title}
-                          </h2>
+                          </WordStream>
 
                           {/* Tagline */}
-                          <p className="text-sm sm:text-base text-white/75 mb-6 leading-relaxed font-normal">
+                          <WordStream
+                            as="p"
+                            className="text-sm sm:text-base text-white/75 mb-6 leading-relaxed font-normal"
+                          >
                             {project.tagline}
-                          </p>
+                          </WordStream>
 
                           {/* Impact Result Badge */}
                           <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-xl bg-crimson/20 border border-crimson/35 text-[#FFA3BD] font-bold text-xs sm:text-sm mb-6 shadow-sm">

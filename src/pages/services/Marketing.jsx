@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/Button';
 import { SpotlightCard } from '@/components/motion/SpotlightCard';
 import { formatINR } from '@/lib/utils';
 import { gsap } from '@/lib/gsap';
+import { WordStream } from '@/components/motion/WordStream';
 import highlandMockup from '@/assets/projects/highland-origin.svg';
 const marketingRows = [
     {
@@ -74,14 +75,20 @@ const Marketing = () => {
               <span className="w-1.5 h-1.5 rounded-full bg-crimson animate-pulse"/>
             </div>
 
-            <h1 className="text-4xl sm:text-6xl md:text-7xl font-display font-extrabold tracking-tight leading-[1.02] mb-6 text-[#120E11]">
+            <WordStream
+              as="h1"
+              className="text-4xl sm:text-6xl md:text-7xl font-display font-extrabold tracking-tight leading-[1.02] mb-6 text-[#120E11]"
+            >
               Be seen by the right people, at the{' '}
               <span className="font-accent italic text-crimson font-normal">right time</span>.
-            </h1>
+            </WordStream>
 
-            <p className="text-lg sm:text-xl text-text-dark-muted max-w-2xl leading-relaxed mb-8">
+            <WordStream
+              as="p"
+              className="text-lg sm:text-xl text-text-dark-muted max-w-2xl leading-relaxed mb-8"
+            >
               We eliminate wasted ad spend. Our data-backed multi-channel campaigns across Meta, Google, and SEO are engineered to deliver qualified inquiries at scale.
-            </p>
+            </WordStream>
 
             <div className="flex flex-wrap items-center gap-4">
               <Button to="/contact?service=marketing" variant="primary" size="lg">

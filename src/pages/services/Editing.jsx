@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { Film, Sliders, Palette, Type, Clock, RotateCcw, CheckCircle2, Sparkles, Layers } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { SpotlightCard } from '@/components/motion/SpotlightCard';
+import { WordStream } from '@/components/motion/WordStream';
 import snapitImg from '@/assets/projects/snapit-studio.svg';
 const editingServices = [
     {
@@ -72,14 +73,20 @@ const Editing = () => {
               <span className="w-1.5 h-1.5 rounded-full bg-crimson animate-pulse"/>
             </div>
 
-            <h1 className="text-4xl sm:text-6xl md:text-7xl font-display font-extrabold tracking-tight leading-[1.02] mb-6 text-[#120E11]">
+            <WordStream
+              as="h1"
+              className="text-4xl sm:text-6xl md:text-7xl font-display font-extrabold tracking-tight leading-[1.02] mb-6 text-[#120E11]"
+            >
               Clean cuts, sharp colour,{' '}
               <span className="font-accent italic text-crimson font-normal">smooth storytelling</span>.
-            </h1>
+            </WordStream>
 
-            <p className="text-lg sm:text-xl text-text-dark-muted max-w-2xl leading-relaxed mb-8">
+            <WordStream
+              as="p"
+              className="text-lg sm:text-xl text-text-dark-muted max-w-2xl leading-relaxed mb-8"
+            >
               We turn raw, unedited footage into high-converting brand films and viral reels. Hollywood color grading in DaVinci Resolve, frame-accurate pacing, and surgical sound design.
-            </p>
+            </WordStream>
 
             <div className="flex flex-wrap items-center gap-4">
               <Button to="/contact?service=editing" variant="primary" size="lg">

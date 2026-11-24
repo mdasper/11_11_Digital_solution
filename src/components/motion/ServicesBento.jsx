@@ -13,6 +13,7 @@ import craftWeb from '@/assets/crafts/craft-web.jpg'
 import craftMarketing from '@/assets/crafts/craft-marketing.jpg'
 import craftReels from '@/assets/crafts/craft-reels.jpg'
 import craftEditing from '@/assets/crafts/craft-editing.jpg'
+import { WordStream } from '@/components/motion/WordStream'
 
 export const ServicesBento = () => {
   // 4 Bespoke Flagship Capabilities
@@ -110,13 +111,19 @@ export const ServicesBento = () => {
                 || CORE CAPABILITIES
               </span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-display font-extrabold tracking-tight text-[#120E11]">
+            <WordStream
+              as="h2"
+              className="text-3xl sm:text-5xl font-display font-extrabold tracking-tight text-[#120E11]"
+            >
               Four crafts. One <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF2D6C] via-[#FF5E8E] to-[#FF2D6C] font-display font-extrabold">flagship</span> standard.
-            </h2>
+            </WordStream>
           </div>
-          <p className="text-[#5C5259] max-w-md text-sm sm:text-base leading-relaxed">
+          <WordStream
+            as="p"
+            className="text-[#5C5259] max-w-md text-sm sm:text-base leading-relaxed"
+          >
             Everything your business needs to establish authority, generate high-ticket inquiries, and dominate digital platforms.
-          </p>
+          </WordStream>
         </div>
 
         {/* All 4 Rich Tiles in Dark Rose Velvet Theme */}
@@ -154,17 +161,26 @@ export const ServicesBento = () => {
                     </div>
 
                     {/* Title & Tagline */}
-                    <h3 className="text-xl sm:text-2xl font-display font-extrabold text-white group-hover:text-crimson transition-colors mb-1.5 tracking-tight">
+                    <WordStream
+                      as="h3"
+                      className="text-xl sm:text-2xl font-display font-extrabold text-white group-hover:text-crimson transition-colors mb-1.5 tracking-tight"
+                    >
                       {craft.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-[#FF9BB5] font-medium mb-3">
+                    </WordStream>
+                    <WordStream
+                      as="p"
+                      className="text-xs sm:text-sm text-[#FF9BB5] font-medium mb-3"
+                    >
                       {craft.tagline}
-                    </p>
+                    </WordStream>
 
                     {/* Description */}
-                    <p className="text-xs sm:text-sm text-white/70 leading-relaxed mb-5">
+                    <WordStream
+                      as="p"
+                      className="text-xs sm:text-sm text-white/70 leading-relaxed mb-5"
+                    >
                       {craft.shortDescription}
-                    </p>
+                    </WordStream>
 
                     {/* 4 Relevant Capabilities */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-6 pt-4 border-t border-white/10">

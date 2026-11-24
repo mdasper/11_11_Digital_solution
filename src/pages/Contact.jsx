@@ -7,6 +7,7 @@ import { ABOUT_DATA } from '@/data/about';
 import { PRICING_PACKAGES } from '@/data/packages';
 import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/utils';
+import { WordStream } from '@/components/motion/WordStream';
 const SERVICE_OPTIONS = [
     'Website Development',
     'Digital Marketing & Ads',
@@ -132,14 +133,19 @@ const Contact = () => {
                 </span>
               </div>
 
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-extrabold tracking-tight text-white mb-6 leading-[1.08]">
-                Let’s build something <br className="hidden sm:inline"/>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF2D6C] via-[#FF5E8E] to-[#FF2D6C]">flagship</span> together.
-              </h1>
+              <WordStream
+                as="h1"
+                className="text-4xl sm:text-6xl lg:text-7xl font-display font-extrabold tracking-tight text-white mb-6 leading-[1.08]"
+              >
+                Let’s build something <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF2D6C] via-[#FF5E8E] to-[#FF2D6C]">flagship</span> together.
+              </WordStream>
 
-              <p className="text-base sm:text-lg text-white/70 leading-relaxed max-w-2xl font-normal">
+              <WordStream
+                as="p"
+                className="text-base sm:text-lg text-white/70 leading-relaxed max-w-2xl font-normal"
+              >
                 Tell us about your brand goals. Whether you need a high-conversion website, high-impact marketing system, or cinematic video production, we respond within 2 hours.
-              </p>
+              </WordStream>
             </div>
           </div>
         </section>

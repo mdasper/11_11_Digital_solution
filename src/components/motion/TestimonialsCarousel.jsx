@@ -1,6 +1,7 @@
 import React from 'react'
 import { Star, Quote, CheckCircle2 } from 'lucide-react'
 import { TESTIMONIALS } from '@/data/testimonials'
+import { WordStream } from '@/components/motion/WordStream'
 
 export const TestimonialsCarousel = () => {
   return (
@@ -22,16 +23,22 @@ export const TestimonialsCarousel = () => {
             </span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-display font-extrabold tracking-tight text-[#120E11] mb-4">
+          <WordStream
+            as="h2"
+            className="text-3xl sm:text-5xl font-display font-extrabold tracking-tight text-[#120E11] mb-4"
+          >
             Trusted by leaders who{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF2D6C] via-[#FF5E8E] to-[#FF2D6C] font-display font-extrabold">
               demand the best
             </span>
             .
-          </h2>
-          <p className="text-[#5C5259] text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
+          </WordStream>
+          <WordStream
+            as="p"
+            className="text-[#5C5259] text-base sm:text-lg leading-relaxed max-w-2xl mx-auto"
+          >
             Direct feedback from founders and executives who partnered with 11 11 for flagship digital execution.
-          </p>
+          </WordStream>
         </div>
 
         {/* Full-Width 4-Card Luxury Testimonial Grid (Neat font size & Dark Rose theme) */}

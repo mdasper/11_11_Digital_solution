@@ -1,6 +1,7 @@
 import React from 'react'
 import { Code2, Film, TrendingUp } from 'lucide-react'
 import manifestoObjectImg from '@/assets/manifesto/manifesto-3d-object.jpg'
+import { WordStream } from '@/components/motion/WordStream'
 
 export const ManifestoSection = () => {
   const PILLARS = [
@@ -53,16 +54,22 @@ export const ManifestoSection = () => {
             </div>
 
             {/* Crisp, High-Contrast Statement */}
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-display font-extrabold text-[#120E11] leading-[1.12] tracking-[-0.03em] mb-6">
+            <WordStream
+              as="h2"
+              className="text-3xl sm:text-5xl md:text-6xl font-display font-extrabold text-[#120E11] leading-[1.12] tracking-[-0.03em] mb-6"
+            >
               We don't just build websites. We engineer digital flagships that make people stop, look, and{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF2D6C] via-[#FF5E8E] to-[#FF2D6C] font-display font-extrabold inline">
                 remember your brand.
               </span>
-            </h2>
+            </WordStream>
 
-            <p className="text-base sm:text-xl md:text-2xl text-[#5C5259] leading-relaxed max-w-2xl font-normal">
+            <WordStream
+              as="p"
+              className="text-base sm:text-xl md:text-2xl text-[#5C5259] leading-relaxed max-w-2xl font-normal"
+            >
               Every pixel has an intentional purpose. Every second of motion earns attention, commands authority, and turns visitors into high-value clients.
-            </p>
+            </WordStream>
           </div>
 
           {/* Right Column: 3D Luxury Architectural Object (Photorealistic 8K Crystal Prism) */}
@@ -123,14 +130,20 @@ export const ManifestoSection = () => {
                 </div>
 
                 {/* Pillar Title */}
-                <h3 className="text-xl sm:text-2xl font-display font-bold text-white tracking-tight mb-4 group-hover:text-crimson transition-colors">
+                <WordStream
+                  as="h3"
+                  className="text-xl sm:text-2xl font-display font-bold text-white tracking-tight mb-4 group-hover:text-crimson transition-colors"
+                >
                   {pillar.title}
-                </h3>
+                </WordStream>
 
                 {/* Pillar Description */}
-                <p className="text-sm sm:text-base text-white/70 leading-relaxed">
+                <WordStream
+                  as="p"
+                  className="text-sm sm:text-base text-white/70 leading-relaxed"
+                >
                   {pillar.description}
-                </p>
+                </WordStream>
               </div>
             </div>
           ))}

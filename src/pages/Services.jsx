@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/Button';
 import { Accordion } from '@/components/ui/Accordion';
 import { gsap } from '@/lib/gsap';
 import { StreamReveal } from '@/components/motion/StreamReveal';
+import { WordStream } from '@/components/motion/WordStream';
 
 const Services = () => {
     const containerRef = useRef(null);
@@ -65,17 +66,23 @@ const Services = () => {
                 </span>
               </div>
 
-              <h1 className="text-4xl sm:text-6xl md:text-7xl font-display font-extrabold tracking-tight leading-[1.08] mb-6 text-white">
+              <WordStream
+                as="h1"
+                className="text-4xl sm:text-6xl md:text-7xl font-display font-extrabold tracking-tight leading-[1.08] mb-6 text-white"
+              >
                 Four disciplines. One{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF2D6C] via-[#FF5E8E] to-[#FF2D6C]">
                   uncompromising
                 </span>{' '}
                 standard.
-              </h1>
+              </WordStream>
 
-              <p className="text-lg sm:text-xl text-white/70 max-w-2xl leading-relaxed mb-8 font-normal">
+              <WordStream
+                as="p"
+                className="text-lg sm:text-xl text-white/70 max-w-2xl leading-relaxed mb-8 font-normal"
+              >
                 We eliminate the friction of managing multiple agencies. From custom web engineering to viral reels and paid acquisition, every service works in unison.
-              </p>
+              </WordStream>
 
               <div className="flex flex-wrap items-center gap-4">
                 <Button to="/pricing" variant="primary" size="lg" className="shadow-crimson-glow font-bold">
@@ -238,9 +245,12 @@ const Services = () => {
               <span className="text-xs font-mono uppercase tracking-widest text-crimson font-bold block mb-3">
                 || Common Inquiries
               </span>
-              <h2 className="text-3xl sm:text-5xl font-display font-extrabold tracking-tight mb-4 text-[#120E11]">
+              <WordStream
+                as="h2"
+                className="text-3xl sm:text-5xl font-display font-extrabold tracking-tight mb-4 text-[#120E11]"
+              >
                 Frequently asked <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF2D6C] to-magenta">questions</span>.
-              </h2>
+              </WordStream>
               <p className="text-[#665D63] text-sm sm:text-base">
                 Clear, transparent answers about our turnaround, process, and deliverables.
               </p>
@@ -264,12 +274,18 @@ const Services = () => {
 
           <StreamReveal>
             <div className="max-w-4xl mx-auto relative z-10">
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-display font-black tracking-tight text-white mb-6">
+            <WordStream
+              as="h2"
+              className="text-3xl sm:text-5xl md:text-6xl font-display font-black tracking-tight text-white mb-6"
+            >
               Let's build something <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF2D6C] to-magenta">extraordinary</span> together.
-            </h2>
-            <p className="text-white/75 max-w-xl mx-auto text-base sm:text-lg mb-8 leading-relaxed font-normal">
+            </WordStream>
+            <WordStream
+              as="p"
+              className="text-white/75 max-w-xl mx-auto text-base sm:text-lg mb-8 leading-relaxed font-normal"
+            >
               Schedule a 15-minute consultation with Mohamed Asper or send your requirements on WhatsApp.
-            </p>
+            </WordStream>
             <div className="flex flex-wrap justify-center gap-4">
               <Button to="/contact" variant="primary" size="lg" className="shadow-crimson-glow font-bold">
                 Start Your Project

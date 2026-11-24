@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/Button';
 import { Accordion } from '@/components/ui/Accordion';
 import { cn } from '@/lib/utils';
 import { StreamReveal } from '@/components/motion/StreamReveal';
+import { WordStream } from '@/components/motion/WordStream';
 
 const CATEGORY_TABS = [
     { id: 'websites', label: 'Websites & Apps' },
@@ -86,14 +87,19 @@ const Pricing = () => {
                 </span>
               </div>
 
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-extrabold tracking-tight text-white mb-6 leading-[1.08]">
-                Predictable pricing. <br className="hidden sm:inline"/>
-                Zero <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF2D6C] via-[#FF5E8E] to-[#FF2D6C]">surprises</span>.
-              </h1>
+              <WordStream
+                as="h1"
+                className="text-4xl sm:text-6xl lg:text-7xl font-display font-extrabold tracking-tight text-white mb-6 leading-[1.08]"
+              >
+                Predictable pricing. Zero <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF2D6C] via-[#FF5E8E] to-[#FF2D6C]">surprises</span>.
+              </WordStream>
 
-              <p className="text-base sm:text-lg text-white/70 leading-relaxed max-w-2xl mx-auto font-normal">
+              <WordStream
+                as="p"
+                className="text-base sm:text-lg text-white/70 leading-relaxed max-w-2xl mx-auto font-normal"
+              >
                 Choose a calibrated tier or calculate a custom scope below. Every package includes direct access to Mohamed Asper and our core engineering team.
-              </p>
+              </WordStream>
             </div>
 
             {/* Category Tabs in Luxury Glass */}
@@ -234,12 +240,18 @@ const Pricing = () => {
                       <Calculator className="w-3.5 h-3.5 text-crimson"/>
                       <span>CUSTOM SCOPE CALCULATOR</span>
                     </div>
-                    <h2 className="text-2xl sm:text-4xl font-display font-extrabold text-white mb-2">
+                    <WordStream
+                      as="h2"
+                      className="text-2xl sm:text-4xl font-display font-extrabold text-white mb-2"
+                    >
                       Interactive Project Estimator
-                    </h2>
-                    <p className="text-xs sm:text-sm text-white/70">
+                    </WordStream>
+                    <WordStream
+                      as="p"
+                      className="text-xs sm:text-sm text-white/70"
+                    >
                       Configure your desired scope in real time. We calculate an instant estimate and provide a 1-tap WhatsApp summary for immediate confirmation.
-                    </p>
+                    </WordStream>
                   </div>
 
                   {/* Live Calculated Price Range Display */}
@@ -384,12 +396,18 @@ const Pricing = () => {
               <span className="text-xs font-mono uppercase tracking-widest text-crimson font-bold block mb-3">
                 || Frequently Asked Questions
               </span>
-              <h2 className="text-3xl sm:text-5xl font-display font-extrabold text-[#120E11] mb-4">
+              <WordStream
+                as="h2"
+                className="text-3xl sm:text-5xl font-display font-extrabold text-[#120E11] mb-4"
+              >
                 Got questions? We have answers.
-              </h2>
-              <p className="text-sm sm:text-base text-[#665D63]">
+              </WordStream>
+              <WordStream
+                as="p"
+                className="text-sm sm:text-base text-[#665D63]"
+              >
                 Everything you need to know about our engagement terms, milestones, and deliverables.
-              </p>
+              </WordStream>
             </div>
 
             <Accordion items={FAQS} allowMultiple={false}/>
@@ -405,12 +423,18 @@ const Pricing = () => {
               <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#FFA3BD] block mb-2">
                 BESPOKE &amp; ENTERPRISE
               </span>
-              <h3 className="text-2xl sm:text-4xl font-display font-extrabold text-white mb-3">
+              <WordStream
+                as="h3"
+                className="text-2xl sm:text-4xl font-display font-extrabold text-white mb-3"
+              >
                 Need something completely custom?
-              </h3>
-              <p className="text-xs sm:text-sm text-white/70 leading-relaxed font-normal">
+              </WordStream>
+              <WordStream
+                as="p"
+                className="text-xs sm:text-sm text-white/70 leading-relaxed font-normal"
+              >
                 For custom 3D web applications, multi-location brands, or international export catalogs, speak directly with Mohamed Asper.
-              </p>
+              </WordStream>
             </div>
 
             <div className="flex flex-wrap items-center gap-4 shrink-0">

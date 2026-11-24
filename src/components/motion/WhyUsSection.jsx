@@ -1,5 +1,6 @@
 import React from 'react'
 import { Sparkles, Zap, Target, Headset } from 'lucide-react'
+import { WordStream } from '@/components/motion/WordStream'
 
 export const WhyUsSection = () => {
   const pillars = [
@@ -44,16 +45,22 @@ export const WhyUsSection = () => {
             </span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-display font-extrabold tracking-tight mb-5 text-[#120E11] leading-[1.12]">
+          <WordStream
+            as="h2"
+            className="text-3xl sm:text-5xl md:text-6xl font-display font-extrabold tracking-tight mb-5 text-[#120E11] leading-[1.12]"
+          >
             Built for brands that want to{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF2D6C] via-[#FF5E8E] to-[#FF2D6C] font-display font-extrabold">
               stand out
             </span>
             .
-          </h2>
-          <p className="text-[#5C5259] text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
+          </WordStream>
+          <WordStream
+            as="p"
+            className="text-[#5C5259] text-base sm:text-lg leading-relaxed max-w-2xl mx-auto"
+          >
             We operate as your dedicated digital growth partner, combining high-end design with disciplined engineering.
-          </p>
+          </WordStream>
         </div>
 
         {/* 4 Dark Rose Luxury Tiles */}
@@ -75,14 +82,20 @@ export const WhyUsSection = () => {
               </div>
 
               {/* Title */}
-              <h3 className="text-xl sm:text-2xl font-display font-extrabold text-white mb-3 group-hover:text-crimson transition-colors tracking-tight">
+              <WordStream
+                as="h3"
+                className="text-xl sm:text-2xl font-display font-extrabold text-white mb-3 group-hover:text-crimson transition-colors tracking-tight"
+              >
                 {item.title}
-              </h3>
+              </WordStream>
 
               {/* Description */}
-              <p className="text-sm text-white/70 leading-relaxed font-normal">
+              <WordStream
+                as="p"
+                className="text-sm text-white/70 leading-relaxed font-normal"
+              >
                 {item.desc}
-              </p>
+              </WordStream>
             </div>
           ))}
         </div>

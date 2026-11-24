@@ -7,6 +7,7 @@ import { CONTACT_INFO } from '@/data/navigation'
 import founderImg from '@/assets/manifesto/strategy.svg'
 import { gsap } from '@/lib/gsap'
 import { StreamReveal } from '@/components/motion/StreamReveal'
+import { WordStream } from '@/components/motion/WordStream'
 
 const About = () => {
   const containerRef = useRef(null)
@@ -55,17 +56,23 @@ const About = () => {
                 </span>
               </div>
 
-              <h1 className="about-hero-fade text-4xl sm:text-6xl md:text-7xl font-display font-extrabold tracking-tight leading-[1.08] mb-8 text-white">
+              <WordStream
+                as="h1"
+                className="about-hero-fade text-4xl sm:text-6xl md:text-7xl font-display font-extrabold tracking-tight leading-[1.08] mb-8 text-white"
+              >
                 We build digital assets that{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF2D6C] via-[#FF5E8E] to-[#FF2D6C]">
                   {ABOUT_DATA.hero.accentWord}
                 </span>{' '}
                 trends.
-              </h1>
+              </WordStream>
 
-              <p className="about-hero-fade text-lg sm:text-xl text-white/70 leading-relaxed max-w-3xl mb-10">
+              <WordStream
+                as="p"
+                className="about-hero-fade text-lg sm:text-xl text-white/70 leading-relaxed max-w-3xl mb-10"
+              >
                 {ABOUT_DATA.hero.subtext}
-              </p>
+              </WordStream>
 
               <div className="about-hero-fade flex flex-wrap items-center gap-4">
                 <Button to="/contact" variant="primary" size="lg" className="shadow-crimson-glow font-bold">
@@ -130,9 +137,12 @@ const About = () => {
                 <span className="text-xs font-mono uppercase tracking-widest text-crimson font-bold block mb-3">
                   || The Origin Story
                 </span>
-                <h2 className="text-3xl sm:text-5xl font-display font-extrabold tracking-tight mb-8 text-[#120E11] leading-tight">
+                <WordStream
+                  as="h2"
+                  className="text-3xl sm:text-5xl font-display font-extrabold tracking-tight mb-8 text-[#120E11] leading-tight"
+                >
                   Rejecting templates. Engineering <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF2D6C] to-magenta">relevance</span>.
-                </h2>
+                </WordStream>
 
                 <div className="space-y-6 text-base sm:text-lg text-[#5C5259] leading-relaxed font-normal">
                   {ABOUT_DATA.founder.story.map((paragraph, idx) => (
@@ -176,12 +186,18 @@ const About = () => {
               <span className="text-xs font-mono uppercase tracking-widest text-crimson font-bold block mb-3">
                 || Core Principles
               </span>
-              <h2 className="text-3xl sm:text-5xl font-display font-extrabold tracking-tight mb-4 text-white">
+              <WordStream
+                as="h2"
+                className="text-3xl sm:text-5xl font-display font-extrabold tracking-tight mb-4 text-white"
+              >
                 What drives every <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF2D6C] to-magenta">decision</span>.
-              </h2>
-              <p className="text-white/70 text-sm sm:text-base leading-relaxed">
+              </WordStream>
+              <WordStream
+                as="p"
+                className="text-white/70 text-sm sm:text-base leading-relaxed"
+              >
                 Non-negotiable values guiding our code, communication, and visual craft.
-              </p>
+              </WordStream>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
@@ -220,12 +236,18 @@ const About = () => {
             <span className="text-xs font-mono uppercase tracking-widest text-crimson font-bold block mb-4">
               || The 11:11 Ritual
             </span>
-            <h2 className="text-3xl sm:text-5xl font-display font-extrabold text-[#120E11] mb-6">
+            <WordStream
+              as="h2"
+              className="text-3xl sm:text-5xl font-display font-extrabold text-[#120E11] mb-6"
+            >
               Why <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF2D6C] to-magenta">11 11</span>?
-            </h2>
-            <p className="text-base sm:text-lg text-[#5C5259] leading-relaxed mb-8">
+            </WordStream>
+            <WordStream
+              as="p"
+              className="text-base sm:text-lg text-[#5C5259] leading-relaxed mb-8"
+            >
               In numerology and modern culture, 11:11 signifies alignment, synchronization, and an auspicious moment to take decisive action. For our studio, the twin parallel marks represent code and design moving in lockstep — engineering precision paired with artistic passion.
-            </p>
+            </WordStream>
             <div className="inline-flex flex-wrap justify-center items-center gap-2.5 sm:gap-6 px-4 sm:px-6 py-2.5 sm:py-3.5 rounded-full bg-white border border-black/[0.08] text-xs font-mono text-[#120E11] shadow-sm max-w-full">
               <span className="font-bold">00:00 · PREPARATION</span>
               <span className="text-crimson font-bold">&rarr;</span>

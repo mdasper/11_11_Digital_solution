@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import { gsap } from '@/lib/gsap'
 import { Search, PenTool, Code2, Rocket } from 'lucide-react'
+import { WordStream } from '@/components/motion/WordStream'
 
 export const ProcessSection = () => {
   const containerRef = useRef(null)
@@ -80,12 +81,18 @@ export const ProcessSection = () => {
               // EXECUTION FRAMEWORK
             </span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-display font-extrabold tracking-tight mb-4 text-[#120E11]">
+          <WordStream
+            as="h2"
+            className="text-3xl sm:text-5xl font-display font-extrabold tracking-tight mb-4 text-[#120E11]"
+          >
             From concept to launch, <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF2D6C] via-[#FF5E8E] to-[#FF2D6C] font-display font-extrabold">made seamless</span>.
-          </h2>
-          <p className="text-[#5C5259] text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
+          </WordStream>
+          <WordStream
+            as="p"
+            className="text-[#5C5259] text-base sm:text-lg leading-relaxed max-w-2xl mx-auto"
+          >
             A simple, transparent 4-step workflow from our first call to your live website and growth.
-          </p>
+          </WordStream>
         </div>
 
         {/* Steps Grid: 4 Dark Rose Luxury Tiles */}
@@ -116,14 +123,20 @@ export const ProcessSection = () => {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-xl font-display font-extrabold text-white mb-3 leading-snug group-hover:text-[#FF9BB5] transition-colors tracking-tight">
+                  <WordStream
+                    as="h3"
+                    className="text-xl font-display font-extrabold text-white mb-3 leading-snug group-hover:text-[#FF9BB5] transition-colors tracking-tight"
+                  >
                     {step.title}
-                  </h3>
+                  </WordStream>
 
                   {/* Description */}
-                  <p className="text-sm text-white/75 leading-relaxed mb-6 font-normal">
+                  <WordStream
+                    as="p"
+                    className="text-sm text-white/75 leading-relaxed mb-6 font-normal"
+                  >
                     {step.desc}
-                  </p>
+                  </WordStream>
                 </div>
 
                 {/* Bottom Deliverable Bar */}

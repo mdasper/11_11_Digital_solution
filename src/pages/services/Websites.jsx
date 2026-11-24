@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/Button';
 import { SpotlightCard } from '@/components/motion/SpotlightCard';
 import { formatINR } from '@/lib/utils';
 import { gsap } from '@/lib/gsap';
+import { WordStream } from '@/components/motion/WordStream';
 import jbMockup from '@/assets/projects/jb-healthcare.svg';
 const websiteTypes = [
     {
@@ -83,14 +84,20 @@ const Websites = () => {
               <span className="w-1.5 h-1.5 rounded-full bg-crimson animate-pulse"/>
             </div>
 
-            <h1 className="text-4xl sm:text-6xl md:text-7xl font-display font-extrabold tracking-tight leading-[1.02] mb-6 text-[#120E11]">
+            <WordStream
+              as="h1"
+              className="text-4xl sm:text-6xl md:text-7xl font-display font-extrabold tracking-tight leading-[1.02] mb-6 text-[#120E11]"
+            >
               Fast, beautiful websites that turn visitors into{' '}
               <span className="font-accent italic text-crimson font-normal">customers</span>.
-            </h1>
+            </WordStream>
 
-            <p className="text-lg sm:text-xl text-text-dark-muted max-w-2xl leading-relaxed mb-8">
+            <WordStream
+              as="p"
+              className="text-lg sm:text-xl text-text-dark-muted max-w-2xl leading-relaxed mb-8"
+            >
               We engineer custom, responsive websites designed to build immediate trust, pass Google Core Web Vitals with 90+ scores, and generate qualified inquiries.
-            </p>
+            </WordStream>
 
             <div className="flex flex-wrap items-center gap-4">
               <Button to="/contact?service=website" variant="primary" size="lg">

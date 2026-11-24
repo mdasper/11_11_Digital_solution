@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { cn } from '@/lib/utils'
+import { WordStream } from '@/components/motion/WordStream'
 
 import heroWebsites from '@/assets/crafts/hero-websites.jpg'
 import heroMarketing from '@/assets/crafts/hero-marketing.jpg'
@@ -165,23 +166,35 @@ export const HeroSection = () => {
         {/* Category Badge */}
         <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-white/10 border border-white/15 backdrop-blur-md mb-4 sm:mb-6 shadow-sm">
           <span className="w-2 h-2 rounded-full bg-crimson animate-pulse" />
-          <span className="text-[11px] sm:text-xs md:text-sm font-mono font-bold tracking-[0.15em] sm:tracking-[0.2em] text-[#FF9BB5] uppercase">
+          <WordStream
+            key={`hero-cat-${activeSlide.id}`}
+            as="span"
+            className="text-[11px] sm:text-xs md:text-sm font-mono font-bold tracking-[0.15em] sm:tracking-[0.2em] text-[#FF9BB5] uppercase"
+          >
             {activeSlide.category}
-          </span>
+          </WordStream>
         </div>
 
         {/* Full-Width Headline: Fluid typography with zero word clipping */}
-        <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-[4.2rem] xl:text-[5rem] font-display font-extrabold tracking-[-0.03em] text-white leading-[1.12] sm:leading-[1.05] mb-4 sm:mb-6 max-w-4xl break-words">
-          <span>{activeSlide.headlinePrefix} </span>
+        <WordStream
+          key={`hero-h1-${activeSlide.id}`}
+          as="h1"
+          className="text-2xl sm:text-4xl md:text-5xl lg:text-[4.2rem] xl:text-[5rem] font-display font-extrabold tracking-[-0.03em] text-white leading-[1.12] sm:leading-[1.05] mb-4 sm:mb-6 max-w-4xl break-words"
+        >
+          {activeSlide.headlinePrefix}{' '}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF2D6C] via-[#FF5E8E] to-[#FF2D6C] block sm:inline font-display font-extrabold">
             {activeSlide.headlineAccent}
           </span>
-        </h1>
+        </WordStream>
 
         {/* Subtext: Fluid text scale and clean line length */}
-        <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/85 max-w-2xl leading-relaxed mb-6 sm:mb-10 drop-shadow-sm font-normal">
+        <WordStream
+          key={`hero-sub-${activeSlide.id}`}
+          as="p"
+          className="text-sm sm:text-base md:text-lg lg:text-xl text-white/85 max-w-2xl leading-relaxed mb-6 sm:mb-10 drop-shadow-sm font-normal"
+        >
           {activeSlide.subtext}
-        </p>
+        </WordStream>
 
         {/* Action CTAs: Full-width touch buttons on mobile, inline on tablet/desktop */}
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-5 w-full sm:w-auto">
