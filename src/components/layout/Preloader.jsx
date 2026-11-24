@@ -54,9 +54,6 @@ export const Preloader = ({ onComplete }) => {
 
         setTimeout(() => {
           setIsFinished(true);
-          if (typeof window !== 'undefined') {
-            sessionStorage.setItem('1111_preloader_seen', 'true');
-          }
           setTimeout(() => {
             onComplete();
           }, 850);

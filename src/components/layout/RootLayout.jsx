@@ -7,12 +7,8 @@ import { WhatsAppButton } from '@/components/ui/WhatsAppButton';
 import { PageTransition } from '@/components/layout/PageTransition';
 import { useLenis } from '@/hooks/useLenis';
 export const RootLayout = () => {
-    const [preloaderDone, setPreloaderDone] = useState(() => {
-        if (typeof window !== 'undefined') {
-            return sessionStorage.getItem('1111_preloader_seen') === 'true';
-        }
-        return false;
-    });
+    // Show preloader animation on every reload
+    const [preloaderDone, setPreloaderDone] = useState(false);
     // Initialize Lenis smooth scroll synced with GSAP
     useLenis();
     return (<div className="relative min-h-screen bg-ink text-text-dark font-body antialiased selection:bg-crimson selection:text-white">
