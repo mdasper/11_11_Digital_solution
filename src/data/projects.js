@@ -6,12 +6,18 @@ import jbDetail from '@/assets/projects/jb-healthcare-detail.svg';
 import highlandDetail from '@/assets/projects/highland-origin-detail.svg';
 import fazilDetail from '@/assets/projects/fazil-garments-detail.svg';
 import snapitDetail from '@/assets/projects/snapit-studio-detail.svg';
+import jbLogo from '@/assets/projects/client-jb-healthcare.png';
+import highlandLogo from '@/assets/projects/client-highland-origin.png';
+import fazilLogo from '@/assets/projects/client-fazil-garments.png';
+import snapitLogo from '@/assets/projects/client-snapit-studio.png';
+
 export const PROJECTS = [
     {
         id: 'jb-healthcare',
         slug: 'jb-healthcare',
         title: 'JB Healthcare',
         client: 'JB Healthcare Sivakasi',
+        clientLogo: jbLogo,
         category: 'Websites',
         industry: 'Hospital & Healthcare',
         tagline: 'Modern medical digital portal with appointment booking & doctor profiles',
@@ -54,6 +60,7 @@ export const PROJECTS = [
         slug: 'highland-origin',
         title: 'Highland Origin',
         client: 'Highland Origin Coffee Co.',
+        clientLogo: highlandLogo,
         category: 'Websites',
         industry: 'Specialty Coffee Export',
         tagline: 'Artisanal single-origin coffee exporter showcase with rich terroir storytelling',
@@ -96,6 +103,7 @@ export const PROJECTS = [
         slug: 'fazil-garments',
         title: 'Fazil Garments',
         client: 'Fazil Garments Exports',
+        clientLogo: fazilLogo,
         category: 'Websites',
         industry: 'Garments & Apparel Manufacturing',
         tagline: 'High-volume apparel manufacturing exporter portal and factory tour',
@@ -138,6 +146,7 @@ export const PROJECTS = [
         slug: 'snapit-studio',
         title: 'SNAPIT Studio',
         client: 'SNAPIT Studio Creative',
+        clientLogo: snapitLogo,
         category: 'Video',
         industry: 'Video Production & Photography',
         tagline: 'Awwwards-inspired showreel portfolio with high-frame video players',

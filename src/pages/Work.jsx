@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight, ArrowRight, ExternalLink, Sparkles } from 'lucide-react';
 import { PROJECTS } from '@/data/projects';
 import { Button } from '@/components/ui/Button';
-import { CompanyLogoCard } from '@/components/ui/CompanyLogoCard';
 import { cn } from '@/lib/utils';
 
 const FILTERS = [
@@ -175,10 +174,17 @@ const Work = () => {
                         </div>
                       </div>
 
-                      {/* Right: Company Logo & Brand Identity Stage */}
-                      <div className="lg:col-span-7 flex justify-center items-center">
-                        <Link to={`/work/${project.slug}`} className="w-full block relative group/brand-showcase">
-                          <CompanyLogoCard project={project} />
+                      {/* Right: Pure Company Logo Only */}
+                      <div className="lg:col-span-7 flex justify-center items-center py-4 sm:py-8 lg:py-10">
+                        <Link 
+                          to={`/work/${project.slug}`} 
+                          className="w-full flex items-center justify-center p-6 sm:p-10 lg:p-14 rounded-3xl bg-[#0A0709]/80 border border-white/10 hover:border-crimson/40 hover:shadow-[0_16px_45px_rgba(248,17,90,0.25)] transition-all duration-300 group/logo-box"
+                        >
+                          <img
+                            src={project.clientLogo}
+                            alt={`${project.client} Logo`}
+                            className="max-h-28 sm:max-h-36 lg:max-h-44 w-auto max-w-full object-contain rounded-2xl transition-transform duration-500 group-hover/logo-box:scale-105 drop-shadow-xl"
+                          />
                         </Link>
                       </div>
                     </div>
