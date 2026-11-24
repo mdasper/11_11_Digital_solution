@@ -1,9 +1,9 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, ArrowRight, MessageCircle, Sparkles, Calculator, ShieldCheck, Phone } from 'lucide-react';
-import { PRICING_PACKAGES, ESTIMATOR_SERVICES, ESTIMATOR_ADDONS } from '@/data/packages';
+import { Check, ArrowRight, Sparkles, Phone } from 'lucide-react';
+import { PRICING_PACKAGES } from '@/data/packages';
 import { FAQS } from '@/data/faqs';
 import { Button } from '@/components/ui/Button';
 import { Accordion } from '@/components/ui/Accordion';
@@ -19,56 +19,11 @@ const CATEGORY_TABS = [
 
 const Pricing = () => {
     const [activeTab, setActiveTab] = useState('websites');
-    const [estimatorServiceId, setEstimatorServiceId] = useState('web-starter');
-    const activeServiceConfig = useMemo(() => {
-        return ESTIMATOR_SERVICES.find((s) => s.id === estimatorServiceId) || ESTIMATOR_SERVICES[0];
-    }, [estimatorServiceId]);
-    const [units, setUnits] = useState(activeServiceConfig.defaultUnits);
-    const [selectedAddons, setSelectedAddons] = useState([]);
-
-    const handleServiceChange = (id) => {
-        setEstimatorServiceId(id);
-        const newService = ESTIMATOR_SERVICES.find((s) => s.id === id);
-        if (newService) {
-            setUnits(newService.defaultUnits);
-            setSelectedAddons([]);
-        }
-    };
-
-    const toggleAddon = (addonId) => {
-        setSelectedAddons((prev) => prev.includes(addonId)
-            ? prev.filter((id) => id !== addonId)
-            : [...prev, addonId]);
-    };
-
-    const { lowPrice, highPrice } = useMemo(() => {
-        const base = activeServiceConfig.basePrice;
-        const unitAddition = (units - activeServiceConfig.minUnits) * activeServiceConfig.unitPrice;
-        const availableAddons = ESTIMATOR_ADDONS[estimatorServiceId] || [];
-        const addonsTotal = selectedAddons.reduce((sum, addonId) => {
-            const match = availableAddons.find((a) => a.id === addonId);
-            return sum + (match ? match.price : 0);
-        }, 0);
-        const rawTotal = base + Math.max(0, unitAddition) + addonsTotal;
-        const low = Math.round(rawTotal * 0.95 / 500) * 500;
-        const high = Math.round(rawTotal * 1.15 / 500) * 500;
-        return { lowPrice: low, highPrice: high };
-    }, [activeServiceConfig, units, selectedAddons, estimatorServiceId]);
-
-    const estimatorWhatsAppUrl = useMemo(() => {
-        const availableAddons = ESTIMATOR_ADDONS[estimatorServiceId] || [];
-        const addonNames = selectedAddons
-            .map((id) => availableAddons.find((a) => a.id === id)?.label)
-            .filter(Boolean)
-            .join(', ');
-        const text = `Hi 11 11 Digital Solutions, I configured a custom project estimate:\n\n• Service: ${activeServiceConfig.name}\n• Scale: ${units} ${activeServiceConfig.unitName}\n• Add-ons: ${addonNames || 'None'}\n• Estimated Range: ₹${lowPrice.toLocaleString('en-IN')} - ₹${highPrice.toLocaleString('en-IN')}\n\nI'd like to discuss starting this project with you!`;
-        return `https://wa.me/919566498072?text=${encodeURIComponent(text)}`;
-    }, [activeServiceConfig, units, selectedAddons, estimatorServiceId, lowPrice, highPrice]);
 
     return (<>
       <Helmet>
         <title>Pricing & Packages | 11 11 Digital Solutions</title>
-        <meta name="description" content="Transparent investment pricing for Website Development, Digital Marketing, and Reels Production. Interactive project cost estimator."/>
+        <meta name="description" content="Transparent investment pricing for Website Development, Digital Marketing, and Reels Production. Clear deliverables and fixed milestone reviews."/>
       </Helmet>
 
       <div className="min-h-screen">
@@ -225,170 +180,7 @@ const Pricing = () => {
           </div>
         </section>
 
-        {/* 3. INTERACTIVE PROJECT ESTIMATOR (Obsidian Dark Stage) */}
-        <section className="py-24 sm:py-32 px-6 sm:px-8 bg-[#0D0A0C] text-white border-b border-white/[0.08]">
-          <StreamReveal>
-            <div className="max-w-7xl mx-auto">
-            <div className="rounded-[36px] bg-gradient-to-br from-[#1E0B1A] via-[#150610] to-[#0D050A] border border-crimson/30 p-8 sm:p-14 lg:p-16 relative overflow-hidden shadow-[0_24px_70px_rgba(0,0,0,0.6)]">
-              {/* Ambient Radial background */}
-              <div className="pointer-events-none absolute top-0 right-0 w-96 h-96 bg-crimson/15 rounded-full blur-[140px]"/>
-
-              <div className="relative z-10">
-                <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 pb-8 border-b border-white/10">
-                  <div className="max-w-xl">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-crimson/20 border border-crimson/30 text-xs font-mono font-bold tracking-widest text-[#FFA3BD] uppercase mb-3">
-                      <Calculator className="w-3.5 h-3.5 text-crimson"/>
-                      <span>CUSTOM SCOPE CALCULATOR</span>
-                    </div>
-                    <WordStream
-                      as="h2"
-                      className="text-2xl sm:text-4xl font-display font-extrabold text-white mb-2"
-                    >
-                      Interactive Project Estimator
-                    </WordStream>
-                    <WordStream
-                      as="p"
-                      className="text-xs sm:text-sm text-white/70"
-                    >
-                      Configure your desired scope in real time. We calculate an instant estimate and provide a 1-tap WhatsApp summary for immediate confirmation.
-                    </WordStream>
-                  </div>
-
-                  {/* Live Calculated Price Range Display */}
-                  <div className="rounded-2xl bg-[#0A0709] border border-crimson/40 p-5 shrink-0 text-right md:min-w-[240px] text-white shadow-lg">
-                    <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#FF9BB5] block mb-1">
-                      ESTIMATED RANGE (INR)
-                    </span>
-                    <div className="text-2xl sm:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-[#FFA3BD] to-crimson font-mono">
-                      ₹{lowPrice.toLocaleString('en-IN')} - ₹{highPrice.toLocaleString('en-IN')}
-                    </div>
-                    <span className="text-[10px] text-white/50 block mt-1 font-mono">
-                      Based on current configuration
-                    </span>
-                  </div>
-                </div>
-
-                {/* Step 1: Service Selection */}
-                <div className="mb-10">
-                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#FFA3BD] block mb-4">
-                    Step 1: Choose Primary Service
-                  </span>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    {ESTIMATOR_SERVICES.map((srv) => {
-                      const isSelected = estimatorServiceId === srv.id;
-                      return (
-                        <button 
-                          key={srv.id} 
-                          type="button" 
-                          onClick={() => handleServiceChange(srv.id)} 
-                          className={cn(
-                            'p-4 rounded-2xl text-left border transition-all duration-200 select-none',
-                            isSelected
-                              ? 'bg-crimson/20 border-crimson text-white font-bold shadow-crimson-glow'
-                              : 'bg-white/5 border-white/10 text-white/70 hover:border-crimson/40 hover:text-white'
-                          )}
-                        >
-                          <div className="font-semibold text-sm mb-1">{srv.name}</div>
-                          <div className="text-xs font-mono text-[#FFA3BD] font-bold">
-                            From ₹{srv.basePrice.toLocaleString('en-IN')}
-                          </div>
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                {/* Step 2: Scale Slider */}
-                <div className="mb-10 p-6 rounded-2xl bg-white/5 border border-white/10">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-xs font-mono font-bold uppercase tracking-wider text-white">
-                      Step 2: Project Scale ({activeServiceConfig.unitName})
-                    </span>
-                    <span className="text-lg font-bold font-mono text-crimson bg-crimson/20 px-3 py-1 rounded-lg border border-crimson/30">
-                      {units} {activeServiceConfig.unitName}
-                    </span>
-                  </div>
-
-                  <input 
-                    type="range" 
-                    min={activeServiceConfig.minUnits} 
-                    max={activeServiceConfig.maxUnits} 
-                    value={units} 
-                    onChange={(e) => setUnits(Number(e.target.value))} 
-                    className="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer accent-crimson"
-                  />
-
-                  <div className="flex justify-between text-[11px] text-white/50 font-mono mt-2">
-                    <span>{activeServiceConfig.minUnits} {activeServiceConfig.unitName}</span>
-                    <span>{activeServiceConfig.maxUnits} {activeServiceConfig.unitName}</span>
-                  </div>
-                </div>
-
-                {/* Step 3: Add-on Checkboxes */}
-                <div className="mb-12">
-                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#FFA3BD] block mb-4">
-                    Step 3: Select Optional Add-ons
-                  </span>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {(ESTIMATOR_ADDONS[estimatorServiceId] || []).map((addon) => {
-                      const isChecked = selectedAddons.includes(addon.id);
-                      return (
-                        <div 
-                          key={addon.id} 
-                          onClick={() => toggleAddon(addon.id)} 
-                          className={cn(
-                            'p-4 rounded-2xl border transition-all duration-200 cursor-pointer flex items-start gap-3 select-none',
-                            isChecked
-                              ? 'bg-crimson/20 border-crimson'
-                              : 'bg-white/5 border-white/10 hover:border-white/25'
-                          )}
-                        >
-                          <div className={cn(
-                            'w-5 h-5 rounded-md border flex items-center justify-center shrink-0 mt-0.5 transition-colors',
-                            isChecked ? 'bg-crimson border-crimson text-white' : 'border-white/30 bg-transparent'
-                          )}>
-                            {isChecked && <Check className="w-3.5 h-3.5 text-white"/>}
-                          </div>
-
-                          <div className="flex-1">
-                            <div className="flex items-center justify-between gap-2 mb-0.5">
-                              <span className="text-xs sm:text-sm font-semibold text-white">
-                                {addon.label}
-                              </span>
-                              <span className="text-xs font-mono font-bold text-[#FFA3BD]">
-                                +₹{addon.price.toLocaleString('en-IN')}
-                              </span>
-                            </div>
-                            <p className="text-[11px] text-white/60">{addon.description}</p>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                {/* Step 4: WhatsApp Action CTA */}
-                <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pt-6 border-t border-white/10">
-                  <div className="flex items-center gap-3 text-xs text-white/70">
-                    <ShieldCheck className="w-4 h-4 text-crimson shrink-0"/>
-                    <span>No commitment required. We respond on WhatsApp within 15 minutes.</span>
-                  </div>
-
-                  <a href={estimatorWhatsAppUrl} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-                    <Button variant="primary" size="lg" className="w-full sm:w-auto shadow-crimson-glow font-bold">
-                      <MessageCircle className="w-4 h-4 mr-2"/>
-                      <span>Send this Quote on WhatsApp</span>
-                      <ArrowRight className="w-4 h-4 ml-2"/>
-                    </Button>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          </StreamReveal>
-        </section>
-
-        {/* 4. FAQ SECTION (Blush Stage) */}
+        {/* 3. FAQ SECTION (Blush Stage) */}
         <section className="py-24 sm:py-32 px-6 sm:px-8 bg-gradient-to-b from-[#FAF5F8] via-white to-[#FAF5F8] border-b border-black/[0.06]">
           <StreamReveal>
             <div className="max-w-4xl mx-auto">
