@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight, ArrowRight, ExternalLink, Sparkles } from 'lucide-react';
 import { PROJECTS } from '@/data/projects';
 import { Button } from '@/components/ui/Button';
-import { DeviceMockup } from '@/components/ui/DeviceMockup';
+import { CompanyLogoCard } from '@/components/ui/CompanyLogoCard';
 import { cn } from '@/lib/utils';
 
 const FILTERS = [
@@ -30,13 +30,13 @@ const Work = () => {
 
       <div className="min-h-screen">
         
-        {/* 1. HERO SECTION (Obsidian Dark Stage) */}
-        <section className="pt-36 sm:pt-44 pb-20 px-6 sm:px-8 bg-[#0A0709] text-white border-b border-white/[0.08] relative overflow-hidden">
+        {/* 1. HERO SECTION (Obsidian Dark Stage - Full Width) */}
+        <section className="pt-36 sm:pt-44 pb-20 px-6 sm:px-10 lg:px-16 xl:px-20 bg-[#0A0709] text-white border-b border-white/[0.08] relative overflow-hidden">
           {/* Ambient Crimson Glow */}
           <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[850px] h-[450px] bg-crimson/20 blur-[150px] rounded-full" />
 
-          <div className="max-w-7xl mx-auto relative z-10">
-            <div className="max-w-3xl">
+          <div className="w-full relative z-10">
+            <div className="max-w-4xl">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-crimson/20 border border-crimson/35 shadow-sm mb-6">
                 <Sparkles className="w-3.5 h-3.5 text-crimson animate-pulse" />
                 <span className="font-mono text-xs font-bold text-[#FFA3BD] tracking-widest uppercase">
@@ -48,19 +48,19 @@ const Work = () => {
                 Engineered for <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF2D6C] via-[#FF5E8E] to-[#FF2D6C]">impact</span> &amp; scale.
               </h1>
 
-              <p className="text-base sm:text-lg text-white/70 leading-relaxed max-w-2xl font-normal">
+              <p className="text-base sm:text-lg text-white/70 leading-relaxed max-w-3xl font-normal">
                 We build flagship digital products, commercial video productions, and performance campaigns that deliver tangible revenue growth and industry distinction.
               </p>
             </div>
           </div>
         </section>
 
-        {/* 2. FILTER + PROJECTS LIST (Blush Luxury Stage + Velvet Dark Rose Project Cards) */}
+        {/* 2. FILTER + PROJECTS LIST (Full-Width Blush Luxury Stage + Centered Filter Pills) */}
         <section className="bg-gradient-to-b from-[#FAF5F8] via-[#FFF0F5] to-white py-16 sm:py-24 border-b border-black/[0.06]">
-          <div className="max-w-7xl mx-auto px-6 sm:px-8">
+          <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20">
             
-            {/* Filter Pills with animated layoutId */}
-            <div className="flex flex-wrap items-center gap-3 mb-16 border-b border-black/[0.08] pb-6">
+            {/* Filter Pills Centered */}
+            <div className="flex flex-wrap items-center justify-center gap-3 mb-16 border-b border-black/[0.08] pb-8">
               {FILTERS.map((filter) => {
                 const isActive = activeFilter === filter.value;
                 return (
@@ -175,16 +175,10 @@ const Work = () => {
                         </div>
                       </div>
 
-                      {/* Right Mockup Showcase (7 cols) */}
+                      {/* Right: Company Logo & Brand Identity Stage */}
                       <div className="lg:col-span-7 flex justify-center items-center">
-                        <Link to={`/work/${project.slug}`} className="w-full block relative rounded-2xl overflow-hidden group/mockup">
-                          {project.deviceType === 'phone' ? (
-                            <div className="py-6 flex justify-center">
-                              <DeviceMockup type="phone" imageSrc={project.mockupImage} alt={project.title} className="transform transition-transform duration-700 ease-out group-hover:scale-[1.03]"/>
-                            </div>
-                          ) : (
-                            <DeviceMockup type="laptop" imageSrc={project.mockupImage} alt={project.title} className="transform transition-transform duration-700 ease-out group-hover:scale-[1.03]"/>
-                          )}
+                        <Link to={`/work/${project.slug}`} className="w-full block relative group/brand-showcase">
+                          <CompanyLogoCard project={project} />
                         </Link>
                       </div>
                     </div>
