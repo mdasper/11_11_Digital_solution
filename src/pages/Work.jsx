@@ -104,9 +104,9 @@ const Work = () => {
                     {/* Subtle Inner Radial Spotlight on hover */}
                     <div className="absolute top-0 right-0 w-96 h-96 bg-crimson/15 rounded-full blur-3xl pointer-events-none group-hover:bg-crimson/25 transition-all duration-500"/>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
-                      {/* Left Details Column (5 cols) */}
-                      <div className="lg:col-span-5 flex flex-col justify-between">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center relative z-10">
+                      {/* Left Details Column (7 cols): Generous space for narrative & metrics */}
+                      <div className="lg:col-span-7 xl:col-span-7 flex flex-col justify-between">
                         <div>
                           {/* Meta Top Line */}
                           <div className="flex flex-wrap items-center gap-3 mb-4">
@@ -150,7 +150,7 @@ const Work = () => {
 
                           {/* Technologies Tags */}
                           <div className="flex flex-wrap gap-1.5 mb-8">
-                            {project.technologies.slice(0, 4).map((tech, tIdx) => (
+                            {project.technologies.slice(0, 5).map((tech, tIdx) => (
                               <span key={tIdx} className="text-[11px] px-2.5 py-1 rounded-md bg-white/10 border border-white/10 text-white/75 font-mono">
                                 {tech}
                               </span>
@@ -174,17 +174,35 @@ const Work = () => {
                         </div>
                       </div>
 
-                      {/* Right: Pure Company Logo Only */}
-                      <div className="lg:col-span-7 flex justify-center items-center py-4 sm:py-8 lg:py-10">
+                      {/* Right: Focused Brand Logo Showcase (5 cols - perfectly fitted, no empty void) */}
+                      <div className="lg:col-span-5 xl:col-span-5 flex justify-center items-center">
                         <Link 
                           to={`/work/${project.slug}`} 
-                          className="w-full flex items-center justify-center p-6 sm:p-10 lg:p-14 rounded-3xl bg-[#0A0709]/80 border border-white/10 hover:border-crimson/40 hover:shadow-[0_16px_45px_rgba(248,17,90,0.25)] transition-all duration-300 group/logo-box"
+                          className="w-full max-w-[440px] rounded-3xl bg-gradient-to-br from-[#1B0715]/90 via-[#270B1E]/80 to-[#12050E]/90 border border-crimson/30 hover:border-crimson/60 shadow-[0_20px_50px_rgba(0,0,0,0.6)] p-6 sm:p-8 flex flex-col items-center justify-center relative overflow-hidden group/logo-stage transition-all duration-300"
                         >
-                          <img
-                            src={project.clientLogo}
-                            alt={`${project.client} Logo`}
-                            className="max-h-28 sm:max-h-36 lg:max-h-44 w-auto max-w-full object-contain rounded-2xl transition-transform duration-500 group-hover/logo-box:scale-105 drop-shadow-xl"
-                          />
+                          {/* Ambient Crimson Top Glow */}
+                          <div className="pointer-events-none absolute -top-16 -right-16 w-48 h-48 bg-crimson/20 rounded-full blur-[60px] group-hover/logo-stage:bg-crimson/35 transition-all duration-500" />
+                          <div className="pointer-events-none absolute -bottom-16 -left-16 w-48 h-48 bg-magenta/15 rounded-full blur-[60px]" />
+
+                          {/* Client Brand Logo Container */}
+                          <div className="relative z-10 w-full flex items-center justify-center py-4">
+                            <img
+                              src={project.clientLogo}
+                              alt={`${project.client} Logo`}
+                              className="w-full h-auto max-h-32 sm:max-h-40 object-contain rounded-2xl drop-shadow-[0_10px_25px_rgba(0,0,0,0.6)] group-hover/logo-stage:scale-105 transition-transform duration-500"
+                            />
+                          </div>
+
+                          {/* Client Verified Marker */}
+                          <div className="relative z-10 mt-4 pt-3 border-t border-white/10 w-full flex items-center justify-between text-[11px] font-mono text-white/60">
+                            <span className="flex items-center gap-1.5 text-white/80 font-bold uppercase tracking-wider">
+                              <span className="w-1.5 h-1.5 rounded-full bg-crimson animate-pulse" />
+                              {project.client}
+                            </span>
+                            <span className="text-crimson group-hover/logo-stage:text-[#FFA3BD] transition-colors flex items-center gap-1">
+                              View Project <ArrowUpRight className="w-3 h-3" />
+                            </span>
+                          </div>
                         </Link>
                       </div>
                     </div>
