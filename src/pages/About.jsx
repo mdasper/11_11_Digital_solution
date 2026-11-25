@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet-async'
-import { Mail, Phone, ArrowRight, Sparkles, MessageCircle, CheckCircle2, Volume2, VolumeX } from 'lucide-react'
+import { Mail, Phone, ArrowRight, Sparkles, MessageCircle, CheckCircle2, Volume2, VolumeX, Play, RotateCcw } from 'lucide-react'
 import { ABOUT_DATA } from '@/data/about'
 import { Button } from '@/components/ui/Button'
 import { CONTACT_INFO } from '@/data/navigation'
@@ -13,13 +13,40 @@ const About = () => {
   const containerRef = useRef(null)
   const videoRef = useRef(null)
   const [isMuted, setIsMuted] = useState(true)
+  const [isPlaying, setIsPlaying] = useState(true)
+  const [hasEnded, setHasEnded] = useState(false)
 
-  const toggleSound = () => {
+  const toggleSound = (e) => {
+    e?.stopPropagation()
     if (videoRef.current) {
       const nextMuted = !videoRef.current.muted
       videoRef.current.muted = nextMuted
       setIsMuted(nextMuted)
     }
+  }
+
+  const handlePlayPause = () => {
+    if (!videoRef.current) return
+    if (videoRef.current.paused || videoRef.current.ended) {
+      if (videoRef.current.ended) {
+        videoRef.current.currentTime = 0
+      }
+      videoRef.current.play()
+      setIsPlaying(true)
+      setHasEnded(false)
+    } else {
+      videoRef.current.pause()
+      setIsPlaying(false)
+    }
+  }
+
+  const handleReplay = (e) => {
+    e?.stopPropagation()
+    if (!videoRef.current) return
+    videoRef.current.currentTime = 0
+    videoRef.current.play()
+    setIsPlaying(true)
+    setHasEnded(false)
   }
 
   useEffect(() => {
@@ -60,7 +87,7 @@ const About = () => {
           <div className="max-w-7xl mx-auto relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
               {/* Left Column: Studio Headline & CTAs */}
-              <div className="lg:col-span-7">
+              <div className="lg:col-span-6">
                 <div className="about-hero-fade inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-crimson/20 border border-crimson/35 shadow-sm backdrop-blur-md mb-6">
                   <Sparkles className="w-3.5 h-3.5 text-crimson animate-pulse" />
                   <span className="font-mono text-xs font-bold text-[#FFA3BD] tracking-widest uppercase">
@@ -70,7 +97,7 @@ const About = () => {
 
                 <WordStream
                   as="h1"
-                  className="about-hero-fade text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-display font-extrabold tracking-tight leading-[1.1] mb-6 text-white"
+                  className="about-hero-fade text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-display font-extrabold tracking-tight leading-[1.1] mb-6 text-white"
                 >
                   We build digital assets that{' '}
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF2D6C] via-[#FF5E8E] to-[#FF2D6C]">
@@ -81,7 +108,7 @@ const About = () => {
 
                 <WordStream
                   as="p"
-                  className="about-hero-fade text-base sm:text-lg text-white/70 leading-relaxed max-w-2xl mb-8"
+                  className="about-hero-fade text-base sm:text-lg text-white/70 leading-relaxed max-w-xl mb-8"
                 >
                   {ABOUT_DATA.hero.subtext}
                 </WordStream>
@@ -97,31 +124,66 @@ const About = () => {
                 </div>
               </div>
 
-              {/* Right Column: Founder Introduction Video Showcase */}
-              <div className="lg:col-span-5 about-hero-fade">
-                <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden aspect-video bg-black shadow-[0_20px_60px_rgba(0,0,0,0.85),0_0_30px_rgba(255,45,108,0.15)] border border-white/10 group">
+              {/* Right Column: Founder Introduction Video Showcase (Increased Ratio) */}
+              <div className="lg:col-span-6 about-hero-fade">
+                <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden aspect-video bg-black shadow-[0_25px_70px_rgba(0,0,0,0.9),0_0_35px_rgba(255,45,108,0.18)] border border-white/12 group">
                   {/* Ambient Crimson Rim Glow behind the video */}
-                  <div className="pointer-events-none absolute -top-12 -right-12 w-48 h-48 bg-crimson/20 rounded-full blur-[50px]" />
+                  <div className="pointer-events-none absolute -top-12 -right-12 w-56 h-56 bg-crimson/25 rounded-full blur-[60px]" />
                   <div className="pointer-events-none absolute top-0 left-6 right-6 h-[1.5px] bg-gradient-to-r from-transparent via-crimson to-transparent z-10" />
 
                   <video
                     ref={videoRef}
                     id="about-hero-video"
                     autoPlay
-                    loop
                     muted={isMuted}
                     playsInline
                     preload="auto"
-                    className="w-full h-full object-cover rounded-2xl sm:rounded-3xl"
+                    onEnded={() => {
+                      setIsPlaying(false)
+                      setHasEnded(true)
+                    }}
+                    onPlay={() => {
+                      setIsPlaying(true)
+                      setHasEnded(false)
+                    }}
+                    onPause={() => {
+                      setIsPlaying(false)
+                    }}
+                    onClick={handlePlayPause}
+                    className="w-full h-full object-cover rounded-2xl sm:rounded-3xl cursor-pointer"
                   >
                     <source src="/videos/founder-intro.mp4" type="video/mp4" />
                   </video>
+
+                  {/* Center Play / Replay Overlay Button (appears when finished or paused) */}
+                  {(!isPlaying || hasEnded) && (
+                    <div
+                      className="absolute inset-0 z-30 bg-black/45 backdrop-blur-[2px] flex flex-col items-center justify-center transition-all duration-300 cursor-pointer"
+                      onClick={hasEnded ? handleReplay : handlePlayPause}
+                    >
+                      <button
+                        type="button"
+                        onClick={hasEnded ? handleReplay : handlePlayPause}
+                        className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-crimson hover:bg-[#E01453] text-white flex items-center justify-center shadow-[0_0_40px_rgba(255,45,108,0.7)] hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer group/btn"
+                        aria-label={hasEnded ? 'Replay founder video' : 'Play founder video'}
+                      >
+                        {hasEnded ? (
+                          <RotateCcw className="w-7 h-7 sm:w-8 sm:h-8 text-white group-hover/btn:rotate-[-45deg] transition-transform duration-300" />
+                        ) : (
+                          <Play className="w-7 h-7 sm:w-8 sm:h-8 text-white fill-white ml-1" />
+                        )}
+                      </button>
+                      <span className="text-xs sm:text-sm font-mono font-bold uppercase tracking-widest text-white mt-3 drop-shadow-md">
+                        {hasEnded ? 'Replay Video' : 'Play Video'}
+                      </span>
+                    </div>
+                  )}
 
                   {/* Sound Toggle Button (Bottom-Right) */}
                   <button
                     type="button"
                     onClick={toggleSound}
-                    className="absolute bottom-3 right-3 z-20 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/75 hover:bg-crimson backdrop-blur-md border border-white/15 text-white text-[11px] font-mono font-bold tracking-wider transition-all duration-200 shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson cursor-pointer"
+                    className="absolute bottom-3.5 right-3.5 z-40 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/75 hover:bg-crimson backdrop-blur-md border border-white/15 text-white text-[11px] font-mono font-bold tracking-wider transition-all duration-200 shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson cursor-pointer"
                     aria-label={isMuted ? 'Unmute founder video' : 'Mute founder video'}
                   >
                     {isMuted ? (
@@ -138,7 +200,7 @@ const About = () => {
                   </button>
 
                   {/* Top Corner Pill: Founder Intro */}
-                  <div className="absolute top-3 left-3 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-[10px] font-mono font-semibold text-white/80 pointer-events-none">
+                  <div className="absolute top-3.5 left-3.5 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-[10px] font-mono font-semibold text-white/80 pointer-events-none">
                     <span className="w-1.5 h-1.5 rounded-full bg-crimson animate-pulse" />
                     <span>FOUNDER INTRO</span>
                   </div>
