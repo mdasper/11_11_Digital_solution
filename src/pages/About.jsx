@@ -1,6 +1,6 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet-async'
-import { Mail, Phone, ArrowRight, Sparkles, MessageCircle, CheckCircle2 } from 'lucide-react'
+import { Mail, Phone, ArrowRight, Sparkles, MessageCircle, CheckCircle2, Volume2, VolumeX } from 'lucide-react'
 import { ABOUT_DATA } from '@/data/about'
 import { Button } from '@/components/ui/Button'
 import { CONTACT_INFO } from '@/data/navigation'
@@ -11,6 +11,16 @@ import { WordStream } from '@/components/motion/WordStream'
 
 const About = () => {
   const containerRef = useRef(null)
+  const videoRef = useRef(null)
+  const [isMuted, setIsMuted] = useState(true)
+
+  const toggleSound = () => {
+    if (videoRef.current) {
+      const nextMuted = !videoRef.current.muted
+      videoRef.current.muted = nextMuted
+      setIsMuted(nextMuted)
+    }
+  }
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -87,19 +97,51 @@ const About = () => {
                 </div>
               </div>
 
-              {/* Right Column: Clean Borderless Video Showcase */}
+              {/* Right Column: Founder Introduction Video Showcase */}
               <div className="lg:col-span-5 about-hero-fade">
-                <div className="relative rounded-3xl overflow-hidden aspect-[16/10] sm:aspect-[16/9] lg:aspect-[4/3] bg-black/40 shadow-2xl">
+                <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden aspect-video bg-black shadow-[0_20px_60px_rgba(0,0,0,0.85),0_0_30px_rgba(255,45,108,0.15)] border border-white/10 group">
+                  {/* Ambient Crimson Rim Glow behind the video */}
+                  <div className="pointer-events-none absolute -top-12 -right-12 w-48 h-48 bg-crimson/20 rounded-full blur-[50px]" />
+                  <div className="pointer-events-none absolute top-0 left-6 right-6 h-[1.5px] bg-gradient-to-r from-transparent via-crimson to-transparent z-10" />
+
                   <video
+                    ref={videoRef}
                     id="about-hero-video"
                     autoPlay
                     loop
-                    muted
+                    muted={isMuted}
                     playsInline
-                    className="w-full h-full object-cover rounded-3xl"
+                    preload="auto"
+                    className="w-full h-full object-cover rounded-2xl sm:rounded-3xl"
                   >
-                    <source src="/assets/videos/about-hero.mp4" type="video/mp4" />
+                    <source src="/videos/founder-intro.mp4" type="video/mp4" />
                   </video>
+
+                  {/* Sound Toggle Button (Bottom-Right) */}
+                  <button
+                    type="button"
+                    onClick={toggleSound}
+                    className="absolute bottom-3 right-3 z-20 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/75 hover:bg-crimson backdrop-blur-md border border-white/15 text-white text-[11px] font-mono font-bold tracking-wider transition-all duration-200 shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson cursor-pointer"
+                    aria-label={isMuted ? 'Unmute founder video' : 'Mute founder video'}
+                  >
+                    {isMuted ? (
+                      <>
+                        <VolumeX className="w-3.5 h-3.5 text-white/80" />
+                        <span>UNMUTE</span>
+                      </>
+                    ) : (
+                      <>
+                        <Volume2 className="w-3.5 h-3.5 text-white animate-pulse" />
+                        <span>MUTE</span>
+                      </>
+                    )}
+                  </button>
+
+                  {/* Top Corner Pill: Founder Intro */}
+                  <div className="absolute top-3 left-3 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-[10px] font-mono font-semibold text-white/80 pointer-events-none">
+                    <span className="w-1.5 h-1.5 rounded-full bg-crimson animate-pulse" />
+                    <span>FOUNDER INTRO</span>
+                  </div>
                 </div>
               </div>
             </div>
