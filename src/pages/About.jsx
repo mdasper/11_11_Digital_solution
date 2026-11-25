@@ -107,52 +107,46 @@ const About = () => {
         </section>
 
         {/* 2. A MESSAGE FROM THE FOUNDER (Executive Obsidian Stage + Founder Spotlight) */}
-        <section className="py-24 sm:py-32 px-6 sm:px-8 bg-gradient-to-b from-[#0A0709] via-[#120811] to-[#0D0A0C] text-white border-b border-white/[0.08] relative overflow-hidden">
+        <section className="py-16 sm:py-20 lg:py-24 px-6 sm:px-8 bg-gradient-to-b from-[#0A0709] via-[#120811] to-[#0D0A0C] text-white border-b border-white/[0.08] relative overflow-hidden">
           {/* Ambient Crimson Glow Lights */}
           <div className="pointer-events-none absolute -top-32 right-1/4 w-[600px] h-[350px] bg-crimson/15 blur-[160px] rounded-full" />
           <div className="pointer-events-none absolute -bottom-32 left-10 w-[450px] h-[300px] bg-crimson/10 blur-[140px] rounded-full" />
 
           <StreamReveal>
             <div className="max-w-7xl mx-auto relative z-10">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
                 
-                {/* Left Column: Founder Portrait & Direct Contacts */}
-                <div className="lg:col-span-5">
-                  <div className="relative rounded-[32px] p-3 sm:p-3.5 bg-gradient-to-br from-[#200A18] via-[#180814] to-[#0D0A0C] border border-white/12 shadow-[0_30px_90px_rgba(0,0,0,0.9),0_0_35px_rgba(255,45,108,0.15)] group overflow-hidden">
+                {/* Left Column: Founder Square Portrait & Direct Contacts */}
+                <div className="lg:col-span-5 flex flex-col items-center">
+                  <div className="w-full max-w-[440px] relative rounded-[32px] p-3 sm:p-3.5 bg-gradient-to-br from-[#200A18] via-[#180814] to-[#0D0A0C] border border-white/12 shadow-[0_30px_90px_rgba(0,0,0,0.9),0_0_35px_rgba(255,45,108,0.15)] group overflow-hidden">
                     {/* Top ambient glow line */}
                     <div className="pointer-events-none absolute top-0 left-8 right-8 h-[1.5px] bg-gradient-to-r from-transparent via-crimson to-transparent" />
 
-                    {/* Founder Photo */}
-                    <div className="relative rounded-[24px] overflow-hidden aspect-[4/5] bg-black/60 border border-white/10 group-hover:border-crimson/30 transition-colors duration-500">
+                    {/* Square Image Frame (Equal Height & Width) */}
+                    <div className="relative rounded-[24px] overflow-hidden aspect-square bg-black/60 border border-white/10 group-hover:border-crimson/30 transition-colors duration-500">
                       <img
                         src={founderImg}
                         alt={ABOUT_DATA.founder.name}
-                        className="w-full h-full object-cover object-center group-hover:scale-[1.03] transition-transform duration-700 ease-out"
+                        className="w-full h-full object-cover object-[center_18%] group-hover:scale-[1.03] transition-transform duration-700 ease-out"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0D0A0C] via-transparent to-transparent opacity-80" />
-                      
-                      {/* Top Pill: Direct Execution Badge */}
-                      <div className="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/15 text-[10px] font-mono font-bold uppercase tracking-wider text-white/90 flex items-center gap-1.5 shadow-sm">
-                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                        <span>Direct Partner Access</span>
-                      </div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0D0A0C]/90 via-[#0D0A0C]/30 to-transparent" />
 
                       {/* Bottom Info Overlay */}
-                      <div className="absolute bottom-4 left-4 right-4">
-                        <div className="inline-block px-2.5 py-0.5 rounded-md bg-crimson/25 border border-crimson/40 text-[10px] font-mono font-bold uppercase tracking-widest text-[#FFA3BD] mb-1.5">
+                      <div className="absolute bottom-3.5 left-4 right-4">
+                        <div className="inline-block px-2 py-0.5 rounded-md bg-crimson/25 border border-crimson/40 text-[9.5px] font-mono font-bold uppercase tracking-widest text-[#FFA3BD] mb-1">
                           {ABOUT_DATA.founder.badge}
                         </div>
-                        <h3 className="text-2xl font-display font-extrabold text-white">
+                        <h3 className="text-xl sm:text-2xl font-display font-extrabold text-white leading-tight">
                           {ABOUT_DATA.founder.name}
                         </h3>
-                        <p className="text-xs font-mono text-white/70 mt-0.5">
+                        <p className="text-[11px] font-mono text-white/70 mt-0.5">
                           11 11 Digital Solutions · Est. {ABOUT_DATA.founder.established} · {ABOUT_DATA.founder.location}
                         </p>
                       </div>
                     </div>
 
                     {/* Direct Contact Action Row */}
-                    <div className="mt-4 pt-4 border-t border-white/[0.08] flex items-center justify-between gap-2 px-1">
+                    <div className="mt-3.5 pt-3.5 border-t border-white/[0.08] flex items-center justify-between gap-2 px-1">
                       <a
                         href={`https://wa.me/${CONTACT_INFO.phoneRaw}?text=Hi%20Mohamed%20Asper,%20I'd%20like%20to%20discuss%20a%20project%20with%2011%2011%20Digital%20Solutions`}
                         target="_blank"
@@ -182,45 +176,45 @@ const About = () => {
 
                 {/* Right Column: Founder's Vision, Note & Commitments */}
                 <div className="lg:col-span-7 flex flex-col justify-center">
-                  <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-crimson/20 border border-crimson/35 shadow-sm backdrop-blur-md mb-4 self-start">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-crimson/20 border border-crimson/35 shadow-sm backdrop-blur-md mb-3 self-start">
                     <Sparkles className="w-3.5 h-3.5 text-crimson animate-pulse" />
-                    <span className="font-mono text-xs font-bold text-[#FFA3BD] tracking-widest uppercase">
+                    <span className="font-mono text-[11px] font-bold text-[#FFA3BD] tracking-widest uppercase">
                       || A Message From The Founder
                     </span>
                   </div>
 
                   <WordStream
                     as="h2"
-                    className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold tracking-tight mb-6 text-white leading-tight"
+                    className="text-2xl sm:text-3xl lg:text-4xl font-display font-extrabold tracking-tight mb-4 text-white leading-tight"
                   >
                     Every digital touchpoint should demand <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF2D6C] via-[#FF5E8E] to-[#FF2D6C]">attention</span> and command <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF2D6C] via-[#FF5E8E] to-[#FF2D6C]">trust</span>.
                   </WordStream>
 
                   {/* Founder's Pull Quote */}
-                  <blockquote className="text-base sm:text-lg font-display italic text-[#FF9BB5] border-l-2 border-crimson pl-4 py-1 mb-8 leading-relaxed bg-white/[0.02] rounded-r-xl">
+                  <blockquote className="text-sm sm:text-base font-display italic text-[#FF9BB5] border-l-2 border-crimson pl-3.5 py-1 mb-5 leading-relaxed bg-white/[0.02] rounded-r-xl">
                     "{ABOUT_DATA.founder.quote}"
                   </blockquote>
 
                   {/* Letter Body */}
-                  <div className="space-y-4 text-base sm:text-lg text-white/75 leading-relaxed font-normal mb-8">
+                  <div className="space-y-3 text-sm sm:text-[15px] text-white/75 leading-relaxed font-normal mb-6">
                     {ABOUT_DATA.founder.letter.map((paragraph, idx) => (
                       <p key={idx}>{paragraph}</p>
                     ))}
                   </div>
 
                   {/* 3 Core Founder Commitments */}
-                  <div className="space-y-3 pt-6 border-t border-white/10 mb-8">
-                    <span className="text-xs font-mono uppercase tracking-widest text-[#FFA3BD] block mb-2 font-bold">
+                  <div className="space-y-2.5 pt-4 border-t border-white/10 mb-6">
+                    <span className="text-[11px] font-mono uppercase tracking-widest text-[#FFA3BD] block mb-2 font-bold">
                       || The 11 11 Standard · Personal Commitments
                     </span>
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
                       {ABOUT_DATA.founder.commitments.map((item, idx) => (
                         <div
                           key={idx}
-                          className="p-3.5 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-crimson/30 transition-all"
+                          className="p-3 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-crimson/30 transition-all"
                         >
-                          <div className="flex items-center gap-2 mb-1.5">
-                            <CheckCircle2 className="w-4 h-4 text-crimson shrink-0" />
+                          <div className="flex items-center gap-1.5 mb-1">
+                            <CheckCircle2 className="w-3.5 h-3.5 text-crimson shrink-0" />
                             <h4 className="text-xs font-bold text-white leading-snug">{item.title}</h4>
                           </div>
                           <p className="text-[11px] text-white/65 leading-relaxed">{item.desc}</p>
@@ -231,7 +225,7 @@ const About = () => {
 
                   {/* CTA row */}
                   <div className="flex flex-wrap items-center gap-4">
-                    <Button to="/contact" variant="primary" size="lg" className="shadow-crimson-glow font-bold">
+                    <Button to="/contact" variant="primary" size="md" className="shadow-crimson-glow font-bold text-xs uppercase tracking-wider">
                       <span>Start a Direct Conversation with Mohamed</span>
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
