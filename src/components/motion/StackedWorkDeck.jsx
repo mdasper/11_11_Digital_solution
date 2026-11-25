@@ -121,21 +121,14 @@ export const StackedWorkDeck = () => {
 
                     {/* CTAs */}
                     <div className="flex items-center gap-5 pt-6 border-t border-black/[0.06]">
-                      <Link
-                        to={`/work/${project.slug}`}
-                        className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-crimson to-magenta text-white text-xs font-bold uppercase tracking-wider shadow-crimson-glow hover:opacity-90 transition-all"
-                      >
-                        <span>Case Study</span>
-                        <ArrowUpRight className="w-4 h-4" />
-                      </Link>
                       <a
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs font-bold text-[#665D63] hover:text-crimson transition-colors"
+                        className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-crimson to-magenta text-white text-xs font-bold uppercase tracking-wider shadow-crimson-glow hover:opacity-90 transition-all"
                       >
-                        <span>Live Preview</span>
-                        <ExternalLink className="w-3.5 h-3.5" />
+                        <span>Visit Live Website</span>
+                        <ArrowUpRight className="w-4 h-4" />
                       </a>
                     </div>
                   </div>

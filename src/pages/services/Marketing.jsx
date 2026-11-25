@@ -1,98 +1,64 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { CheckCircle2, TrendingUp, DollarSign, Target, BarChart3, Users, Zap, ArrowRight } from 'lucide-react';
+import { 
+  CheckCircle2, 
+  Target, 
+  Sparkles, 
+  MessageSquare, 
+  ArrowRight, 
+  Search, 
+  Star, 
+  PhoneCall, 
+  Heart, 
+  MessageCircle, 
+  Bookmark, 
+  Send, 
+  TrendingUp, 
+  Zap 
+} from 'lucide-react';
 import { PRICING_PACKAGES } from '@/data/packages';
 import { Button } from '@/components/ui/Button';
-import { SpotlightCard } from '@/components/motion/SpotlightCard';
 import { formatINR } from '@/lib/utils';
 import { WordStream } from '@/components/motion/WordStream';
-
 import heroMarketingImg from '@/assets/crafts/hero-marketing.jpg';
 import craftMarketingImg from '@/assets/crafts/craft-marketing.jpg';
-import snapitImg from '@/assets/projects/client-snapit-studio.png';
-import highlandMockup from '@/assets/projects/highland-origin.svg';
-import fazilMockup from '@/assets/projects/client-fazil-garments.png';
 
-const marketingRows = [
-    {
-        tag: 'ORGANIC SEARCH & INTENT',
-        title: 'Technical & Local SEO Domination',
-        desc: 'Dominate high-intent Google searches. We engineer site architecture, schema markup, structured breadcrumbs, and Google Business Profile to capture qualified buyers searching for your exact craft.',
-        bullets: ['Full on-page semantic schema & rich snippets', 'Keyword intent & competitor gap targeting', 'High-authority local citation building', 'Google Search Console crawl & indexation audits'],
-        stat: '+180% Organic Inquiries',
-        mockup: fazilMockup,
-        mockupType: 'image',
-        badge: 'SEARCH ENGINE VISIBILITY'
-    },
-    {
-        tag: 'PAID ADVERTISING ENGINE',
-        title: 'Meta & Google Ads Engine',
-        desc: 'Turn ad spend into predictable revenue. We design high-converting visual ad creatives, craft psychological hooks, and configure pixel retargeting to maximize ROAS while minimizing cost-per-lead.',
-        bullets: ['High-converting UGC ad creative direction', 'Custom audience building & lookalikes', 'A/B split testing hooks & headlines', 'Real-time conversion tracking & ROAS audits'],
-        stat: '3.4x Average ROAS',
-        mockup: craftMarketingImg,
-        mockupType: 'image',
-        badge: 'PAID PERFORMANCE ENGINE'
-    },
-    {
-        tag: 'SOCIAL PRESENCE & AUTHORITY',
-        title: 'Social Media Strategy & High-Retention Content',
-        desc: 'Build a brand customers trust and follow. We design tailored weekly content calendars, produce engaging carousels, and manage community interactions to turn passive followers into active buyers.',
-        bullets: ['Strategic weekly multi-platform posting', 'Custom branded carousel templates & motion graphics', 'Story engagement & interactive poll funnels', 'Direct message conversion scripts & inquiry booking'],
-        stat: '4.8/5 Engagement Rate',
-        mockup: snapitImg,
-        mockupType: 'image',
-        badge: 'BRAND REPUTATION MATRIX'
-    },
-    {
-        tag: 'CONVERSION ACCELERATION',
-        title: 'CRO & Frictionless Sales Funnels',
-        desc: 'Traffic is only half the battle. We analyze heatmaps, test call-to-action positions, and rewrite high-converting sales copy to double the percentage of visitors who contact you.',
-        bullets: ['Frictionless 1-step lead capture forms', 'WhatsApp instant conversion triggers', 'Social proof & trust badge placement', 'Continuous conversion rate optimization'],
-        stat: '+42% Lead Conversion Rate',
-        mockup: highlandMockup,
-        mockupType: 'svg',
-        badge: 'HIGH-CONVERTING FUNNEL'
-    },
-];
-
-const growthStages = [
-    {
-        stage: 'Month 1',
-        name: 'Technical Audit & Pixel Setup',
-        focus: 'Fix tracking leakages, audit conversion bottlenecks, setup Meta CAPI & Google Tag Manager.',
-        spend: '₹25,000',
-        inquiries: '45 - 60',
-        roas: '2.1x',
-        cpl: '₹410',
-    },
-    {
-        stage: 'Month 3',
-        name: 'Creative Testing & Scaling',
-        focus: 'Scale winning ad hooks, launch high-intent Google search keywords, retarget website visitors.',
-        spend: '₹60,000',
-        inquiries: '180 - 220',
-        roas: '3.4x',
-        cpl: '₹280',
-    },
-    {
-        stage: 'Month 6',
-        name: 'Inbound Market Dominance',
-        focus: 'Organic SEO compounding + automated paid funnels delivering steady high-ticket inquiries.',
-        spend: '₹1,20,000',
-        inquiries: '450 - 520',
-        roas: '4.2x',
-        cpl: '₹230',
-    },
+const marketingPillars = [
+  {
+    step: '01',
+    icon: <Target className="w-6 h-6 text-crimson" />,
+    title: 'Target Only Real Buyers',
+    subtitle: 'Zero wasted budget on random viewers',
+    desc: 'We don’t show ads to random people. We pinpoint customers in your city or industry who are actively searching Google and Instagram for your exact products and services.',
+    tag: 'Qualified Buyer Audience',
+  },
+  {
+    step: '02',
+    icon: <Sparkles className="w-6 h-6 text-crimson" />,
+    title: 'High-Trust Videos & Ads',
+    subtitle: 'Build instant credibility and stop the scroll',
+    desc: 'Instead of cheap flyers, we craft cinema-grade vertical videos, customer proof, and clear offers that make people stop, watch, and trust your brand immediately.',
+    tag: 'Cinema-Grade Trust',
+  },
+  {
+    step: '03',
+    icon: <MessageSquare className="w-6 h-6 text-crimson" />,
+    title: 'Inquiries Straight to WhatsApp',
+    subtitle: 'Direct sales conversations on your phone',
+    desc: 'No confusing forms or waiting. Customers tap one button on the ad and start chatting directly with you on WhatsApp or call your phone, ready to place orders.',
+    tag: 'Instant 1-Tap Leads',
+  },
 ];
 
 const Marketing = () => {
-    const [activeStage, setActiveStage] = useState(1); // Default to Month 3
-
-    return (<>
+  return (
+    <>
       <Helmet>
         <title>Digital Marketing & Ads Management | 11 11 Digital Solutions</title>
-        <meta name="description" content="Be seen by the right people, at the right time. Data-driven Meta ads, Google Search ads, SEO, and social media growth engineered for maximum ROI."/>
+        <meta
+          name="description"
+          content="Be seen by the right people, at the right time. Data-driven Meta ads, Google Search ads, SEO, and social media growth engineered for maximum ROI."
+        />
       </Helmet>
 
       <div className="bg-[#FAF7F9] min-h-screen text-[#120E11]">
@@ -129,10 +95,20 @@ const Marketing = () => {
                 </WordStream>
 
                 <div className="flex flex-wrap items-center gap-4 mb-10">
-                  <Button to="/contact?service=marketing" variant="primary" size="lg" className="shadow-[0_0_30px_rgba(248,17,90,0.4)]">
+                  <Button
+                    to="/contact?service=marketing"
+                    variant="primary"
+                    size="lg"
+                    className="shadow-[0_0_30px_rgba(248,17,90,0.4)]"
+                  >
                     Scale Your Marketing
                   </Button>
-                  <Button to="/pricing" variant="secondary" size="lg" className="border-white/20 text-white hover:bg-white/10">
+                  <Button
+                    to="/pricing"
+                    variant="secondary"
+                    size="lg"
+                    className="border-white/20 text-white hover:bg-white/10"
+                  >
                     View Monthly Retainers
                   </Button>
                 </div>
@@ -141,15 +117,21 @@ const Marketing = () => {
                 <div className="grid grid-cols-3 gap-4 pt-8 border-t border-white/[0.08]">
                   <div>
                     <div className="font-display font-black text-2xl sm:text-3xl text-crimson">3.4x+</div>
-                    <div className="font-mono text-[11px] text-white/50 uppercase tracking-wider mt-0.5">Average ROAS</div>
+                    <div className="font-mono text-[11px] text-white/50 uppercase tracking-wider mt-0.5">
+                      Average ROAS
+                    </div>
                   </div>
                   <div>
                     <div className="font-display font-black text-2xl sm:text-3xl text-white">48 Hrs</div>
-                    <div className="font-mono text-[11px] text-white/50 uppercase tracking-wider mt-0.5">Campaign Launch</div>
+                    <div className="font-mono text-[11px] text-white/50 uppercase tracking-wider mt-0.5">
+                      Campaign Launch
+                    </div>
                   </div>
                   <div>
                     <div className="font-display font-black text-2xl sm:text-3xl text-white">100%</div>
-                    <div className="font-mono text-[11px] text-white/50 uppercase tracking-wider mt-0.5">Live Reporting</div>
+                    <div className="font-mono text-[11px] text-white/50 uppercase tracking-wider mt-0.5">
+                      Live Reporting
+                    </div>
                   </div>
                 </div>
               </div>
@@ -163,12 +145,16 @@ const Marketing = () => {
                     className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0A0709] via-transparent to-transparent opacity-80" />
-                  
+
                   {/* Floating Analytics Tag */}
                   <div className="absolute bottom-5 left-5 right-5 p-4 rounded-xl bg-black/60 border border-white/10 backdrop-blur-md flex items-center justify-between">
                     <div>
-                      <div className="text-[10px] font-mono text-crimson uppercase tracking-widest font-bold">11 11 GROWTH SUITE</div>
-                      <div className="text-sm font-display font-bold text-white mt-0.5">Omnichannel Ad Orchestration</div>
+                      <div className="text-[10px] font-mono text-crimson uppercase tracking-widest font-bold">
+                        11 11 GROWTH SUITE
+                      </div>
+                      <div className="text-sm font-display font-bold text-white mt-0.5">
+                        Omnichannel Ad Orchestration
+                      </div>
                     </div>
                     <span className="px-2.5 py-1 rounded-full bg-crimson/20 border border-crimson/40 text-crimson font-mono text-xs font-bold">
                       ACTIVE
@@ -180,164 +166,468 @@ const Marketing = () => {
           </div>
         </section>
 
-        {/* 2. Interactive Inbound Growth & ROAS Simulation Engine */}
+        {/* 2. Layman-Friendly Customer Acquisition Protocol (Clear, Simple, Understandable) */}
         <section className="py-24 sm:py-32 w-full bg-[#0D0A0C] text-white border-b border-white/[0.08]">
           <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-              <div>
-                <span className="font-mono text-xs text-crimson font-bold uppercase tracking-widest block mb-2">
-                  || INBOUND TRAJECTORY ENGINE
-                </span>
-                <h3 className="text-3xl sm:text-5xl font-display font-bold text-white">
-                  6-Month Inbound Growth Model
-                </h3>
-              </div>
-              <p className="text-white/60 text-sm max-w-md">
-                Click any timeline milestone to inspect live projected inquiry volume, ad spend efficiency, and blended ROAS scaling.
+            <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+              <span className="font-mono text-xs text-crimson font-bold uppercase tracking-widest block mb-2">
+                || HOW IT ACTUALLY WORKS
+              </span>
+              <h2 className="text-3xl sm:text-5xl font-display font-bold text-white mb-4">
+                How we bring <span className="font-accent italic text-crimson font-normal">paying customers</span> to your business.
+              </h2>
+              <p className="text-white/60 text-sm sm:text-base">
+                No confusing jargon or complicated graphs. Here is our proven 3-step system that turns online attention into direct sales and WhatsApp inquiries.
               </p>
             </div>
 
-            {/* Interactive Timeline Tabs */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-              {growthStages.map((stage, idx) => {
-                const isActive = activeStage === idx;
-                return (
-                  <button
-                    key={stage.stage}
-                    onClick={() => setActiveStage(idx)}
-                    className={`text-left p-6 rounded-2xl border transition-all duration-300 relative overflow-hidden ${
-                      isActive
-                        ? 'bg-crimson/10 border-crimson shadow-[0_0_25px_rgba(248,17,90,0.25)]'
-                        : 'bg-white/[0.02] border-white/10 hover:border-white/20 hover:bg-white/[0.04]'
-                    }`}
-                  >
-                    <div className="flex items-center justify-between mb-2">
-                      <span className={`font-mono text-xs font-bold uppercase tracking-wider ${isActive ? 'text-crimson' : 'text-white/50'}`}>
-                        {stage.stage}
+            {/* 3 Simple Action Steps */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-14">
+              {marketingPillars.map((pillar) => (
+                <div
+                  key={pillar.step}
+                  className="rounded-[28px] p-8 bg-white/[0.02] border border-white/10 hover:border-crimson/40 transition-all duration-300 flex flex-col justify-between group shadow-lg"
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-6">
+                      <span className="w-12 h-12 rounded-2xl bg-crimson/10 border border-crimson/20 flex items-center justify-center">
+                        {pillar.icon}
                       </span>
-                      {isActive && (
-                        <span className="w-2 h-2 rounded-full bg-crimson animate-ping" />
-                      )}
+                      <span className="font-mono text-xs font-bold text-crimson px-3 py-1 rounded-full bg-crimson/10 border border-crimson/20">
+                        STEP {pillar.step}
+                      </span>
                     </div>
-                    <div className="text-lg font-display font-bold text-white mb-1">
-                      {stage.name}
-                    </div>
-                    <div className="text-xs text-white/60 leading-relaxed">
-                      {stage.focus}
-                    </div>
-                  </button>
-                );
-              })}
+
+                    <h3 className="text-2xl font-display font-bold text-white mb-2">
+                      {pillar.title}
+                    </h3>
+                    <p className="text-xs font-mono text-white/50 mb-4">
+                      {pillar.subtitle}
+                    </p>
+                    <p className="text-sm text-white/70 leading-relaxed mb-6">
+                      {pillar.desc}
+                    </p>
+                  </div>
+
+                  <div className="pt-4 border-t border-white/[0.08] text-xs font-mono text-crimson flex items-center gap-2 font-bold">
+                    <CheckCircle2 className="w-4 h-4 text-crimson shrink-0" />
+                    <span>{pillar.tag}</span>
+                  </div>
+                </div>
+              ))}
             </div>
 
-            {/* Dynamic Metric Dashboard for Selected Stage */}
-            <div className="p-8 sm:p-12 rounded-[28px] bg-white/[0.02] border border-white/10 backdrop-blur-md">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8 pb-8 border-b border-white/[0.08]">
-                <div>
-                  <span className="text-xs font-mono text-white/50 block mb-1">Target Monthly Budget</span>
-                  <div className="text-2xl sm:text-4xl font-display font-black text-white flex items-center gap-1">
-                    <DollarSign className="w-6 h-6 text-crimson" />
-                    {growthStages[activeStage].spend}
-                  </div>
+            {/* Quick Trust Summary Banner */}
+            <div className="p-6 sm:p-8 rounded-[24px] bg-white/[0.03] border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-6">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-crimson/20 border border-crimson/30 text-crimson flex items-center justify-center text-lg font-bold shrink-0">
+                  <Zap className="w-6 h-6 text-crimson" />
                 </div>
                 <div>
-                  <span className="text-xs font-mono text-white/50 block mb-1">Monthly Qualified Inquiries</span>
-                  <div className="text-2xl sm:text-4xl font-display font-black text-crimson flex items-center gap-1">
-                    <Users className="w-6 h-6 text-crimson" />
-                    {growthStages[activeStage].inquiries}
-                  </div>
-                </div>
-                <div>
-                  <span className="text-xs font-mono text-white/50 block mb-1">Blended ROAS Return</span>
-                  <div className="text-2xl sm:text-4xl font-display font-black text-white flex items-center gap-1">
-                    <TrendingUp className="w-6 h-6 text-crimson" />
-                    {growthStages[activeStage].roas}
-                  </div>
-                </div>
-                <div>
-                  <span className="text-xs font-mono text-white/50 block mb-1">Estimated Cost Per Lead (CPL)</span>
-                  <div className="text-2xl sm:text-4xl font-display font-black text-white flex items-center gap-1">
-                    <Target className="w-6 h-6 text-white/40" />
-                    {growthStages[activeStage].cpl}
-                  </div>
+                  <h4 className="text-base sm:text-lg font-bold text-white font-display mb-1">
+                    You focus on your craft — we handle the marketing and leads.
+                  </h4>
+                  <p className="text-xs sm:text-sm text-white/60">
+                    Direct communication with founder Mohamed Asper. Fast execution, transparent results, and zero marketing excuses.
+                  </p>
                 </div>
               </div>
-
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                <div className="flex items-center gap-2 text-xs font-mono text-white/70">
-                  <Zap className="w-4 h-4 text-crimson shrink-0" />
-                  <span>Includes full ad copy creative testing, negative keyword pruning, and WhatsApp conversion routing.</span>
-                </div>
-                <Button to="/contact?service=marketing" variant="primary" size="sm" className="shrink-0">
-                  Deploy Strategy <ArrowRight className="w-3.5 h-3.5 ml-1" />
-                </Button>
-              </div>
+              <Button to="/contact?service=marketing" variant="primary" size="md" className="shrink-0 font-bold">
+                Start Getting Inquiries
+              </Button>
             </div>
           </div>
         </section>
 
-        {/* 3. Alternating Feature Rows with Unique Visual Mockups for Every Tile */}
-        <section className="py-28 sm:py-36 w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 space-y-24 sm:space-y-32">
-          {marketingRows.map((row, idx) => {
-            const isEven = idx % 2 === 1;
-            return (
-              <div key={row.title} className={`grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center ${isEven ? 'lg:flex-row-reverse' : ''}`}>
-                {/* Left/Right Text Column */}
-                <div className={`lg:col-span-6 ${isEven ? 'lg:order-2' : ''}`}>
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-crimson/10 border border-crimson/20 mb-3">
-                    <span className="text-xs font-mono uppercase tracking-widest text-crimson font-bold">
-                      {row.tag}
-                    </span>
-                  </div>
-                  <h3 className="text-3xl sm:text-4xl font-display font-bold text-[#120E11] mb-4">
-                    {row.title}
-                  </h3>
-                  <p className="text-base text-black/70 leading-relaxed mb-6">
-                    {row.desc}
-                  </p>
+        {/* 3. 4 Core Marketing Rows With Dedicated, Relatable Visual Cards */}
+        <section className="py-28 sm:py-36 w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 space-y-28 sm:space-y-36">
+          
+          {/* ROW 1: Technical & Local SEO Domination */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            <div className="lg:col-span-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-crimson/10 border border-crimson/20 mb-3">
+                <span className="text-xs font-mono uppercase tracking-widest text-crimson font-bold">
+                  ORGANIC SEARCH &amp; INTENT
+                </span>
+              </div>
+              <h3 className="text-3xl sm:text-4xl font-display font-bold text-[#120E11] mb-4">
+                Technical &amp; Local SEO Domination
+              </h3>
+              <p className="text-base text-black/70 leading-relaxed mb-6">
+                When customers search Google for your exact service, they should find your website first—not your competitors. We optimize page speed, local maps, and high-value search terms to keep your business at the top of Google.
+              </p>
 
-                  <div className="space-y-3 mb-8">
-                    {row.bullets.map((b, i) => (
-                      <div key={i} className="flex items-center gap-3 text-sm text-[#120E11]">
-                        <CheckCircle2 className="w-4 h-4 text-crimson shrink-0" />
-                        <span>{b}</span>
-                      </div>
-                    ))}
+              <div className="space-y-3 mb-8">
+                {[
+                  '#1 rank targeting for high-intent customer search terms',
+                  'Google Business Profile & local map pack optimization',
+                  'Full schema markup for 5-star review ratings in search results',
+                  'Mobile speed optimization for instant sub-second loading',
+                ].map((b, i) => (
+                  <div key={i} className="flex items-center gap-3 text-sm text-[#120E11]">
+                    <CheckCircle2 className="w-4 h-4 text-crimson shrink-0" />
+                    <span>{b}</span>
                   </div>
+                ))}
+              </div>
 
-                  <div className="p-4 rounded-xl bg-white border border-black/[0.08] inline-flex items-center gap-4 shadow-sm">
-                    <div>
-                      <span className="text-xs font-mono text-black/50 block">Key Result Metric:</span>
-                      <span className="text-xl font-bold text-crimson font-display">{row.stat}</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Unique Relatable Mockup Column */}
-                <div className={`lg:col-span-6 ${isEven ? 'lg:order-1' : ''}`}>
-                  <div className="p-4 sm:p-6 rounded-[28px] relative overflow-hidden bg-white border border-black/[0.08] shadow-[0_16px_40px_rgba(18,14,17,0.06)] hover:border-crimson/30 transition-all duration-300">
-                    <div className="aspect-[16/10] rounded-2xl overflow-hidden bg-[#FAF7F9] border border-black/[0.06] relative group">
-                      <img
-                        src={row.mockup}
-                        alt={row.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                      />
-                      <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-[10px] font-mono text-white uppercase font-bold tracking-wider">
-                        {row.badge}
-                      </div>
-                    </div>
-                  </div>
+              <div className="p-4 rounded-xl bg-white border border-black/[0.08] inline-flex items-center gap-4 shadow-sm">
+                <div>
+                  <span className="text-xs font-mono text-black/50 block">Key Result Metric:</span>
+                  <span className="text-xl font-bold text-crimson font-display">+180% More Google Search Inquiries</span>
                 </div>
               </div>
-            );
-          })}
+            </div>
+
+            {/* Visual Card 1: Realistic Google Search #1 Ranking UI */}
+            <div className="lg:col-span-6">
+              <div className="rounded-[28px] bg-[#0E0B0D] border border-white/10 p-6 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.5)] text-white">
+                {/* Mini Browser Bar */}
+                <div className="flex items-center gap-2 pb-4 mb-5 border-b border-white/10">
+                  <div className="flex gap-1.5">
+                    <span className="w-3 h-3 rounded-full bg-red-500/80" />
+                    <span className="w-3 h-3 rounded-full bg-yellow-500/80" />
+                    <span className="w-3 h-3 rounded-full bg-green-500/80" />
+                  </div>
+                  <div className="flex-1 ml-2 px-3 py-1.5 rounded-lg bg-white/[0.06] border border-white/10 text-xs font-mono text-white/70 flex items-center gap-2">
+                    <Search className="w-3.5 h-3.5 text-crimson" />
+                    <span>google.com/search?q=best+services+near+me</span>
+                  </div>
+                </div>
+
+                {/* Google Search Result Item */}
+                <div className="p-5 rounded-2xl bg-white/[0.03] border border-crimson/30 hover:border-crimson transition-all relative overflow-hidden group">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="px-2.5 py-0.5 rounded-full bg-crimson text-white text-[10px] font-mono font-bold uppercase tracking-wider">
+                      ★ #1 Top Ranked on Google
+                    </span>
+                    <span className="text-[11px] font-mono text-emerald-400 font-bold flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" /> Live Result
+                    </span>
+                  </div>
+
+                  <h4 className="text-lg sm:text-xl font-display font-bold text-[#FFA3BD] hover:underline cursor-pointer mb-1">
+                    Your Business Name — Verified Official Flagship
+                  </h4>
+                  <p className="text-xs font-mono text-white/50 mb-2">
+                    https://yourbusiness.com · Tamil Nadu, India
+                  </p>
+
+                  <div className="flex items-center gap-1 text-amber-400 text-xs font-bold mb-3">
+                    <div className="flex">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                      ))}
+                    </div>
+                    <span className="text-white/80 ml-1">5.0 (148 Customer Reviews)</span>
+                  </div>
+
+                  <p className="text-xs text-white/70 leading-relaxed mb-4">
+                    High-end craftsmanship, transparent pricing, and 48-hour turnarounds. Partner directly with our verified lead engineers.
+                  </p>
+
+                  {/* Sitelinks */}
+                  <div className="grid grid-cols-2 gap-2 pt-3 border-t border-white/10">
+                    <div className="p-2 rounded bg-white/[0.04] text-[11px] font-mono text-white/80">
+                      💬 Direct WhatsApp Chat
+                    </div>
+                    <div className="p-2 rounded bg-white/[0.04] text-[11px] font-mono text-white/80">
+                      ⚡ 24/7 Inquiry Booking
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs font-mono text-white/50">
+                  <span>Google Crawl Status: 100% Indexed</span>
+                  <span className="text-crimson font-bold">+180% Organic Reach</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* ROW 2: Meta & Google Ads Performance Engine */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            {/* Mockup Column */}
+            <div className="lg:col-span-6 lg:order-1">
+              <div className="rounded-[28px] bg-[#0E0B0D] border border-white/10 p-6 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.5)] text-white">
+                {/* Meta Ad Header */}
+                <div className="flex items-center justify-between mb-4 pb-3 border-b border-white/10">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-crimson to-magenta flex items-center justify-center font-bold text-white text-xs">
+                      11:11
+                    </div>
+                    <div>
+                      <div className="text-sm font-bold text-white flex items-center gap-1.5">
+                        Your Brand Showcase <span className="text-crimson text-xs">✓</span>
+                      </div>
+                      <div className="text-[10px] font-mono text-white/50">
+                        Sponsored · Instagram &amp; Facebook Feed
+                      </div>
+                    </div>
+                  </div>
+                  <span className="px-2.5 py-1 rounded-full bg-crimson/20 border border-crimson/40 text-crimson font-mono text-[10px] font-bold">
+                    3.4x ROAS
+                  </span>
+                </div>
+
+                {/* Ad Visual Media Box */}
+                <div className="relative rounded-2xl overflow-hidden aspect-[16/10] border border-white/15 group mb-4">
+                  <img
+                    src={craftMarketingImg}
+                    alt="High-Converting Meta Ad Creative"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                  <div className="absolute bottom-3 left-3 right-3">
+                    <span className="px-2 py-0.5 rounded bg-black/60 backdrop-blur-md text-[10px] font-mono text-white/90">
+                      ⚡ HIGH-CONVERTING HOOK CREATIVE
+                    </span>
+                    <h5 className="text-sm font-display font-bold text-white mt-1">
+                      Stop Wasting Marketing Budget. Get Proven Results.
+                    </h5>
+                  </div>
+                </div>
+
+                {/* Ad Action Bar */}
+                <div className="p-3 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-between">
+                  <div>
+                    <div className="text-[10px] font-mono text-white/50">WHATSAPP LEAD ROUTING</div>
+                    <div className="text-xs font-bold text-white">Instant Message &amp; Pricing</div>
+                  </div>
+                  <button className="px-4 py-1.5 rounded-full bg-crimson text-white text-xs font-bold flex items-center gap-1 hover:bg-magenta transition-colors">
+                    Send Message <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Text Column */}
+            <div className="lg:col-span-6 lg:order-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-crimson/10 border border-crimson/20 mb-3">
+                <span className="text-xs font-mono uppercase tracking-widest text-crimson font-bold">
+                  PAID PERFORMANCE ADVERTISING
+                </span>
+              </div>
+              <h3 className="text-3xl sm:text-4xl font-display font-bold text-[#120E11] mb-4">
+                Meta &amp; Google Ads Engine
+              </h3>
+              <p className="text-base text-black/70 leading-relaxed mb-6">
+                Turn ad spend into predictable cash flow. We build high-converting visual video ads, write irresistible psychological offers, and target qualified buyers who are ready to order.
+              </p>
+
+              <div className="space-y-3 mb-8">
+                {[
+                  'Creative vertical video ads built for Instagram & Facebook',
+                  'Audience lookalike modeling & precise local pin targeting',
+                  'Continuous A/B headline & thumbnail testing',
+                  'Real-time conversion tracking with zero wasted ad clicks',
+                ].map((b, i) => (
+                  <div key={i} className="flex items-center gap-3 text-sm text-[#120E11]">
+                    <CheckCircle2 className="w-4 h-4 text-crimson shrink-0" />
+                    <span>{b}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="p-4 rounded-xl bg-white border border-black/[0.08] inline-flex items-center gap-4 shadow-sm">
+                <div>
+                  <span className="text-xs font-mono text-black/50 block">Key Result Metric:</span>
+                  <span className="text-xl font-bold text-crimson font-display">3.4x Average ROAS Multiplier</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* ROW 3: Social Media Strategy & High-Retention Content */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            {/* Text Column */}
+            <div className="lg:col-span-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-crimson/10 border border-crimson/20 mb-3">
+                <span className="text-xs font-mono uppercase tracking-widest text-crimson font-bold">
+                  SOCIAL REPUTATION &amp; PRESENCE
+                </span>
+              </div>
+              <h3 className="text-3xl sm:text-4xl font-display font-bold text-[#120E11] mb-4">
+                Social Media Strategy &amp; Viral Content
+              </h3>
+              <p className="text-base text-black/70 leading-relaxed mb-6">
+                Build a recognizable brand that customers follow, trust, and talk about. We produce weekly content calendars, engaging visual carousels, and manage customer interactions that turn casual followers into buyers.
+              </p>
+
+              <div className="space-y-3 mb-8">
+                {[
+                  'Tailored weekly posting schedules designed for algorithms',
+                  'Custom branded carousel designs & kinetic motion typography',
+                  'Interactive story polls and question funnels for instant engagement',
+                  'Direct message conversion scripts that close sales on Instagram',
+                ].map((b, i) => (
+                  <div key={i} className="flex items-center gap-3 text-sm text-[#120E11]">
+                    <CheckCircle2 className="w-4 h-4 text-crimson shrink-0" />
+                    <span>{b}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="p-4 rounded-xl bg-white border border-black/[0.08] inline-flex items-center gap-4 shadow-sm">
+                <div>
+                  <span className="text-xs font-mono text-black/50 block">Key Result Metric:</span>
+                  <span className="text-xl font-bold text-crimson font-display">4.8/5 Engagement &amp; Retention Score</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Visual Card 3: Authentic Instagram Feed & Engagement Mockup */}
+            <div className="lg:col-span-6">
+              <div className="rounded-[28px] bg-[#0E0B0D] border border-white/10 p-6 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.5)] text-white">
+                {/* Profile Header */}
+                <div className="flex items-center justify-between mb-5">
+                  <div className="flex items-center gap-3">
+                    <div className="w-11 h-11 rounded-full p-0.5 bg-gradient-to-tr from-amber-400 via-crimson to-magenta">
+                      <div className="w-full h-full rounded-full bg-black flex items-center justify-center text-white font-bold text-xs">
+                        11:11
+                      </div>
+                    </div>
+                    <div>
+                      <div className="text-sm font-bold text-white flex items-center gap-1.5">
+                        @yourbrand_official <span className="text-crimson text-xs">✓</span>
+                      </div>
+                      <div className="text-[11px] font-mono text-white/50">
+                        Official Studio Page · Viral Reach
+                      </div>
+                    </div>
+                  </div>
+                  <span className="px-3 py-1 rounded-full bg-white/[0.08] text-xs font-mono text-white/80">
+                    Following
+                  </span>
+                </div>
+
+                {/* Viral Post Card */}
+                <div className="rounded-2xl bg-gradient-to-br from-[#1C1418] via-[#2A1821] to-[#120B0F] border border-crimson/30 p-6 mb-4">
+                  <span className="text-[10px] font-mono text-crimson font-bold uppercase tracking-wider block mb-2">
+                    VIRAL CAROUSEL POST 01/05
+                  </span>
+                  <h4 className="text-xl sm:text-2xl font-display font-extrabold text-white mb-2 leading-snug">
+                    "The Exact 3 Reasons Why Premium Brands Never Compromise On Quality."
+                  </h4>
+                  <p className="text-xs text-white/60 mb-4 leading-relaxed">
+                    Swipe left to inspect our production standards, client results, and 48-hour delivery timeline. 👉
+                  </p>
+                  <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
+                    <div className="h-full bg-crimson w-2/5 rounded-full" />
+                  </div>
+                </div>
+
+                {/* Engagement Metrics */}
+                <div className="flex items-center justify-between py-2 border-t border-white/10 text-white/80">
+                  <div className="flex items-center gap-4 text-xs font-mono">
+                    <span className="flex items-center gap-1.5 text-crimson font-bold">
+                      <Heart className="w-4 h-4 fill-crimson" /> 24.8K
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                      <MessageCircle className="w-4 h-4" /> 482
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                      <Send className="w-4 h-4" /> 1.2K
+                    </span>
+                  </div>
+                  <Bookmark className="w-4 h-4 text-white/60" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* ROW 4: CRO & Frictionless Sales Funnels */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            {/* Visual Card 4: WhatsApp Instant Booking & Conversion Mockup */}
+            <div className="lg:col-span-6 lg:order-1">
+              <div className="rounded-[28px] bg-[#0E0B0D] border border-white/10 p-6 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.5)] text-white">
+                {/* WhatsApp Chat Header */}
+                <div className="flex items-center justify-between pb-4 mb-5 border-b border-white/10 bg-emerald-950/30 p-3 rounded-2xl border border-emerald-500/20">
+                  <div className="flex items-center gap-3">
+                    <div className="w-9 h-9 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold text-sm">
+                      <PhoneCall className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <div className="text-sm font-bold text-white flex items-center gap-1.5">
+                        Direct Client WhatsApp <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                      </div>
+                      <div className="text-[10px] font-mono text-emerald-400">Online · Instant Response</div>
+                    </div>
+                  </div>
+                  <span className="text-[11px] font-mono text-white/40">Verified Business</span>
+                </div>
+
+                {/* Chat Bubbles */}
+                <div className="space-y-3 mb-5">
+                  {/* Incoming Lead Message */}
+                  <div className="p-3.5 rounded-2xl rounded-tl-sm bg-white/[0.06] border border-white/10 max-w-[85%] text-xs text-white/90 leading-relaxed">
+                    <span className="text-[10px] text-white/50 block mb-0.5">Customer (From Instagram Ad):</span>
+                    "Hi! I just saw your video showcase. Can I get a price estimate and discuss a project for next week?"
+                  </div>
+
+                  {/* Automated Fast Response */}
+                  <div className="p-3.5 rounded-2xl rounded-tr-sm bg-emerald-600/20 border border-emerald-500/30 max-w-[85%] ml-auto text-xs text-white leading-relaxed">
+                    <span className="text-[10px] text-emerald-400 block mb-0.5">Your Business (Automated Trigger):</span>
+                    "Hello! 👋 Thank you for reaching out. Here is our 1-click booking link and sample catalog. Let's get started!"
+                  </div>
+                </div>
+
+                {/* 1-Tap Action Callout */}
+                <div className="p-4 rounded-xl bg-crimson/10 border border-crimson/30 flex items-center justify-between">
+                  <div>
+                    <div className="text-xs font-bold text-white">1-Tap WhatsApp Lead Router</div>
+                    <div className="text-[10px] font-mono text-white/60">0-Second Friction · 42% Higher Conversions</div>
+                  </div>
+                  <button className="px-4 py-2 rounded-full bg-crimson text-white text-xs font-bold shadow-crimson-glow">
+                    Chat Now
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Text Column */}
+            <div className="lg:col-span-6 lg:order-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-crimson/10 border border-crimson/20 mb-3">
+                <span className="text-xs font-mono uppercase tracking-widest text-crimson font-bold">
+                  CONVERSION ARCHITECTURE
+                </span>
+              </div>
+              <h3 className="text-3xl sm:text-4xl font-display font-bold text-[#120E11] mb-4">
+                CRO &amp; Frictionless Sales Funnels
+              </h3>
+              <p className="text-base text-black/70 leading-relaxed mb-6">
+                Getting traffic is easy; converting that traffic into cash is what matters. We eliminate unnecessary form fields, place instant WhatsApp booking triggers, and rewrite copy so more visitors convert on their very first visit.
+              </p>
+
+              <div className="space-y-3 mb-8">
+                {[
+                  'Frictionless 1-tap WhatsApp instant booking buttons',
+                  'Strategic social proof & customer reviews placed at decision points',
+                  'Simplified mobile checkout & lead inquiry forms',
+                  'Heatmap analysis to eliminate drop-off friction points',
+                ].map((b, i) => (
+                  <div key={i} className="flex items-center gap-3 text-sm text-[#120E11]">
+                    <CheckCircle2 className="w-4 h-4 text-crimson shrink-0" />
+                    <span>{b}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="p-4 rounded-xl bg-white border border-black/[0.08] inline-flex items-center gap-4 shadow-sm">
+                <div>
+                  <span className="text-xs font-mono text-black/50 block">Key Result Metric:</span>
+                  <span className="text-xl font-bold text-crimson font-display">+42% Higher Customer Inquiries</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* 4. Monthly Retainers (Dark Mixed Cards) */}
         <section className="py-28 sm:py-36 w-full bg-[#0D0A0C] text-white border-y border-white/[0.08]">
           <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
             <div className="text-center max-w-2xl mx-auto mb-20">
-              <span className="text-xs font-mono uppercase tracking-widest text-crimson block mb-3">
+              <span className="text-xs font-mono uppercase tracking-widest text-crimson block mb-3 font-bold">
                 || Transparent Monthly Retainers
               </span>
               <h2 className="text-3xl sm:text-5xl font-display font-bold tracking-tight mb-4 text-white">
@@ -389,7 +679,7 @@ const Marketing = () => {
                     to={`/contact?package=${encodeURIComponent(pkg.name)}`}
                     variant={pkg.isPopular ? 'primary' : 'secondary'}
                     size="md"
-                    className="w-full justify-center"
+                    className="w-full justify-center font-bold"
                   >
                     {pkg.ctaText}
                   </Button>
@@ -408,7 +698,7 @@ const Marketing = () => {
             Get a free paid ads &amp; SEO audit with Mohamed Asper.
           </p>
           <div className="flex justify-center gap-4">
-            <Button to="/contact" variant="primary" size="lg">
+            <Button to="/contact?service=marketing" variant="primary" size="lg">
               Claim Free Marketing Audit
             </Button>
             <Button to="/pricing" variant="secondary" size="lg">
@@ -417,7 +707,8 @@ const Marketing = () => {
           </div>
         </section>
       </div>
-    </>);
+    </>
+  );
 };
 
 export default Marketing;
