@@ -57,19 +57,19 @@ export const Footer = () => {
                                 href={directWhatsAppUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                aria-label="WhatsApp"
-                                className="w-10 h-10 rounded-full bg-white/[0.06] hover:bg-[#25D366]/20 border border-white/10 hover:border-[#25D366]/50 flex items-center justify-center text-white/60 hover:text-[#25D366] transition-all duration-300"
+                                aria-label="Chat on WhatsApp"
+                                className="group w-11 h-11 rounded-full bg-white/[0.08] hover:bg-[#25D366] border border-white/15 hover:border-[#25D366] flex items-center justify-center transition-all duration-300 shadow-sm"
                             >
-                                <WhatsAppIcon className="w-4.5 h-4.5 fill-current" />
+                                <WhatsAppIcon className="w-5 h-5 fill-current text-[#25D366] group-hover:text-white transition-colors" />
                             </a>
                             <a
                                 href={instagramUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                aria-label="Instagram"
-                                className="w-10 h-10 rounded-full bg-white/[0.06] hover:bg-pink-500/20 border border-white/10 hover:border-pink-500/50 flex items-center justify-center text-white/60 hover:text-pink-400 transition-all duration-300"
+                                aria-label="Follow on Instagram"
+                                className="group w-11 h-11 rounded-full bg-white/[0.08] hover:bg-gradient-to-tr hover:from-amber-500 hover:to-pink-500 border border-white/15 hover:border-pink-500 flex items-center justify-center transition-all duration-300 shadow-sm"
                             >
-                                <InstagramIcon className="w-4.5 h-4.5" />
+                                <InstagramIcon className="w-5 h-5 text-pink-400 group-hover:text-white transition-colors" />
                             </a>
                         </div>
                     </div>

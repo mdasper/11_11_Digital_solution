@@ -20,7 +20,7 @@ export const WhatsAppButton = () => {
   }, []);
 
   return (
-    <aside aria-label="WhatsApp contact" className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-50 select-none">
+    <aside aria-label="WhatsApp contact" className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-40 select-none">
       <a
         href={whatsappUrl}
         target="_blank"

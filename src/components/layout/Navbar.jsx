@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Menu, X, ArrowRight, ArrowUpRight, Globe, TrendingUp, Smartphone, Film, Phone, Mail } from 'lucide-react'
+import { Menu, X, ArrowRight, ArrowUpRight, Globe, TrendingUp, Smartphone, Film, Phone, Mail, ChevronDown } from 'lucide-react'
 import { MAIN_NAV_ITEMS, SERVICES_MEGA_MENU, CONTACT_INFO } from '@/data/navigation'
 import logoImg from '@/assets/logo-clean.png'
 import { Button } from '@/components/ui/Button'
@@ -11,7 +11,20 @@ export const Navbar = () => {
   const [lastScrollY, setLastScrollY] = useState(0)
   const [servicesOpen, setServicesOpen] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(true)
   const location = useLocation()
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [mobileMenuOpen])
 
   // Handle smart scroll hide/show
   useEffect(() => {
@@ -49,7 +62,7 @@ export const Navbar = () => {
     <>
       <header
         className={cn(
-          'fixed top-0 left-0 right-0 z-50 w-full bg-[#0D0A0C]/85 backdrop-blur-xl border-b border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.5)] transition-all duration-300 ease-out',
+          'fixed top-0 left-0 right-0 z-[60] w-full bg-[#0D0A0C]/85 backdrop-blur-xl border-b border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.5)] transition-all duration-300 ease-out',
           isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
         )}
       >
@@ -179,61 +192,138 @@ export const Navbar = () => {
         </nav>
       </header>
 
-      {/* Mobile Full-Screen Navigation Overlay */}
+      {/* Mobile Full-Screen Navigation Overlay (Neat, Luxurious, and Uncluttered) */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-[#0D0A0C]/98 backdrop-blur-2xl flex flex-col justify-between p-6 sm:p-8 pt-24 sm:pt-28 md:hidden animate-in fade-in zoom-in-95 duration-300 text-white overflow-y-auto max-h-[100svh]">
-          <div className="flex flex-col gap-6">
-            <span className="text-xs font-mono uppercase tracking-widest text-crimson">
-              || Navigation
-            </span>
-            <div className="flex flex-col gap-4">
-              {MAIN_NAV_ITEMS.map((item, idx) => (
-                <Link
-                  key={item.href}
-                  to={item.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-2xl sm:text-3xl font-display font-bold text-white hover:text-crimson transition-colors flex items-center justify-between"
-                  style={{ animationDelay: `${idx * 60}ms` }}
-                >
-                  {item.label}
-                  <span className="text-sm font-mono text-white/50">0{idx + 1}</span>
-                </Link>
-              ))}
-              <div className="h-px bg-white/10 my-2" />
-              <div className="grid grid-cols-2 gap-2.5">
-                {SERVICES_MEGA_MENU.map((service) => (
-                  <Link
-                    key={service.href}
-                    to={service.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="p-3 rounded-xl bg-white/[0.04] border border-white/10 text-xs font-semibold text-white/90 hover:text-crimson hover:border-crimson/40 transition-all flex items-center gap-2"
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-crimson shrink-0" />
-                    <span className="truncate">{service.title}</span>
-                  </Link>
-                ))}
-              </div>
+        <div className="fixed inset-0 z-[55] bg-[#0A0709] text-white flex flex-col justify-between pt-24 pb-10 px-6 sm:px-8 md:hidden animate-in fade-in duration-200 overflow-y-auto">
+          {/* Subtle Ambient Crimson Glow */}
+          <div className="pointer-events-none absolute -top-24 right-0 w-80 h-80 bg-crimson/15 blur-[120px] rounded-full" />
+          <div className="pointer-events-none absolute bottom-10 -left-10 w-72 h-72 bg-magenta/10 blur-[100px] rounded-full" />
+
+          <div className="relative z-10 flex flex-col gap-5">
+            <div className="flex items-center justify-between pb-3 border-b border-white/10">
+              <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-crimson font-bold">
+                || Navigation
+              </span>
+              <span className="text-[10px] font-mono text-white/40">11 11 DIGITAL</span>
             </div>
+
+            {/* Main Links */}
+            <nav className="flex flex-col space-y-1">
+              <Link
+                to="/"
+                onClick={() => setMobileMenuOpen(false)}
+                className="py-2.5 text-xl font-display font-bold text-white hover:text-crimson transition-colors flex items-center justify-between"
+              >
+                <span>Home</span>
+                <span className="text-xs font-mono text-white/30">01</span>
+              </Link>
+
+              <Link
+                to="/about"
+                onClick={() => setMobileMenuOpen(false)}
+                className="py-2.5 text-xl font-display font-bold text-white hover:text-crimson transition-colors flex items-center justify-between"
+              >
+                <span>About</span>
+                <span className="text-xs font-mono text-white/30">02</span>
+              </Link>
+
+              {/* Services Collapsible Group */}
+              <div className="py-2 border-y border-white/[0.08] my-1">
+                <button
+                  type="button"
+                  onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                  className="w-full py-1 text-xl font-display font-bold text-white hover:text-crimson transition-colors flex items-center justify-between text-left"
+                >
+                  <span className="flex items-center gap-2">
+                    Services
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-crimson/20 text-crimson font-bold">
+                      4 CRAFTS
+                    </span>
+                  </span>
+                  <ChevronDown className={cn("w-5 h-5 text-white/60 transition-transform duration-200", mobileServicesOpen && "rotate-180 text-crimson")} />
+                </button>
+
+                {mobileServicesOpen && (
+                  <div className="grid grid-cols-1 gap-2 pt-3 pl-1">
+                    {SERVICES_MEGA_MENU.map((service) => (
+                      <Link
+                        key={service.href}
+                        to={service.href}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="p-3 rounded-xl bg-white/[0.03] border border-white/10 hover:border-crimson/40 text-xs font-semibold text-white/90 hover:text-white hover:bg-white/[0.06] transition-all flex items-center justify-between group"
+                      >
+                        <div className="flex items-center gap-3">
+                          <span className="w-7 h-7 rounded-lg bg-[#200A1A] border border-crimson/30 flex items-center justify-center text-crimson group-hover:bg-crimson group-hover:text-white transition-colors">
+                            {iconMap[service.icon]}
+                          </span>
+                          <span className="text-sm font-medium">{service.title}</span>
+                        </div>
+                        <ArrowRight className="w-3.5 h-3.5 text-crimson opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" />
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <Link
+                to="/work"
+                onClick={() => setMobileMenuOpen(false)}
+                className="py-2.5 text-xl font-display font-bold text-white hover:text-crimson transition-colors flex items-center justify-between"
+              >
+                <span>Work</span>
+                <span className="text-xs font-mono text-white/30">03</span>
+              </Link>
+
+              <Link
+                to="/pricing"
+                onClick={() => setMobileMenuOpen(false)}
+                className="py-2.5 text-xl font-display font-bold text-white hover:text-crimson transition-colors flex items-center justify-between"
+              >
+                <span>Pricing</span>
+                <span className="text-xs font-mono text-white/30">04</span>
+              </Link>
+
+              <Link
+                to="/contact"
+                onClick={() => setMobileMenuOpen(false)}
+                className="py-2.5 text-xl font-display font-bold text-white hover:text-crimson transition-colors flex items-center justify-between"
+              >
+                <span>Contact</span>
+                <span className="text-xs font-mono text-white/30">05</span>
+              </Link>
+            </nav>
           </div>
 
-          {/* Mobile Footer Quick Contact */}
-          <div className="pt-6 border-t border-white/10 flex flex-col gap-4 mt-6">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 text-xs text-white/70">
-              <a href={`tel:${CONTACT_INFO.phoneRaw}`} className="flex items-center gap-1.5 hover:text-crimson">
-                <Phone className="w-3.5 h-3.5 text-crimson shrink-0" /> {CONTACT_INFO.phone}
+          {/* Bottom Action Section */}
+          <div className="relative z-10 pt-5 border-t border-white/10 flex flex-col gap-3.5 mt-4">
+            <div className="grid grid-cols-2 gap-2.5">
+              <a
+                href={`tel:${CONTACT_INFO.phoneRaw}`}
+                className="p-3 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center gap-2 text-xs font-mono text-white/80 hover:text-white hover:border-crimson transition-all"
+              >
+                <Phone className="w-3.5 h-3.5 text-crimson" />
+                <span>Call Us</span>
               </a>
-              <a href={`mailto:${CONTACT_INFO.email}`} className="flex items-center gap-1.5 hover:text-crimson truncate max-w-full">
-                <Mail className="w-3.5 h-3.5 text-crimson shrink-0" /> {CONTACT_INFO.email}
+              <a
+                href={`https://wa.me/919566498072?text=${encodeURIComponent('Hi Mohamed, I would like to discuss a project with 11 11 Digital Solutions.')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-xl bg-[#25D366]/15 border border-[#25D366]/35 flex items-center justify-center gap-1.5 text-xs font-mono text-emerald-400 hover:bg-[#25D366]/25 transition-all font-bold"
+              >
+                <span>WhatsApp</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
               </a>
             </div>
+
             <Button
               to="/contact"
               variant="primary"
-              size="md"
-              className="w-full justify-center"
+              size="lg"
+              className="w-full justify-center shadow-crimson-glow font-bold uppercase tracking-wider text-xs py-3.5"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Start Your Project
+              <span>Start Your Project</span>
+              <ArrowRight className="w-4 h-4 ml-1.5" />
             </Button>
           </div>
         </div>
