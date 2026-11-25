@@ -152,7 +152,7 @@ const About = () => {
                     onClick={handlePlayPause}
                     className="w-full h-full object-cover rounded-2xl sm:rounded-3xl cursor-pointer"
                   >
-                    <source src="/videos/founder-intro.mp4?v=2" type="video/mp4" />
+                    <source src="/videos/founder-intro.mp4?v=3" type="video/mp4" />
                   </video>
 
                   {/* Center Play / Replay Overlay Button (appears when finished or paused) */}
@@ -198,12 +198,6 @@ const About = () => {
                       </>
                     )}
                   </button>
-
-                  {/* Top Corner Pill: Founder Intro */}
-                  <div className="absolute top-3.5 left-3.5 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-[10px] font-mono font-semibold text-white/80 pointer-events-none">
-                    <span className="w-1.5 h-1.5 rounded-full bg-crimson animate-pulse" />
-                    <span>FOUNDER INTRO</span>
-                  </div>
                 </div>
               </div>
             </div>
