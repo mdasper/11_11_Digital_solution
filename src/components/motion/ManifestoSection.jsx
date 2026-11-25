@@ -1,6 +1,6 @@
 import React from 'react'
 import { Code2, Film, TrendingUp } from 'lucide-react'
-import manifestoObjectImg from '@/assets/manifesto/manifesto-3d-object.jpg'
+import logoImg from '@/assets/logo-clean.png'
 import { WordStream } from '@/components/motion/WordStream'
 
 export const ManifestoSection = () => {
@@ -72,23 +72,29 @@ export const ManifestoSection = () => {
             </WordStream>
           </div>
 
-          {/* Right Column: 3D Luxury Architectural Object (Photorealistic 8K Crystal Prism) */}
+          {/* Right Column: Official 11 11 Brand Emblem Showcase */}
           <div className="lg:col-span-5 xl:col-span-5 flex justify-center lg:justify-end">
             <div className="relative w-full max-w-[440px] rounded-[36px] overflow-hidden bg-gradient-to-br from-white via-[#FFF5F8] to-[#FFE8EF] border border-crimson/20 p-3 sm:p-4 shadow-[0_24px_60px_rgba(248,17,90,0.12)] group hover:shadow-[0_32px_75px_rgba(248,17,90,0.2)] transition-all duration-500">
-              <div className="relative w-full aspect-[4/3] rounded-[28px] overflow-hidden bg-[#0D0A0C]">
+              <div className="relative w-full aspect-[4/3] rounded-[28px] overflow-hidden bg-gradient-to-br from-[#14050E] via-[#1B0715] to-[#0A0207] flex items-center justify-center p-8">
+                {/* Ambient Center Glow behind Logo */}
+                <div className="absolute w-56 h-56 rounded-full bg-crimson/25 blur-[55px] pointer-events-none group-hover:bg-crimson/35 transition-all duration-500" />
+                <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-magenta/20 blur-[45px] pointer-events-none" />
+
+                {/* 11 11 Official Brand Logo */}
                 <img
-                  src={manifestoObjectImg}
-                  alt="11 11 Digital Flagship 3D Core"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  src={logoImg}
+                  alt="11 11 Digital Solutions Official Logo"
+                  className="relative z-10 w-full max-w-[280px] h-auto object-contain drop-shadow-[0_0_30px_rgba(248,17,90,0.45)] group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
 
                 {/* Floating Glass Label */}
-                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between px-3.5 py-2 rounded-2xl bg-black/60 backdrop-blur-md border border-white/15">
+                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between px-3.5 py-2 rounded-2xl bg-black/60 backdrop-blur-md border border-white/15 z-20">
                   <div className="flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-crimson animate-pulse" />
                     <span className="text-[11px] font-mono font-bold tracking-widest text-white uppercase">
-                      FLAGSHIP 11:11 CORE
+                      11 11 DIGITAL SOLUTIONS
                     </span>
                   </div>
                   <span className="text-[10px] font-mono font-bold text-[#FF9BB5] uppercase">
