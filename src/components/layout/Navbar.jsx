@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Menu, X, ArrowRight, Globe, TrendingUp, Smartphone, Film, Phone, Mail } from 'lucide-react'
+import { Menu, X, ArrowRight, ArrowUpRight, Globe, TrendingUp, Smartphone, Film, Phone, Mail } from 'lucide-react'
 import { MAIN_NAV_ITEMS, SERVICES_MEGA_MENU, CONTACT_INFO } from '@/data/navigation'
 import logoImg from '@/assets/logo-clean.png'
 import { Button } from '@/components/ui/Button'
@@ -39,10 +39,10 @@ export const Navbar = () => {
   }, [location.pathname])
 
   const iconMap = {
-    Globe: <Globe className="w-5 h-5 text-crimson" />,
-    TrendingUp: <TrendingUp className="w-5 h-5 text-crimson" />,
-    Smartphone: <Smartphone className="w-5 h-5 text-crimson" />,
-    Film: <Film className="w-5 h-5 text-crimson" />,
+    Globe: <Globe className="w-5 h-5 text-crimson group-hover/card:text-white transition-colors duration-300" />,
+    TrendingUp: <TrendingUp className="w-5 h-5 text-crimson group-hover/card:text-white transition-colors duration-300" />,
+    Smartphone: <Smartphone className="w-5 h-5 text-crimson group-hover/card:text-white transition-colors duration-300" />,
+    Film: <Film className="w-5 h-5 text-crimson group-hover/card:text-white transition-colors duration-300" />,
   }
 
   return (
@@ -98,39 +98,78 @@ export const Navbar = () => {
                         <span className="text-[10px] opacity-60">▾</span>
                       </Link>
 
-                      {/* Mega Menu Dropdown */}
+                      {/* Luxury Mega Menu Dropdown */}
                       <div
                         className={cn(
-                          'absolute top-full left-1/2 -translate-x-1/2 pt-3 w-[560px] transition-all duration-300 ease-out pointer-events-none z-50',
+                          'absolute top-full left-1/2 -translate-x-1/2 pt-3 w-[660px] max-w-[95vw] transition-all duration-300 ease-out z-50',
                           servicesOpen && 'pointer-events-auto opacity-100 translate-y-0',
                           !servicesOpen && 'opacity-0 -translate-y-2 pointer-events-none'
                         )}
                       >
-                        <div className="bg-[#180A14] backdrop-blur-3xl border border-crimson/40 rounded-[28px] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.95)] grid grid-cols-2 gap-3 relative overflow-hidden">
+                        <div className="relative rounded-[28px] bg-[#120811]/95 backdrop-blur-2xl border border-white/10 p-4 sm:p-5 shadow-[0_30px_90px_rgba(0,0,0,0.92),0_0_0_1px_rgba(255,45,108,0.15)] overflow-hidden">
                           {/* Ambient Crimson internal glow */}
-                          <div className="pointer-events-none absolute -top-12 -right-12 w-48 h-48 bg-crimson/20 rounded-full blur-[50px]" />
-                          <div className="pointer-events-none absolute top-0 left-6 right-6 h-[2px] bg-gradient-to-r from-transparent via-crimson to-transparent" />
+                          <div className="pointer-events-none absolute -top-16 left-1/2 -translate-x-1/2 w-80 h-28 bg-crimson/20 rounded-full blur-[60px]" />
+                          <div className="pointer-events-none absolute top-0 left-10 right-10 h-[1.5px] bg-gradient-to-r from-transparent via-crimson to-transparent" />
 
-                          {SERVICES_MEGA_MENU.map((service) => (
+                          {/* Header Eyebrow */}
+                          <div className="relative z-10 flex items-center justify-between pb-3 mb-2 px-2 border-b border-white/[0.08]">
+                            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-[#FF9BB5]">
+                              || Core Disciplines
+                            </span>
+                            <span className="text-[10px] font-mono text-white/50 uppercase tracking-wider font-semibold">
+                              04 Flagship Crafts
+                            </span>
+                          </div>
+
+                          {/* 4 Capabilities in Clean, Non-Boxy 2-Column Grid */}
+                          <div className="relative z-10 grid grid-cols-2 gap-2">
+                            {SERVICES_MEGA_MENU.map((service) => (
+                              <Link
+                                key={service.href}
+                                to={service.href}
+                                className="group/card p-3.5 rounded-2xl hover:bg-white/[0.05] border border-transparent hover:border-white/10 transition-all duration-300 flex items-start gap-3.5 relative overflow-hidden"
+                              >
+                                {/* Subtle Hover Gradient Fill */}
+                                <div className="absolute inset-0 bg-gradient-to-r from-crimson/[0.08] to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 pointer-events-none rounded-2xl" />
+
+                                {/* Glowing Icon Badge */}
+                                <div className="w-11 h-11 rounded-2xl bg-[#200A1A] border border-crimson/30 flex items-center justify-center shrink-0 group-hover/card:scale-105 group-hover/card:bg-gradient-to-br group-hover/card:from-crimson group-hover/card:to-magenta group-hover/card:border-transparent transition-all duration-300 shadow-[0_4px_14px_rgba(255,45,108,0.15)] relative z-10">
+                                  {iconMap[service.icon]}
+                                </div>
+
+                                {/* Content */}
+                                <div className="flex-1 min-w-0 relative z-10">
+                                  <h4 className="text-[14px] font-display font-extrabold text-white group-hover/card:text-[#FFA3BD] transition-colors flex items-center justify-between leading-snug">
+                                    <span>{service.title}</span>
+                                    <ArrowUpRight className="w-3.5 h-3.5 text-crimson/70 group-hover/card:text-crimson opacity-0 -translate-x-1 translate-y-1 group-hover/card:opacity-100 group-hover/card:translate-x-0 group-hover/card:translate-y-0 transition-all duration-200 shrink-0 ml-1" />
+                                  </h4>
+                                  <p className="text-[11.5px] text-white/65 mt-1 font-normal leading-relaxed">
+                                    {service.tagline}
+                                  </p>
+                                  <span className="inline-block mt-1.5 text-[10px] font-mono text-[#FF9BB5]/80 font-medium">
+                                    {service.badge}
+                                  </span>
+                                </div>
+                              </Link>
+                            ))}
+                          </div>
+
+                          {/* Bottom Quick-Action Bar */}
+                          <div className="relative z-10 mt-3 pt-3 px-3 rounded-xl bg-white/[0.03] border border-white/[0.06] flex items-center justify-between">
+                            <div className="flex items-center gap-2">
+                              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                              <span className="text-[11px] font-mono text-white/70">
+                                Direct Partner Execution · Zero Runarounds
+                              </span>
+                            </div>
                             <Link
-                              key={service.href}
-                              to={service.href}
-                              className="group p-4 rounded-2xl bg-gradient-to-br from-[#240C1D] to-[#150610] hover:from-[#35122B] hover:to-[#22091A] border border-crimson/25 hover:border-crimson/60 shadow-sm hover:shadow-[0_8px_25px_rgba(248,17,90,0.25)] transition-all duration-300 flex items-start gap-3.5 relative z-10"
+                              to="/services"
+                              className="text-[11px] font-mono font-bold text-crimson hover:text-white transition-colors flex items-center gap-1 group/all"
                             >
-                              <div className="p-2.5 rounded-xl bg-crimson/20 border border-crimson/35 group-hover:scale-110 group-hover:bg-crimson group-hover:text-white transition-all duration-300 shrink-0">
-                                {iconMap[service.icon]}
-                              </div>
-                              <div className="flex-1 min-w-0">
-                                <h4 className="text-sm font-display font-bold text-white group-hover:text-[#FFA3BD] transition-colors flex items-center justify-between">
-                                  <span>{service.title}</span>
-                                  <ArrowRight className="w-3.5 h-3.5 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-crimson shrink-0 ml-1" />
-                                </h4>
-                                <p className="text-xs text-white/65 mt-1 line-clamp-1 font-normal leading-relaxed">
-                                  {service.description}
-                                </p>
-                              </div>
+                              <span>All Capabilities</span>
+                              <ArrowRight className="w-3 h-3 group-hover/all:translate-x-0.5 transition-transform" />
                             </Link>
-                          ))}
+                          </div>
                         </div>
                       </div>
                     </div>
