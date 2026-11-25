@@ -48,40 +48,85 @@ const About = () => {
           <div className="pointer-events-none absolute bottom-0 right-0 w-[500px] h-[300px] bg-crimson/10 blur-[130px] rounded-full" />
 
           <div className="max-w-7xl mx-auto relative z-10">
-            <div className="max-w-4xl">
-              <div className="about-hero-fade inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-crimson/20 border border-crimson/35 shadow-sm backdrop-blur-md mb-6">
-                <Sparkles className="w-3.5 h-3.5 text-crimson animate-pulse" />
-                <span className="font-mono text-xs font-bold text-[#FFA3BD] tracking-widest uppercase">
-                  {ABOUT_DATA.hero.eyebrow}
-                </span>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+              {/* Left Column: Studio Headline & CTAs */}
+              <div className="lg:col-span-7">
+                <div className="about-hero-fade inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-crimson/20 border border-crimson/35 shadow-sm backdrop-blur-md mb-6">
+                  <Sparkles className="w-3.5 h-3.5 text-crimson animate-pulse" />
+                  <span className="font-mono text-xs font-bold text-[#FFA3BD] tracking-widest uppercase">
+                    {ABOUT_DATA.hero.eyebrow}
+                  </span>
+                </div>
+
+                <WordStream
+                  as="h1"
+                  className="about-hero-fade text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-display font-extrabold tracking-tight leading-[1.1] mb-6 text-white"
+                >
+                  We build digital assets that{' '}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF2D6C] via-[#FF5E8E] to-[#FF2D6C]">
+                    {ABOUT_DATA.hero.accentWord}
+                  </span>{' '}
+                  trends.
+                </WordStream>
+
+                <WordStream
+                  as="p"
+                  className="about-hero-fade text-base sm:text-lg text-white/70 leading-relaxed max-w-2xl mb-8"
+                >
+                  {ABOUT_DATA.hero.subtext}
+                </WordStream>
+
+                <div className="about-hero-fade flex flex-wrap items-center gap-4">
+                  <Button to="/contact" variant="primary" size="lg" className="shadow-crimson-glow font-bold">
+                    <span>Partner With Us</span>
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                  <Button to="/work" variant="secondary" size="lg" className="bg-white/10 hover:bg-white/15 text-white border-white/20">
+                    <span>View Flagship Work</span>
+                  </Button>
+                </div>
               </div>
 
-              <WordStream
-                as="h1"
-                className="about-hero-fade text-4xl sm:text-6xl md:text-7xl font-display font-extrabold tracking-tight leading-[1.08] mb-8 text-white"
-              >
-                We build digital assets that{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF2D6C] via-[#FF5E8E] to-[#FF2D6C]">
-                  {ABOUT_DATA.hero.accentWord}
-                </span>{' '}
-                trends.
-              </WordStream>
+              {/* Right Column: High-End Video Showcase Container */}
+              <div className="lg:col-span-5 about-hero-fade">
+                <div className="relative rounded-[28px] p-2 sm:p-2.5 bg-gradient-to-br from-[#200A18]/90 via-[#150610]/95 to-[#0A0709] border border-white/12 shadow-[0_25px_70px_rgba(0,0,0,0.85),0_0_30px_rgba(255,45,108,0.18)] backdrop-blur-2xl group overflow-hidden">
+                  {/* Subtle Top Crimson Ambient Glow */}
+                  <div className="pointer-events-none absolute -top-20 left-1/2 -translate-x-1/2 w-64 h-24 bg-crimson/25 blur-[50px] rounded-full" />
+                  <div className="pointer-events-none absolute top-0 left-6 right-6 h-[1.5px] bg-gradient-to-r from-transparent via-crimson to-transparent" />
 
-              <WordStream
-                as="p"
-                className="about-hero-fade text-lg sm:text-xl text-white/70 leading-relaxed max-w-3xl mb-10"
-              >
-                {ABOUT_DATA.hero.subtext}
-              </WordStream>
+                  {/* Video Slot */}
+                  <div className="relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-[4/3] rounded-[20px] overflow-hidden bg-black/60 border border-white/10 flex items-center justify-center">
+                    <video
+                      id="about-hero-video"
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="w-full h-full object-cover"
+                      poster=""
+                    >
+                      <source src="/assets/videos/about-hero.mp4" type="video/mp4" />
+                    </video>
 
-              <div className="about-hero-fade flex flex-wrap items-center gap-4">
-                <Button to="/contact" variant="primary" size="lg" className="shadow-crimson-glow font-bold">
-                  <span>Partner With Us</span>
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-                <Button to="/work" variant="secondary" size="lg" className="bg-white/10 hover:bg-white/15 text-white border-white/20">
-                  <span>View Flagship Work</span>
-                </Button>
+                    {/* Fallback / Upload Overlay placeholder if video not yet uploaded */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20 flex flex-col items-center justify-center p-6 text-center pointer-events-none">
+                      <div className="w-14 h-14 rounded-full bg-crimson/20 border border-crimson/40 flex items-center justify-center mb-3 shadow-[0_0_20px_rgba(255,45,108,0.4)]">
+                        <div className="w-0 h-0 border-y-[8px] border-y-transparent border-l-[14px] border-l-crimson ml-1" />
+                      </div>
+                      <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#FFA3BD]">
+                        || Studio Reel
+                      </span>
+                      <p className="text-xs text-white/60 mt-1 max-w-xs">
+                        Cinematic Video Showcase ready for upload
+                      </p>
+                    </div>
+
+                    {/* Corner Tech Badges */}
+                    <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-[10px] font-mono text-white/80 font-semibold pointer-events-none">
+                      4K CINEMA · 60FPS
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
