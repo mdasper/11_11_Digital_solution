@@ -1,13 +1,105 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { CheckCircle2, Shield, Sparkles, Code2, Gauge } from 'lucide-react';
+import { CheckCircle2, Shield, Sparkles, Code2, Gauge, Compass, Palette, Rocket, Clock, Zap, ArrowRight, ArrowLeft, Layers } from 'lucide-react';
 import { PRICING_PACKAGES } from '@/data/packages';
 import { Button } from '@/components/ui/Button';
 import { SpotlightCard } from '@/components/motion/SpotlightCard';
 import { formatINR } from '@/lib/utils';
 import { gsap } from '@/lib/gsap';
 import { WordStream } from '@/components/motion/WordStream';
-import jbMockup from '@/assets/projects/jb-healthcare.svg';
+
+const ROADMAP_STEPS = [
+  {
+    day: 'Day 01',
+    dayNumber: '01',
+    title: 'Architectural Blueprint & Strategy',
+    tagline: 'Laying the foundation for conversion and performance',
+    timeline: 'Hour 0 – 24',
+    icon: Compass,
+    progress: 20,
+    overview: 'We dissect your business goals, analyze target audience psychology, map conversion touchpoints, finalize the sitemap, and structure low-fidelity wireframes.',
+    deliverables: [
+      'User Journey & Conversion Funnel Mapping',
+      'Information Architecture & Sitemap Approval',
+      'Direct Strategy & Scope Lock with Mohamed Asper'
+    ],
+    visualBadge: 'BLUEPRINT PHASE',
+    visualMetrics: { primary: '100% Architecture Lock', secondary: '0 Ambiguity' },
+    codeSnippet: '// Day 01: Core Blueprint Schema\nconst architecture = {\n  sitemap: ["Hero", "Showcase", "Conversion", "QA"],\n  speedTarget: "< 0.8s",\n  conversionFunnel: "1-Tap WhatsApp + Smart Inquiry"\n};'
+  },
+  {
+    day: 'Day 02',
+    dayNumber: '02',
+    title: 'Art Direction & High-Fidelity UI/UX',
+    tagline: 'Awwwards-caliber aesthetics & bespoke typography',
+    timeline: 'Hour 24 – 48',
+    icon: Palette,
+    progress: 40,
+    overview: 'Crafting the visual identity of your portal. Bespoke color hierarchy, editorial typography, velvet textures, and custom responsive layouts designed to captivate visitors.',
+    deliverables: [
+      'Full-Fidelity Responsive Prototypes (Figma)',
+      'Custom Iconography, Brand Colors & Typography System',
+      'Interactive Visual Prototype Walkthrough & Client Sign-off'
+    ],
+    visualBadge: 'DESIGN CRAFT',
+    visualMetrics: { primary: 'Bespoke UI System', secondary: 'Zero Generic Templates' },
+    codeSnippet: '// Day 02: Design Tokens & Palette\nconst tokens = {\n  palette: ["#0D0A0C", "#FF2D6C", "#FAF5F8"],\n  typography: ["Syne Display", "Plus Jakarta Sans"],\n  aesthetic: "Velvet Obsidian Luxury"\n};'
+  },
+  {
+    day: 'Day 03',
+    dayNumber: '03',
+    title: 'Performance Engineering & GSAP Motion',
+    tagline: 'Handcrafted React 19, Vite & sub-second execution',
+    timeline: 'Hour 48 – 72',
+    icon: Code2,
+    progress: 60,
+    overview: 'Zero bloated plugins. We code the frontend with clean modern React, Tailwind CSS, and custom GSAP 60FPS micro-interactions with strict memory cleanup.',
+    deliverables: [
+      'Handcrafted React + Tailwind CSS Architecture',
+      'Smooth GSAP Scroll Physics & Micro-Interactions',
+      'Sub-Second Bundle Compression (<0.8s load time)'
+    ],
+    visualBadge: 'ENGINEERING LAB',
+    visualMetrics: { primary: '0.4s Avg. Load Speed', secondary: '99/100 Core Web Vitals' },
+    codeSnippet: '// Day 03: Engineering Stack\nexport const CoreApp = () => {\n  useGSAP(() => initPhysics(), { scope: ref });\n  return <PerformancePortal speed="0.4s" fps="60" />;\n};'
+  },
+  {
+    day: 'Day 04',
+    dayNumber: '04',
+    title: 'Content Ingestion & Funnel Testing',
+    tagline: 'Live data sync, booking flows & multi-device QA',
+    timeline: 'Hour 72 – 96',
+    icon: Layers,
+    progress: 80,
+    overview: 'Syncing your real copy, high-res media, 1-tap WhatsApp chat buttons, custom contact forms, and conducting rigorous responsive tests across 4 device breakpoints.',
+    deliverables: [
+      'Full Content, Case Studies & Media Integration',
+      '1-Tap WhatsApp, Inquiry & Booking Funnel Setup',
+      'Cross-Browser & 4-Breakpoint QA (375px, 768px, 1024px, 1440px)'
+    ],
+    visualBadge: 'INTEGRATION QA',
+    visualMetrics: { primary: '4-Device Breakpoints', secondary: 'Zero Stutter' },
+    codeSnippet: '// Day 04: Conversion Pipeline\nconst conversionTriggers = {\n  oneTapWhatsApp: "Direct to Founder",\n  formValidation: "Instant Feedback",\n  responsiveQA: "100% Passed (Mobile to 4K)"\n};'
+  },
+  {
+    day: 'Day 05',
+    dayNumber: '05',
+    title: 'Domain Cutover & Worldwide Launch',
+    tagline: 'Global CDN deployment, SSL & Google indexing',
+    timeline: 'Hour 96 – 120',
+    icon: Rocket,
+    progress: 100,
+    overview: 'DNS configuration, SSL certificate generation, global edge CDN distribution, Google Search Console indexing, and handing you complete 100% code ownership on Day 5.',
+    deliverables: [
+      'Global Edge CDN Distribution with 99.9% Uptime SLA',
+      'Google SEO Meta Schemas & XML Sitemap Submission',
+      '100% Codebase Ownership & Production Handover'
+    ],
+    visualBadge: 'GLOBAL DEPLOY',
+    visualMetrics: { primary: '100% Production Live', secondary: 'Global CDN Active' },
+    codeSnippet: '// Day 05: Production Deployment\nconst deployStatus = {\n  status: "LIVE_IN_PRODUCTION",\n  uptime: "99.99%",\n  ssl: "A+ Grade Security",\n  ownership: "100% Transferred to Client"\n};'
+  }
+];
 const websiteTypes = [
     {
         title: 'Hospital & Healthcare',
@@ -48,23 +140,13 @@ const websiteTypes = [
 ];
 const Websites = () => {
     const containerRef = useRef(null);
-    const laptopScreenRef = useRef(null);
+    const [activeDayIndex, setActiveDayIndex] = useState(0);
+
+    const activeStep = ROADMAP_STEPS[activeDayIndex];
+    const StepIcon = activeStep.icon;
+
     useEffect(() => {
-        const ctx = gsap.context(() => {
-            // Scroll-driven long screenshot scroll inside laptop frame
-            if (laptopScreenRef.current) {
-                gsap.to(laptopScreenRef.current, {
-                    yPercent: -45,
-                    ease: 'none',
-                    scrollTrigger: {
-                        trigger: '.laptop-scroll-stage',
-                        start: 'top 70%',
-                        end: 'bottom 20%',
-                        scrub: 1,
-                    },
-                });
-            }
-        }, containerRef);
+        const ctx = gsap.context(() => {}, containerRef);
         return () => ctx.revert();
     }, []);
     return (<>
@@ -110,33 +192,182 @@ const Websites = () => {
           </div>
         </section>
 
-        {/* 2. Scroll-Driven 3D Interactive Laptop */}
-        <section className="laptop-scroll-stage py-24 sm:py-32 px-6 sm:px-8 max-w-7xl mx-auto border-b border-black/[0.06]">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-mono uppercase tracking-widest text-crimson block mb-3">
-              || Engineering In Action
-            </span>
-            <h2 className="text-3xl sm:text-5xl font-display font-bold tracking-tight mb-4 text-[#120E11]">
-              Scroll-driven <span className="font-accent italic text-crimson font-normal">fluidity</span>.
+        {/* 2. Interactive 5-Day Project Roadmap */}
+        <section className="py-24 sm:py-32 px-6 sm:px-8 max-w-7xl mx-auto border-b border-black/[0.06]">
+          {/* Header */}
+          <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-18">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-crimson/10 border border-crimson/25 shadow-sm mb-4">
+              <Clock className="w-3.5 h-3.5 text-crimson animate-pulse" />
+              <span className="font-mono text-xs font-bold text-crimson uppercase tracking-widest">
+                || Rapid Deployment Protocol
+              </span>
+            </div>
+            <h2 className="text-3xl sm:text-5xl font-display font-extrabold tracking-tight text-[#120E11] mb-4">
+              From concept to live website in <span className="text-transparent bg-clip-text bg-gradient-to-r from-crimson via-[#FF5E8E] to-crimson">5 days</span>.
             </h2>
-            <p className="text-text-dark-muted text-sm sm:text-base">
-              Scroll down to watch the long-form digital experience navigate inside our precision laptop mockup.
+            <p className="text-text-dark-muted text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+              No months of agency runarounds or stalled timelines. We operate with surgical agility to design, engineer, and deploy your flagship web asset in 120 hours.
             </p>
           </div>
 
-          {/* Precision MacBook Mockup Container */}
-          <div className="relative max-w-4xl mx-auto">
-            <div className="relative rounded-t-[24px] p-3 sm:p-4 bg-[#231F24] border border-black/20 shadow-[0_20px_60px_rgba(18,14,17,0.18)]">
-              {/* Notch */}
-              <div className="absolute top-1 left-1/2 -translate-x-1/2 w-16 h-3 bg-black rounded-b-md z-30"/>
-              {/* Screen viewport */}
-              <div className="relative aspect-[16/10] w-full rounded-[14px] overflow-hidden bg-white shadow-inner">
-                <img ref={laptopScreenRef} src={jbMockup} alt="Scroll driven website preview" className="w-full object-cover object-top will-change-transform" style={{ minHeight: '180%' }}/>
+          {/* Interactive Day Selection Track (5 Days) */}
+          <div className="mb-10 sm:mb-12">
+            <div className="grid grid-cols-5 gap-2 sm:gap-3 p-2 rounded-2xl bg-white border border-black/[0.08] shadow-sm max-w-4xl mx-auto">
+              {ROADMAP_STEPS.map((step, idx) => {
+                const Icon = step.icon;
+                const isActive = activeDayIndex === idx;
+                return (
+                  <button
+                    key={step.day}
+                    type="button"
+                    onClick={() => setActiveDayIndex(idx)}
+                    className={`group relative p-3 sm:p-4 rounded-xl transition-all duration-300 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson ${
+                      isActive
+                        ? 'bg-[#120811] text-white shadow-lg shadow-black/20 border border-crimson/30'
+                        : 'bg-transparent hover:bg-black/[0.04] text-[#120E11]'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between mb-1">
+                      <span className={`font-mono text-[10px] sm:text-xs font-bold tracking-wider uppercase ${
+                        isActive ? 'text-crimson' : 'text-[#8C8288]'
+                      }`}>
+                        {step.day}
+                      </span>
+                      <Icon className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${
+                        isActive ? 'text-white' : 'text-[#8C8288] group-hover:text-crimson'
+                      }`} />
+                    </div>
+                    <div className="hidden sm:block text-xs font-bold truncate">
+                      {step.title.split(' ')[0]} {step.title.split(' ')[1]}
+                    </div>
+                    {/* Active highlight indicator */}
+                    {isActive && (
+                      <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-gradient-to-r from-transparent via-crimson to-transparent" />
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Active Day Spotlight Card */}
+          <div className="max-w-5xl mx-auto rounded-[32px] sm:rounded-[36px] bg-white border border-black/[0.08] p-6 sm:p-10 lg:p-12 shadow-[0_25px_70px_rgba(18,14,17,0.06)] relative overflow-hidden">
+            {/* Top Crimson Accent line */}
+            <div className="pointer-events-none absolute top-0 left-12 right-12 h-[2px] bg-gradient-to-r from-transparent via-crimson to-transparent" />
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+              {/* Left Column: Day Milestones & Deliverables */}
+              <div className="lg:col-span-6 space-y-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-2xl bg-[#120811] text-crimson flex items-center justify-center font-display font-extrabold text-xl shadow-md border border-crimson/30">
+                    {activeStep.dayNumber}
+                  </div>
+                  <div>
+                    <span className="text-[11px] font-mono uppercase tracking-widest text-crimson font-bold block">
+                      || {activeStep.timeline}
+                    </span>
+                    <h3 className="text-xl sm:text-2xl font-display font-extrabold text-[#120E11] leading-tight">
+                      {activeStep.title}
+                    </h3>
+                  </div>
+                </div>
+
+                <p className="text-sm sm:text-base text-text-dark-muted leading-relaxed">
+                  {activeStep.overview}
+                </p>
+
+                {/* Deliverables Checklist */}
+                <div className="space-y-2.5 pt-2">
+                  <span className="text-xs font-mono font-bold text-[#120E11] uppercase tracking-wider block">
+                    Day {activeStep.dayNumber} Output Deliverables:
+                  </span>
+                  {activeStep.deliverables.map((item, dIdx) => (
+                    <div key={dIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#3A3337]">
+                      <CheckCircle2 className="w-4 h-4 text-crimson shrink-0 mt-0.5" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Stepper Navigation Buttons */}
+                <div className="pt-4 flex items-center gap-3 border-t border-black/[0.06]">
+                  <button
+                    type="button"
+                    onClick={() => setActiveDayIndex((prev) => (prev > 0 ? prev - 1 : ROADMAP_STEPS.length - 1))}
+                    className="p-2.5 rounded-xl border border-black/10 hover:border-black/20 text-[#120E11] hover:bg-black/[0.04] transition-all cursor-pointer"
+                    aria-label="Previous day"
+                  >
+                    <ArrowLeft className="w-4 h-4" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setActiveDayIndex((prev) => (prev < ROADMAP_STEPS.length - 1 ? prev + 1 : 0))}
+                    className="flex-1 flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-[#120811] hover:bg-crimson text-white text-xs font-bold transition-all shadow-md cursor-pointer group/next"
+                  >
+                    <span>Proceed to Day {activeDayIndex < 4 ? `0${activeDayIndex + 2}` : '01'}</span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover/next:translate-x-1 transition-transform" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Right Column: Visual Console & Live Simulation */}
+              <div className="lg:col-span-6">
+                <div className="rounded-[28px] bg-[#0E0B0D] text-white p-6 sm:p-7 border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.8)] relative overflow-hidden">
+                  <div className="pointer-events-none absolute -top-16 -right-16 w-40 h-40 bg-crimson/20 rounded-full blur-[50px]" />
+                  
+                  {/* Console Header */}
+                  <div className="flex items-center justify-between pb-3.5 mb-4 border-b border-white/10">
+                    <div className="flex items-center gap-2">
+                      <span className="w-2.5 h-2.5 rounded-full bg-crimson animate-pulse" />
+                      <span className="text-[11px] font-mono text-white/90 font-bold uppercase tracking-wider">
+                        {activeStep.visualBadge}
+                      </span>
+                    </div>
+                    <span className="text-[10px] font-mono text-[#FF9BB5]">
+                      Sprint Progress: {activeStep.progress}%
+                    </span>
+                  </div>
+
+                  {/* Progress Bar */}
+                  <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden mb-5">
+                    <div
+                      className="h-full bg-gradient-to-r from-crimson to-[#FFA3BD] transition-all duration-500 rounded-full"
+                      style={{ width: `${activeStep.progress}%` }}
+                    />
+                  </div>
+
+                  {/* Code / Architecture Terminal Display */}
+                  <div className="rounded-xl bg-black/60 border border-white/10 p-4 font-mono text-xs text-white/85 leading-relaxed overflow-x-auto mb-5">
+                    <pre className="text-[11.5px] text-[#FFB3C7] font-mono whitespace-pre-wrap">
+                      {activeStep.codeSnippet}
+                    </pre>
+                  </div>
+
+                  {/* Metrics Badge */}
+                  <div className="grid grid-cols-2 gap-3 pt-3 border-t border-white/10">
+                    <div className="p-2.5 rounded-xl bg-white/[0.04] border border-white/[0.08]">
+                      <span className="text-[10px] font-mono text-white/50 block">Target SLA</span>
+                      <span className="text-xs font-bold text-white mt-0.5 block">{activeStep.visualMetrics.primary}</span>
+                    </div>
+                    <div className="p-2.5 rounded-xl bg-white/[0.04] border border-white/[0.08]">
+                      <span className="text-[10px] font-mono text-white/50 block">Architecture</span>
+                      <span className="text-xs font-bold text-[#FFA3BD] mt-0.5 block">{activeStep.visualMetrics.secondary}</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            {/* Laptop base */}
-            <div className="relative h-4 sm:h-5 w-[104%] -left-[2%] bg-gradient-to-b from-[#3A3439] to-[#1C181B] rounded-b-[18px] shadow-2xl flex justify-center">
-              <div className="w-24 h-1.5 bg-[#141113] rounded-b-md"/>
+
+            {/* Bottom Guarantee Strip */}
+            <div className="mt-8 pt-6 border-t border-black/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-2 text-xs font-mono text-[#6A6066]">
+                <Shield className="w-4 h-4 text-crimson shrink-0" />
+                <span>100% On-Time Deployment Commitment · Zero Junior Delegation</span>
+              </div>
+              <Button to="/contact?service=website" variant="primary" size="md" className="w-full sm:w-auto shadow-crimson-glow text-xs font-bold uppercase tracking-wider">
+                <span>Start Your 5-Day Sprint</span>
+                <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
+              </Button>
             </div>
           </div>
         </section>
