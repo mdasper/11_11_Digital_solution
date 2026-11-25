@@ -7,15 +7,33 @@ export const ABOUT_DATA = {
     },
     founder: {
         name: 'Mohamed Asper',
-        role: 'Founder & Principal Creative',
+        role: 'Founder & Principal Engineer',
+        badge: 'FOUNDER & LEAD DEVELOPER',
+        established: '2026',
+        location: 'Tamil Nadu, India',
         phone: '+91 95664 98072',
         email: 'asper.mohamed22@gmail.com',
         linkedin: 'https://www.linkedin.com/in/mohamed-asper-a-6a0657180/',
-        quote: "When a customer lands on your page or watches your reel, you have three seconds to prove you are worthy of their time. We make every second count.",
-        story: [
-            "11 11 Digital Solutions was established with a singular conviction: businesses deserve digital experiences that reflect the true caliber of their craft.",
-            "Too many agencies deliver bloated templates, slow loading times, and cookie-cutter social posts that get lost in the noise. We take the opposite approach: surgical precision, bespoke motion physics, and uncompromising aesthetic standards.",
-            "From medical healthcare portals to international coffee and garments exporters, our work is engineered to generate trust immediately and scale revenue measurably.",
+        headline: "Every digital touchpoint should demand attention and command trust.",
+        quote: "When someone lands on your website or watches your reel, you have three seconds to prove your caliber. We make every millisecond count.",
+        letter: [
+            "When I founded 11 11 Digital Solutions in 2026, my objective was singular: to eliminate the bloated code, generic templates, and impersonal agency runarounds that hold visionary businesses back.",
+            "In this studio, every project is engineered with surgical precision. When you partner with 11 11, you don't get handed off to junior interns or account managers — you collaborate directly with me and our dedicated production craft.",
+            "Whether we are shipping sub-second web platforms, crafting viral vertical reels, or orchestrating high-ROAS acquisition funnels, our work is designed to outlast fleeting trends and deliver measurable enterprise growth.",
+        ],
+        commitments: [
+            {
+                title: 'Direct Partner Execution',
+                desc: 'Zero junior delegation. You work directly with the founder and lead engineer from day one.',
+            },
+            {
+                title: 'Sub-Second Performance',
+                desc: 'Handcrafted modern React architectures loading in under 0.8s with cinematic 60FPS motion.',
+            },
+            {
+                title: 'Measurable Enterprise Growth',
+                desc: 'Every design choice, ad funnel, and video cut is calculated to generate trust and drive conversions.',
+            },
         ],
     },
     team: [
