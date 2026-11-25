@@ -87,45 +87,19 @@ const About = () => {
                 </div>
               </div>
 
-              {/* Right Column: High-End Video Showcase Container */}
+              {/* Right Column: Clean Borderless Video Showcase */}
               <div className="lg:col-span-5 about-hero-fade">
-                <div className="relative rounded-[28px] p-2 sm:p-2.5 bg-gradient-to-br from-[#200A18]/90 via-[#150610]/95 to-[#0A0709] border border-white/12 shadow-[0_25px_70px_rgba(0,0,0,0.85),0_0_30px_rgba(255,45,108,0.18)] backdrop-blur-2xl group overflow-hidden">
-                  {/* Subtle Top Crimson Ambient Glow */}
-                  <div className="pointer-events-none absolute -top-20 left-1/2 -translate-x-1/2 w-64 h-24 bg-crimson/25 blur-[50px] rounded-full" />
-                  <div className="pointer-events-none absolute top-0 left-6 right-6 h-[1.5px] bg-gradient-to-r from-transparent via-crimson to-transparent" />
-
-                  {/* Video Slot */}
-                  <div className="relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-[4/3] rounded-[20px] overflow-hidden bg-black/60 border border-white/10 flex items-center justify-center">
-                    <video
-                      id="about-hero-video"
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      className="w-full h-full object-cover"
-                      poster=""
-                    >
-                      <source src="/assets/videos/about-hero.mp4" type="video/mp4" />
-                    </video>
-
-                    {/* Fallback / Upload Overlay placeholder if video not yet uploaded */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20 flex flex-col items-center justify-center p-6 text-center pointer-events-none">
-                      <div className="w-14 h-14 rounded-full bg-crimson/20 border border-crimson/40 flex items-center justify-center mb-3 shadow-[0_0_20px_rgba(255,45,108,0.4)]">
-                        <div className="w-0 h-0 border-y-[8px] border-y-transparent border-l-[14px] border-l-crimson ml-1" />
-                      </div>
-                      <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#FFA3BD]">
-                        || Studio Reel
-                      </span>
-                      <p className="text-xs text-white/60 mt-1 max-w-xs">
-                        Cinematic Video Showcase ready for upload
-                      </p>
-                    </div>
-
-                    {/* Corner Tech Badges */}
-                    <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-[10px] font-mono text-white/80 font-semibold pointer-events-none">
-                      4K CINEMA · 60FPS
-                    </div>
-                  </div>
+                <div className="relative rounded-3xl overflow-hidden aspect-[16/10] sm:aspect-[16/9] lg:aspect-[4/3] bg-black/40 shadow-2xl">
+                  <video
+                    id="about-hero-video"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover rounded-3xl"
+                  >
+                    <source src="/assets/videos/about-hero.mp4" type="video/mp4" />
+                  </video>
                 </div>
               </div>
             </div>
