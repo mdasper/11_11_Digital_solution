@@ -152,7 +152,7 @@ const About = () => {
                     onClick={handlePlayPause}
                     className="w-full h-full object-cover rounded-2xl sm:rounded-3xl cursor-pointer"
                   >
-                    <source src="/videos/founder-intro.mp4" type="video/mp4" />
+                    <source src="/videos/founder-intro.mp4?v=2" type="video/mp4" />
                   </video>
 
                   {/* Center Play / Replay Overlay Button (appears when finished or paused) */}
