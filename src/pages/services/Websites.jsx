@@ -1,12 +1,13 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { CheckCircle2, Shield, Sparkles, Code2, Gauge, Compass, Palette, Rocket, Clock, Zap, ArrowRight, ArrowLeft, Layers } from 'lucide-react';
+import { CheckCircle2, Shield, Sparkles, Code2, Gauge, Compass, Palette, Rocket, Clock, Zap, ArrowRight, ArrowLeft, Layers, ArrowUpRight } from 'lucide-react';
 import { PRICING_PACKAGES } from '@/data/packages';
 import { Button } from '@/components/ui/Button';
 import { SpotlightCard } from '@/components/motion/SpotlightCard';
 import { formatINR } from '@/lib/utils';
 import { gsap } from '@/lib/gsap';
 import { WordStream } from '@/components/motion/WordStream';
+import heroWebsitesImg from '@/assets/crafts/hero-websites.jpg';
 
 const ROADMAP_STEPS = [
   {
@@ -155,39 +156,66 @@ const Websites = () => {
         <meta name="description" content="Fast, beautiful websites that turn visitors into customers. Custom React builds, zero templates, GSAP motion, and 90+ Lighthouse speeds."/>
       </Helmet>
 
-      <div ref={containerRef} className="pt-32 sm:pt-40 bg-ink min-h-screen text-text-dark">
-        {/* 1. Hero */}
-        <section className="px-6 sm:px-8 max-w-7xl mx-auto pb-20 border-b border-black/[0.06]">
-          <div className="max-w-4xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-black/[0.08] shadow-sm mb-6">
-              <span className="font-mono text-xs font-bold text-crimson tracking-widest">
-                || CORE CAPABILITY 01
-              </span>
-              <span className="w-1.5 h-1.5 rounded-full bg-crimson animate-pulse"/>
-            </div>
+      <div ref={containerRef} className="min-h-screen">
+        {/* 1. Hero: Signature Dark Obsidian Velvet Stage */}
+        <section className="pt-36 sm:pt-44 pb-20 sm:pb-28 px-6 sm:px-8 lg:px-12 bg-[#0A0709] text-white border-b border-white/[0.08] relative overflow-hidden">
+          {/* Ambient Crimson Radial Glow Lights */}
+          <div className="pointer-events-none absolute -top-40 left-1/4 w-[700px] h-[350px] bg-crimson/20 blur-[150px] rounded-full" />
+          <div className="pointer-events-none absolute bottom-0 right-10 w-[500px] h-[300px] bg-crimson/10 blur-[130px] rounded-full" />
 
-            <WordStream
-              as="h1"
-              className="text-4xl sm:text-6xl md:text-7xl font-display font-extrabold tracking-tight leading-[1.02] mb-6 text-[#120E11]"
-            >
-              Fast, beautiful websites that turn visitors into{' '}
-              <span className="font-accent italic text-crimson font-normal">customers</span>.
-            </WordStream>
+          <div className="max-w-7xl mx-auto relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+              {/* Left Column: Headline & Action */}
+              <div className="lg:col-span-7">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-crimson/20 border border-crimson/35 shadow-sm mb-6">
+                  <span className="font-mono text-xs font-bold text-[#FFA3BD] tracking-widest uppercase">
+                    || Core Capability 01 · Websites
+                  </span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-crimson animate-pulse"/>
+                </div>
 
-            <WordStream
-              as="p"
-              className="text-lg sm:text-xl text-text-dark-muted max-w-2xl leading-relaxed mb-8"
-            >
-              We engineer custom, responsive websites designed to build immediate trust, pass Google Core Web Vitals with 90+ scores, and generate qualified inquiries.
-            </WordStream>
+                <WordStream
+                  as="h1"
+                  className="text-4xl sm:text-6xl md:text-7xl font-display font-extrabold tracking-tight leading-[1.05] mb-6 text-white"
+                >
+                  Fast, beautiful websites that turn visitors into{' '}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-crimson via-[#FF5E8E] to-crimson">
+                    customers
+                  </span>.
+                </WordStream>
 
-            <div className="flex flex-wrap items-center gap-4">
-              <Button to="/contact?service=website" variant="primary" size="lg">
-                Start Your Website Project
-              </Button>
-              <Button to="/pricing" variant="secondary" size="lg">
-                Explore Website Packages
-              </Button>
+                <WordStream
+                  as="p"
+                  className="text-lg sm:text-xl text-white/70 max-w-2xl leading-relaxed mb-8"
+                >
+                  We engineer custom, responsive websites designed to build immediate trust, pass Google Core Web Vitals with 90+ scores, and generate qualified inquiries.
+                </WordStream>
+
+                <div className="flex flex-wrap items-center gap-4">
+                  <Button to="/contact?service=website" variant="primary" size="lg" className="shadow-crimson-glow font-bold">
+                    <span>Start Your Website Project</span>
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                  <Button to="/pricing" variant="secondary" size="lg" className="bg-white/10 hover:bg-white/15 text-white border-white/20">
+                    <span>Explore Website Packages</span>
+                  </Button>
+                </div>
+              </div>
+
+              {/* Right Column: Hero Visual Asset */}
+              <div className="lg:col-span-5">
+                <div className="relative rounded-3xl overflow-hidden aspect-[4/3] bg-black/60 border border-white/12 shadow-[0_25px_70px_rgba(0,0,0,0.85),0_0_35px_rgba(255,45,108,0.18)] group">
+                  <img src={heroWebsitesImg} alt="11 11 High performance web development" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A0709] via-transparent to-transparent opacity-60" />
+                  <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs font-mono text-white/90 bg-black/60 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/10">
+                    <span className="flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                      Sub-second React 19 Build
+                    </span>
+                    <span className="text-crimson font-bold">99+ Google Score</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -372,40 +400,49 @@ const Websites = () => {
           </div>
         </section>
 
-        {/* 3. Website Types Grid */}
-        <section className="py-28 sm:py-36 px-6 sm:px-8 max-w-7xl mx-auto border-b border-black/[0.06]">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
-            <div>
-              <span className="text-xs font-mono uppercase tracking-widest text-crimson block mb-3">
-                || Industry Solutions
-              </span>
-              <h2 className="text-3xl sm:text-5xl font-display font-bold tracking-tight text-[#120E11]">
-                Tailored for your <span className="font-accent italic text-crimson font-normal">business model</span>.
-              </h2>
+        {/* 3. Website Types Grid: Dark Obsidian Stage */}
+        <section className="py-28 sm:py-36 px-6 sm:px-8 bg-[#0D0A0C] text-white border-b border-white/[0.08] relative overflow-hidden">
+          <div className="pointer-events-none absolute -top-40 right-10 w-[500px] h-[500px] rounded-full bg-crimson/15 blur-[140px]" />
+          
+          <div className="max-w-7xl mx-auto relative z-10">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+              <div>
+                <span className="text-xs font-mono uppercase tracking-widest text-[#FFA3BD] font-bold block mb-3">
+                  || Industry Solutions
+                </span>
+                <h2 className="text-3xl sm:text-5xl font-display font-extrabold tracking-tight text-white">
+                  Tailored for your <span className="text-transparent bg-clip-text bg-gradient-to-r from-crimson to-[#FFA3BD]">business model</span>.
+                </h2>
+              </div>
+              <p className="text-white/70 text-sm max-w-sm leading-relaxed">
+                We design specifically for your industry's conversion triggers and user habits.
+              </p>
             </div>
-            <p className="text-text-dark-muted text-sm max-w-sm">
-              We design specifically for your industry's conversion triggers and user habits.
-            </p>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {websiteTypes.map((type, idx) => (<SpotlightCard key={idx} className="p-8 flex flex-col justify-between">
-                <div>
-                  <span className="text-[10px] font-mono uppercase px-2.5 py-1 rounded bg-crimson/10 text-crimson font-bold mb-4 inline-block">
-                    {type.tag}
-                  </span>
-                  <h3 className="text-xl font-display font-bold text-[#120E11] mb-2">
-                    {type.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-text-dark-muted leading-relaxed mb-6">
-                    {type.desc}
-                  </p>
-                </div>
-                <div className="pt-4 border-t border-black/[0.06] flex items-center justify-between text-xs font-mono text-text-dark-muted">
-                  <span>Proven in:</span>
-                  <span className="text-[#120E11] font-semibold">{type.example}</span>
-                </div>
-              </SpotlightCard>))}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {websiteTypes.map((type, idx) => (
+                <SpotlightCard key={idx} className="p-8 flex flex-col justify-between bg-[#160B14]/90 border border-white/10 hover:border-crimson/40 text-white shadow-xl rounded-2xl group transition-all">
+                  <div>
+                    <span className="text-[10px] font-mono uppercase px-2.5 py-1 rounded bg-crimson/20 border border-crimson/30 text-[#FFA3BD] font-bold mb-4 inline-block">
+                      {type.tag}
+                    </span>
+                    <h3 className="text-xl font-display font-bold text-white mb-2 group-hover:text-crimson transition-colors">
+                      {type.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-white/70 leading-relaxed mb-6">
+                      {type.desc}
+                    </p>
+                  </div>
+                  <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-white/60">
+                    <span>Proven in:</span>
+                    <span className="text-white font-semibold flex items-center gap-1">
+                      {type.example}
+                      <ArrowUpRight className="w-3.5 h-3.5 text-crimson" />
+                    </span>
+                  </div>
+                </SpotlightCard>
+              ))}
+            </div>
           </div>
         </section>
 
